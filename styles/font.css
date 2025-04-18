@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'bamdad';
+    src: url('../assets/font/Bamdad.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'yekan';
+    src: url('../assets/font/Yekan Boom.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'estedad';
+    src: url('../assets/font/Estedad-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'diodrum';
+    src: url('../assets/font/DiodrumArabic-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

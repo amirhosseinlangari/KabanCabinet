@@ -1,0 +1,207 @@
+@import url('font.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: yekan;
+}
+.textlogo{
+    padding: 0.5rem;
+    padding-right: 1.5rem;
+    font-size: 3rem;
+    font-family: bamdad;
+}
+#nav{
+    background-color: rgb(241, 198, 142);
+    border-radius: 0 0 2rem 2rem;
+    margin: 1.3rem 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+#logo-nav{
+    max-height: 6rem;
+    width: auto;
+    margin-right: 2rem;
+}
+.dropdown-cabinet {
+    position: relative;
+    display: inline-block;
+}
+
+.submenu-cabinet {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 10rem;
+    right: 0;
+    top: 100%;
+    z-index: 1;
+    border-radius: 0 0 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.submenu-cabinet a {
+    padding: 12px 12px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    font-family: estedad;
+}
+
+.submenu-cabinet a:last-child {
+    border-bottom: none;
+}
+
+.submenu-cabinet a:hover {
+    background-color: rgba(241, 198, 142, 0.2);
+    padding-right: 25px;
+}
+
+.dropdown-cabinet:hover .submenu-cabinet {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* تنضیمان زیر منو کابینت */
+
+.dropdown-mahsool {
+    position: relative;
+    display: inline-block;
+}
+
+.submenu-mahsool {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 10rem;
+    right: 0;
+    top: 100%;
+    z-index: 1;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.submenu-mahsool a {
+    padding: 12px 12px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    font-family: estedad;
+}
+
+.submenu-mahsool a:last-child {
+    border-bottom: none;
+}
+
+.submenu-mahsool a:hover {
+    background-color: rgba(241, 198, 142, 0.2);
+    padding-right: 25px;
+}
+
+.dropdown-mahsool:hover .submenu-mahsool {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* زیر منو محصول */
+.cabinet{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
+.mahsool{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.4rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 1.6rem;
+}
+
+.weblog{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.about{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.contact{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
+
+
+
