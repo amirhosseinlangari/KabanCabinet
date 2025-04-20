@@ -7,11 +7,19 @@
     <title>کابینت کابان</title>
 </head>
 <body>
+    <div class="overlay"></div>
     <section>
         <nav id="nav">
-            <img src="assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav">
-            <div class="textlogo">کابینت کابان</div>
-            <div>
+            <div class="header-content">
+                <img src="assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav">
+                <div class="textlogo">کابینت کابان</div>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-container">
                 <div class="dropdown-cabinet">
                     <a class="cabinet" href="#">کابینت</a>
                     <div class="submenu-cabinet">
@@ -36,5 +44,67 @@
             </div>
         </nav>
     </section>
+
+    <script>
+        // انتخاب عناصر منو
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navContainer = document.querySelector('.nav-container');
+        const overlay = document.querySelector('.overlay');
+        const dropdowns = document.querySelectorAll('.dropdown-cabinet, .dropdown-mahsool');
+        
+        // تابع باز و بسته کردن منوی موبایل
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navContainer.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // بستن منو با کلیک روی اورلی
+        overlay.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            navContainer.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // بستن تمام زیرمنوها
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        });
+        
+        // اضافه کردن رویداد کلیک برای منوهای کشویی در موبایل
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    
+                    // بستن سایر منوهای کشویی
+                    dropdowns.forEach(item => {
+                        if (item !== dropdown) {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // تنظیم مجدد منو در هنگام تغییر اندازه صفحه
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                navContainer.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
