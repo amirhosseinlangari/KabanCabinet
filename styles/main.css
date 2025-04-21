@@ -25,70 +25,6 @@
     flex-direction: row;
     justify-content: flex-start;
 }
-.cabinet{
-    text-align: center;
-    box-sizing: border-box;
-    color: black;
-    margin: 1.5rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 1rem;
-}
-.mahsool{
-    text-align: center;
-    box-sizing: border-box;
-    color: black;
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.weblog{
-    text-align: center;
-    box-sizing: border-box;
-    color: black;
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.about{
-    text-align: center;
-    box-sizing: border-box;
-    color: black;
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.contact{
-    text-align: center;
-    box-sizing: border-box;
-    color: black;
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
 .header-content {
     display: flex;
     align-items: center;
@@ -217,9 +153,70 @@
     }
 }
 /* زیر منو محصول */
+.cabinet{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 1rem;
+}
+.mahsool{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
 
+.weblog{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
 
+.about{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
 
+.contact{
+    text-align: center;
+    box-sizing: border-box;
+    color: black;
+    margin: 0.75rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+    padding-left: 2rem;
+}
 
 /* همبرگر منو */
 .menu-toggle {
@@ -264,6 +261,11 @@
     .cabinet, .mahsool, .weblog, .about, .contact {
         font-size: 1.4rem;
         margin: 0.6rem;
+    }
+    
+    .typing-text {
+        font-size: 2rem;
+        margin-top: 0.8rem;
     }
 }
 
@@ -375,31 +377,279 @@
     .overlay.active {
         display: block;
     }
+    
+    .typing-text {
+        font-size: 1.8rem;
+        margin-top: 0.7rem;
+        text-align: right;
+    }
 }
 
 @media screen and (max-width: 480px) {
     #nav {
         margin: 0.7rem;
         border-radius: 0 0 1rem 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
     }
     
-    .textlogo {
-        font-size: 2.2rem;
-        padding-right: 0.5rem;
+    .header-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 0;
+        padding-right: 0;
     }
     
     #logo-nav {
-        max-height: 4rem;
-        margin-right: 0.5rem;
+        max-height: 3.5rem;
+        margin-right: 0;
     }
     
-    .nav-container {
-        width: 80%;
+    .textlogo {
+        font-size: 3.2rem !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .menu-toggle {
+        margin: 0;
     }
     
     .cabinet, .mahsool, .weblog, .about, .contact {
         font-size: 1.3rem;
         margin: 0.6rem 1.5rem;
         width: calc(100% - 3rem);
+    }
+    
+    /* ======= KABAN MOBILE STYLES COMPLETELY REWRITTEN ======= */
+    
+    .kaban-section {
+        padding: 1rem 0;
+        text-align: center;
+    }
+    
+    .kaban-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .image-container {
+        order: 1;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .kaban-image {
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+        float: none !important;
+        text-align: center;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .text-container {
+        order: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        text-align: center !important;
+        left: 0;
+        right: 0;
+        position: relative;
+    }
+    
+    .kaban-section .kaban-container .text-container .kaban-text {
+        display: block;
+        width: 100%;
+        text-align: center !important;
+        font-size: 4rem;
+        margin: 0 auto;
+        padding: 0;
+        left: 0;
+        right: 0;
+        position: relative;
+    }
+    
+    .kaban-section .kaban-container .text-container .typing-text {
+        display: block;
+        width: 100%;
+        text-align: center !important;
+        font-size: 1.5rem;
+        margin: 0.2rem auto 0;
+        padding: 0;
+        left: 0;
+        right: 0;
+        position: relative;
+    }
+    
+    /* اضافه کردن استایل برای اطمینان از مرکزیت متن‌ها */
+    .kaban-text, .typing-text {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+        direction: ltr !important;
+        transform: translateX(0) !important;
+        max-width: 100% !important;
+    }
+}
+
+/* بخش KABAN */
+.kaban-section {
+    padding: 3rem;
+    margin: 0rem auto 2rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.kaban-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    flex: 1;
+    padding-right: 5rem;
+    text-align: right !important;
+}
+
+.kaban-text {
+    font-size: 6.5rem;
+    font-weight: bold;
+    font-family: diodrum;
+    color: #333;
+    text-align: right !important;
+    display: block;
+    width: 100%;
+}
+
+.typing-text {
+    font-size: 3.5rem;
+    font-family: yekan;
+    color: #555;
+    display: block;
+    margin-top: 1rem;
+    text-align: right !important;
+    width: 100%;
+}
+
+.image-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+
+.kaban-image {
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    margin-left: 0;
+    transform-origin: left center;
+    transition: transform 0.1s linear;
+    will-change: transform;
+    box-shadow: none;
+    mix-blend-mode: darken;
+    filter: brightness(1.05) contrast(1.1);
+    background-color: transparent;
+}
+
+.kaban-image.tilt {
+    transition: none;
+    box-shadow: none;
+}
+
+/* رسپانسیو برای بخش KABAN */
+@media screen and (max-width: 1024px) {
+    .text-container {
+        padding-right: 3rem;
+    }
+    
+    .kaban-text {
+        font-size: 5.5rem;
+    }
+    
+    .kaban-image {
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .kaban-section {
+        padding: 2rem 0;
+        margin: 1rem auto;
+    }
+    
+    .text-container {
+        padding-right: 2rem;
+        align-items: flex-end;
+        text-align: right;
+    }
+    
+    .kaban-text {
+        font-size: 4.5rem;
+        text-align: right;
+    }
+    
+    .typing-text {
+        font-size: 1.8rem;
+        margin-top: 0.7rem;
+        text-align: right;
+    }
+    
+    .kaban-image {
+        max-width: 350px;
+    }
+}
+
+/* تنظیمات responsive برای افکت تایپ */
+@media screen and (max-width: 1024px) {
+    .typing-text {
+        animation: typing-rtl 3s steps(20, end), blink-caret-rtl 0.75s step-end infinite;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .typing-text {
+        animation: typing-rtl 2.5s steps(15, end), blink-caret-rtl 0.75s step-end infinite;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .typing-text {
+        animation: typing-rtl 2s steps(12, end), blink-caret-rtl 0.75s step-end infinite;
+        white-space: nowrap;
     }
 }
