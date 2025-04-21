@@ -3,6 +3,29 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navContainer = document.querySelector('.nav-container');
 const overlay = document.querySelector('.overlay');
 const dropdowns = document.querySelectorAll('.dropdown-cabinet, .dropdown-mahsool');
+const darkModeToggle = document.getElementById('darkModeToggle');
+const mobileDarkMode = document.getElementById('mobileDarkMode');
+
+// تابع تغییر حالت دارک مود
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    
+    // ذخیره تنظیمات در localStorage
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+}
+
+// دکمه دارک مود در دسکتاپ
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
+// دکمه دارک مود در موبایل
+mobileDarkMode.addEventListener('click', toggleDarkMode);
+
+// بررسی تنظیمات ذخیره شده هنگام بارگذاری صفحه
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+});
 
 // تابع باز و بسته کردن منوی موبایل
 menuToggle.addEventListener('click', function() {

@@ -5,14 +5,127 @@
     box-sizing: border-box;
     font-family: yekan;
 }
+
+:root {
+    --bg-color: #fff;
+    --text-color: #000;
+    --nav-bg-color: rgb(241, 198, 142);
+    --nav-text-color: #000;
+    --submenu-bg-color: #fff;
+    --submenu-text-color: #333;
+    --submenu-hover-color: rgba(241, 198, 142, 0.2);
+    --submenu-border-color: rgba(0, 0, 0, 0.05);
+    --kaban-text-color: #333;
+    --typing-text-color: #555;
+    --menu-toggle-bg: #333;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f1f1f1;
+    --nav-bg-color: #4d3c22;
+    --nav-text-color: #f1f1f1;
+    --submenu-bg-color: #2c2c2c;
+    --submenu-text-color: #f1f1f1;
+    --submenu-hover-color: rgba(241, 198, 142, 0.4);
+    --submenu-border-color: rgba(255, 255, 255, 0.1);
+    --kaban-text-color: #f1f1f1;
+    --typing-text-color: #ccc;
+    --menu-toggle-bg: #f1f1f1;
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .textlogo{
     padding: 0.5rem;
     padding-right: 1.5rem;
     font-size: 3rem;
     font-family: bamdad;
+    color: var(--nav-text-color);
 }
+
+/* دکمه دارک مود */
+.dark-mode-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    position: relative;
+    outline: none;
+}
+
+.dark-mode-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .dark-mode-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode-btn span {
+    font-size: 1.2rem;
+}
+
+.dark-mode-btn .moon,
+body.dark-mode .dark-mode-btn .sun {
+    display: none;
+}
+
+body.dark-mode .dark-mode-btn .moon,
+.dark-mode-btn .sun {
+    display: inline-block;
+}
+
+/* دکمه دارک مود در دسکتاپ */
+.dark-mode-btn.desktop {
+    position: absolute;
+    left: 1rem;
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+}
+
+/* دکمه دارک مود در موبایل */
+.mobile-dark-mode {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+    border-top: 1px solid var(--submenu-border-color);
+    padding-top: 1rem;
+}
+
+.dark-mode-btn.mobile {
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.dark-mode-btn.mobile:hover {
+    background-color: var(--submenu-hover-color);
+}
+
+.dark-mode-text {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: var(--nav-text-color);
+}
+
 #nav{
-    background-color: rgb(241, 198, 142);
+    background-color: var(--nav-bg-color);
     border-radius: 0 0 2rem 2rem;
     margin: 1.3rem 2rem;
     display: flex;
@@ -23,22 +136,28 @@
     margin-left: auto;
     margin-right: auto;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
+
 .header-content {
     display: flex;
     align-items: center;
 }
+
 .nav-container {
     display: flex;
     align-items: center;
     margin-right: 2rem;
+    flex-grow: 1;
+    justify-content: flex-start;
 }
+
 #logo-nav{
     max-height: 6rem;
     width: auto;
     margin-right: 2rem;
 }
+
 .dropdown-cabinet {
     position: relative;
     display: inline-block;
@@ -47,16 +166,16 @@
 .submenu-cabinet {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: var(--submenu-bg-color);
     min-width: 10rem;
     right: 0;
     top: 100%;
     z-index: 1;
     border-radius: 0 0 2rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow-color);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--submenu-border-color);
     margin-top: -2px;
 }
 
@@ -64,9 +183,9 @@
     padding: 12px 12px;
     display: block;
     text-decoration: none;
-    color: #333;
+    color: var(--submenu-text-color);
     font-size: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--submenu-border-color);
     transition: all 0.2s ease;
     font-family: estedad;
 }
@@ -76,7 +195,7 @@
 }
 
 .submenu-cabinet a:hover {
-    background-color: rgba(241, 198, 142, 0.2);
+    background-color: var(--submenu-hover-color);
     padding-right: 25px;
 }
 
@@ -105,15 +224,15 @@
 .submenu-mahsool {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: var(--submenu-bg-color);
     min-width: 10rem;
     top: 100%;
     z-index: 1;
     border-radius: 0 0 0.5rem 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow-color);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--submenu-border-color);
     margin-top: -2px;
 }
 
@@ -121,9 +240,9 @@
     padding: 12px 12px;
     display: block;
     text-decoration: none;
-    color: #333;
+    color: var(--submenu-text-color);
     font-size: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--submenu-border-color);
     transition: all 0.2s ease;
     font-family: estedad;
 }
@@ -133,7 +252,7 @@
 }
 
 .submenu-mahsool a:hover {
-    background-color: rgba(241, 198, 142, 0.2);
+    background-color: var(--submenu-hover-color);
     padding-right: 25px;
 }
 
@@ -156,7 +275,7 @@
 .cabinet{
     text-align: center;
     box-sizing: border-box;
-    color: black;
+    color: var(--nav-text-color);
     margin: 1.5rem;
     font-size: 1.5rem;
     text-decoration: none;
@@ -169,7 +288,7 @@
 .mahsool{
     text-align: center;
     box-sizing: border-box;
-    color: black;
+    color: var(--nav-text-color);
     margin: 0.75rem;
     font-size: 1.5rem;
     text-decoration: none;
@@ -182,7 +301,7 @@
 .weblog{
     text-align: center;
     box-sizing: border-box;
-    color: black;
+    color: var(--nav-text-color);
     margin: 0.75rem;
     font-size: 1.5rem;
     text-decoration: none;
@@ -195,7 +314,7 @@
 .about{
     text-align: center;
     box-sizing: border-box;
-    color: black;
+    color: var(--nav-text-color);
     margin: 0.75rem;
     font-size: 1.5rem;
     text-decoration: none;
@@ -208,7 +327,7 @@
 .contact{
     text-align: center;
     box-sizing: border-box;
-    color: black;
+    color: var(--nav-text-color);
     margin: 0.75rem;
     font-size: 1.5rem;
     text-decoration: none;
@@ -235,7 +354,7 @@
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #333;
+    background-color: var(--menu-toggle-bg);
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -267,9 +386,24 @@
         font-size: 2rem;
         margin-top: 0.8rem;
     }
+    
+    .dark-mode-btn.desktop {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    /* مخفی کردن دکمه دارک مود دسکتاپ در حالت موبایل */
+    .dark-mode-btn.desktop {
+        display: none;
+    }
+    
+    /* نمایش دکمه دارک مود موبایل در منوی همبرگری */
+    .mobile-dark-mode {
+        display: block;
+    }
+
     #nav {
         padding: 1rem 0;
         max-height: none;
@@ -316,12 +450,12 @@
         width: 70%;
         height: 100vh;
         flex-direction: column;
-        background-color: rgb(241, 198, 142);
+        background-color: var(--nav-bg-color);
         z-index: 99;
         padding-top: 5rem;
         transition: all 0.4s ease;
         align-items: flex-start;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: -5px 0 15px var(--shadow-color);
         overflow-y: auto;
         margin-right: 0;
     }
@@ -339,7 +473,7 @@
         margin: 0.8rem 2rem;
         padding: 0.7rem 0;
         width: calc(100% - 4rem);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--submenu-border-color);
     }
     
     .submenu-cabinet, .submenu-mahsool {
@@ -369,7 +503,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--overlay-bg);
         z-index: 98;
         display: none;
     }
@@ -426,6 +560,11 @@
     .cabinet, .mahsool, .weblog, .about, .contact {
         font-size: 1.3rem;
         margin: 0.6rem 1.5rem;
+        width: calc(100% - 3rem);
+    }
+    
+    .mobile-dark-mode {
+        margin: 0.5rem 1.5rem;
         width: calc(100% - 3rem);
     }
     
@@ -548,7 +687,7 @@
     font-size: 6.5rem;
     font-weight: bold;
     font-family: diodrum;
-    color: #333;
+    color: var(--kaban-text-color);
     text-align: right !important;
     display: block;
     width: 100%;
@@ -557,7 +696,7 @@
 .typing-text {
     font-size: 3.5rem;
     font-family: yekan;
-    color: #555;
+    color: var(--typing-text-color);
     display: block;
     margin-top: 1rem;
     text-align: right !important;
