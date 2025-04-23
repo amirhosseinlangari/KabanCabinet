@@ -79,39 +79,4 @@ window.addEventListener('resize', function() {
             dropdown.classList.remove('active');
         });
     }
-});
-
-// انیمیشن تیلت برای تصویر k
-const imageContainer = document.querySelector('.image-container');
-const kabanImage = document.querySelector('.kaban-image');
-
-if (imageContainer && kabanImage) {
-    imageContainer.addEventListener('mousemove', (e) => {
-        if (window.innerWidth > 768) { // فقط در دسکتاپ اجرا شود
-            const rect = imageContainer.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // محاسبه موقعیت نسبی موس (از 0 تا 1)
-            const relativeX = x / rect.width;
-            const relativeY = y / rect.height;
-            
-            // محاسبه زاویه چرخش (افزایش زاویه برای عمق بیشتر)
-            const rotateY = 15 * (0.5 - relativeX);
-            const rotateX = 10 * (relativeY - 0.5);
-            
-            // اعمال ترنسفورم با مقیاس کوچکتر و بدون translateZ
-            kabanImage.classList.add('tilt');
-            kabanImage.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.03)`;
-        }
-    });
-    
-    imageContainer.addEventListener('mouseleave', () => {
-        kabanImage.classList.remove('tilt');
-        kabanImage.style.transform = 'rotateY(0) rotateX(0) scale(1)';
-    });
-    
-    imageContainer.addEventListener('mouseenter', () => {
-        kabanImage.style.transition = 'transform 0.15s ease-out';
-    });
-} 
+}); 

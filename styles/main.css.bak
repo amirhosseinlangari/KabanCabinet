@@ -52,19 +52,6 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* اضافه کردن استایل برای عکس پس‌زمینه */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url('../assets/Photo/kitchen.jpg') no-repeat center center;
-    background-size: cover;
-    z-index: -10;
-}
-
 .textlogo{
     padding: 0.5rem;
     padding-right: 1.5rem;
@@ -152,26 +139,19 @@ body.dark-mode .dark-mode-btn .moon,
     color: var(--nav-text-color);
 }
 
-#nav {
-    background-color: rgba(241, 198, 142, 0.3);
-    position: relative;
-    z-index: 10;
+#nav{
+    background-color: var(--nav-bg-color);
     border-radius: 0 0 2rem 2rem;
-    margin: 1.3rem 2rem;
+    margin: 0;
     display: flex;
     align-items: center;
+    position: relative;
     max-width: 97%;
     max-height: 6rem;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 1.5% 1.3rem;
     flex-direction: row;
     justify-content: space-between;
-    backdrop-filter: blur(10px);
-}
-
-body.dark-mode #nav {
-    background-color: rgba(77, 60, 34, 0.3);
-    backdrop-filter: blur(10px);
+    z-index: 100;
 }
 
 .header-content {
@@ -408,6 +388,59 @@ body.dark-mode #nav {
 
 /* مدیا کوئری‌ها برای رسپانسیو */
 @media screen and (max-width: 1024px) {
+    .kaban-section, .kaban-container {
+        height: 65vh;
+    }
+    
+    .image-container, .image-container:after {
+        height: 65vh;
+        width: 100%;
+        left: 0;
+    }
+    
+    .text-container {
+        padding-right: 3rem;
+        padding-left: 1rem;
+        width: 100%;
+        z-index: 3;
+    }
+    
+    .kaban-text {
+        font-size: 5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    
+    .image-container:after {
+        background: linear-gradient(to left, rgba(0,0,0,0.75), rgba(0,0,0,0.5));
+    }
+    
+    .typing-text {
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    
+    .textlogo {
+        font-size: 3.5rem;
+    }
+    
+    .cabinet, .mahsool, .weblog, .about, .contact {
+        font-size: 1.4rem;
+        margin: 0.6rem;
+    }
+    
+    .dark-mode-btn.desktop {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .image-container, .image-container:after {
+        height: 55vh;
+        width: 100%;
+        left: 0;
+    }
+    
     .textlogo {
         font-size: 3.5rem;
     }
@@ -426,144 +459,15 @@ body.dark-mode #nav {
         width: 32px;
         height: 32px;
     }
-}
-
-@media screen and (max-width: 768px) {
-    /* مخفی کردن دکمه دارک مود دسکتاپ در حالت موبایل */
-    .dark-mode-btn.desktop {
-        display: none;
+    
+    .kaban-section, .kaban-container {
+        height: 65vh;
     }
     
-    /* نمایش دکمه دارک مود موبایل در منوی همبرگری */
-    .mobile-dark-mode {
-        display: block;
-    }
-
-    #nav {
-        padding: 1rem 0;
-        max-height: none;
-        position: relative;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        background-color: rgba(241, 198, 142, 0.35);
-        backdrop-filter: blur(8px);
-    }
-    
-    body.dark-mode #nav {
-        background-color: rgba(77, 60, 34, 0.35);
-        backdrop-filter: blur(8px);
-    }
-    
-    .header-content {
-        justify-content: center;
-        flex-wrap: nowrap;
-        position: relative;
-        padding: 0 1rem;
-        width: auto;
-        order: 1;
-    }
-    
-    .menu-toggle {
-        display: flex;
-        order: 2;
-        position: relative;
-        margin-left: 1rem;
-        margin-right: auto;
-    }
-    
-    .textlogo {
-        font-size: 3.8rem;
-        text-align: center;
-        padding: 0;
-        width: auto;
-    }
-    
-    #logo-nav {
-        max-height: 5rem;
-        margin-right: 1rem;
-        margin-top: 0;
-        display: block;
-    }
-    
-    .nav-container {
-        position: fixed;
-        top: 0;
-        right: -100%; /* قرار دادن منو در سمت راست */
-        width: 70%;
-        height: 100vh;
-        flex-direction: column;
-        background-color: var(--nav-bg-color);
-        z-index: 99;
-        padding-top: 5rem;
-        transition: all 0.4s ease;
-        align-items: flex-start;
-        box-shadow: -5px 0 15px var(--shadow-color); /* سایه در سمت چپ منو */
-        overflow-y: auto;
-        margin-right: 0;
-    }
-    
-    .nav-container.active {
-        right: 0; /* حرکت از راست به داخل */
-    }
-    
-    .dropdown-cabinet, .dropdown-mahsool {
-        width: 100%;
-    }
-    
-    .cabinet, .mahsool, .weblog, .about, .contact {
-        display: block;
-        margin: 0.8rem 2rem;
-        padding: 0.7rem 0;
-        width: calc(100% - 4rem);
-        border-bottom: 1px solid var(--submenu-border-color);
-        text-align: right; /* اطمینان از راست چین بودن متن */
-    }
-    
-    .submenu-cabinet, .submenu-mahsool {
-        position: static;
-        width: 90%;
-        box-shadow: none;
-        margin-right: 2rem;
-        margin-top: 0.5rem;
-        border-radius: 0.5rem;
-    }
-    
-    /* تغییر حالت باز شدن زیرمنوها در موبایل */
-    .dropdown-cabinet:hover .submenu-cabinet,
-    .dropdown-mahsool:hover .submenu-mahsool {
-        display: none;
-    }
-    
-    .dropdown-cabinet.active .submenu-cabinet,
-    .dropdown-mahsool.active .submenu-mahsool {
-        display: block;
-    }
-    
-    /* اورلی تیره برای پس‌زمینه زمانی که منو باز است */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--overlay-bg);
-        z-index: 98;
-        display: none;
-    }
-    
-    .overlay.active {
-        display: block;
-    }
-    
-    .typing-text {
-        font-size: 1.8rem;
-        margin-top: 0.7rem;
-        text-align: right;
-    }
-
-    body::before {
-        height: 95vh;
+    .image-container, .image-container:after {
+        height: 65vh;
+        width: 96%;
+        left: 2%;
     }
 }
 
@@ -576,13 +480,6 @@ body.dark-mode #nav {
         justify-content: space-between;
         align-items: center;
         padding: 0.5rem 1rem;
-        background-color: rgba(241, 198, 142, 0.4);
-        backdrop-filter: blur(7px);
-    }
-    
-    body.dark-mode #nav {
-        background-color: rgba(77, 60, 34, 0.4);
-        backdrop-filter: blur(7px);
     }
     
     .header-content {
@@ -627,249 +524,301 @@ body.dark-mode #nav {
     /* ======= KABAN MOBILE STYLES COMPLETELY REWRITTEN ======= */
     
     .kaban-section {
-        padding: 0;
-        height: auto;
-        min-height: 500px;
-    }
-    
-    .image-container {
-        position: absolute;
-        height: 100%;
-    }
-    
-    .kitchen-image {
-        height: 100%;
-        max-height: 600px;
+        padding: 1rem 0;
+        text-align: center;
     }
     
     .kaban-container {
-        padding: 1rem;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .text-container {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 1rem;
-        margin: 2rem auto;
-        width: 90%;
-        max-width: 300px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .image-container {
+        order: 1;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .kaban-image {
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+        float: none !important;
+        text-align: center;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .text-container {
+        order: 2;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
         text-align: center !important;
+        left: 0;
+        right: 0;
+        position: relative;
     }
     
-    body.dark-mode .text-container {
-        background-color: rgba(18, 18, 18, 0.8);
-    }
-    
-    .kaban-text {
-        font-size: 3.5rem;
+    .kaban-section .kaban-container .text-container .kaban-text {
+        display: block;
+        width: 100%;
         text-align: center !important;
+        font-size: 4rem;
+        margin: 0 auto;
+        padding: 0;
+        left: 0;
+        right: 0;
+        position: relative;
     }
     
-    .typing-text {
+    .kaban-section .kaban-container .text-container .typing-text {
+        display: block;
+        width: 100%;
+        text-align: center !important;
         font-size: 1.5rem;
-        text-align: center !important;
-        margin-top: 0.5rem;
+        margin: 0.2rem auto 0;
+        padding: 0;
+        left: 0;
+        right: 0;
+        position: relative;
     }
-
-    body::before {
-        height: 70vh;
-        background-position: center 8%;
+    
+    /* اضافه کردن استایل برای اطمینان از مرکزیت متن‌ها */
+    .kaban-text, .typing-text {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        float: none !important;
+        direction: ltr !important;
+        transform: translateX(0) !important;
+        max-width: 100% !important;
+    }
+    
+    .kaban-section, .kaban-container {
+        height: 45vh;
+    }
+    
+    .image-container, .image-container:after {
+        height: 45vh;
+        width: 98%;
+        left: 1%;
+        border-radius: 0 0 15px 15px;
     }
 }
 
 /* بخش KABAN */
 .kaban-section {
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
     max-width: 100%;
     overflow: hidden;
     position: relative;
-    min-height: 90vh;
-}
-
-.image-container {
-    display: none; /* پنهان کردن کانتینر تصویر اصلی */
-}
-
-.kitchen-image {
+    height: 70vh;
     width: 100%;
-    height: 100vh;
-    max-height: 750px;
-    object-fit: cover;
-    margin: 0;
-    display: block;
+    top: 0;
+    left: 0;
 }
 
 .kaban-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
     position: relative;
-    z-index: 5;
-    min-height: calc(100vh - 150px);
+    height: 70vh;
+    width: 100%;
 }
 
-.text-container {
+.image-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end !important;
-    justify-content: flex-end !important;
-    padding-right: 5rem;
-    text-align: right !important;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 2rem;
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin-right: 2rem;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 70vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    border-radius: 0 0 20px 20px;
+    margin-top: 0;
 }
 
-body.dark-mode .text-container {
-    background-color: rgba(18, 18, 18, 0.7);
+.image-container:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(to left, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+    z-index: 1;
+    border-radius: 0 0 20px 20px;
+}
+
+.kaban-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+    will-change: transform;
+    box-shadow: none;
+    filter: brightness(0.7) contrast(1.05);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .kaban-text {
     font-size: 6.5rem;
     font-weight: bold;
     font-family: diodrum;
-    color: var(--kaban-text-color);
+    color: white;
     text-align: right !important;
     display: block;
     width: 100%;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .typing-text {
     font-size: 3.5rem;
     font-family: yekan;
-    color: var(--typing-text-color);
+    color: rgba(255,255,255,0.9);
     display: block;
     margin-top: 1rem;
     text-align: right !important;
     width: 100%;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* رسپانسیو برای بخش KABAN */
 @media screen and (max-width: 1024px) {
+    .kaban-section, .kaban-container {
+        height: 65vh;
+    }
+    
+    .image-container, .image-container:after {
+        height: 65vh;
+        width: 100%;
+        left: 0;
+    }
+    
     .text-container {
-        padding: 1.5rem;
-        margin-right: 1rem;
-        max-width: 500px;
+        padding-right: 3rem;
+        padding-left: 1rem;
+        width: 100%;
+        z-index: 3;
     }
     
     .kaban-text {
-        font-size: 5.5rem;
+        font-size: 5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     }
     
-    .kitchen-image {
-        height: 100vh;
-        max-height: 700px;
+    .image-container:after {
+        background: linear-gradient(to left, rgba(0,0,0,0.75), rgba(0,0,0,0.5));
     }
-
-    .kaban-container {
-        padding: 2rem;
+    
+    .typing-text {
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     }
 }
 
 @media screen and (max-width: 768px) {
-    .kaban-section {
-        min-height: auto;
+    .kaban-section, .kaban-container {
+        height: 55vh;
     }
     
-    .kaban-container {
-        padding: 2rem 1rem;
-        min-height: auto;
-        margin: 1rem auto;
+    .image-container, .image-container:after {
+        height: 55vh;
+        width: 100%;
+        left: 0;
     }
     
     .text-container {
-        padding: 1.5rem;
-        margin-right: 0;
-        max-width: 450px;
-        align-items: flex-end;
-        text-align: right;
+        padding: 2rem;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        z-index: 3;
     }
     
     .kaban-text {
-        font-size: 4.5rem;
-        text-align: right;
+        font-size: 4rem;
+        text-align: center !important;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
     }
     
     .typing-text {
-        font-size: 1.8rem;
-        margin-top: 0.7rem;
-        text-align: right;
+        font-size: 2rem;
+        margin-top: 1rem;
+        text-align: center !important;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
     }
     
-    .kitchen-image {
-        height: 100vh;
-        max-height: 650px;
+    .image-container:after {
+        background: rgba(0,0,0,0.6);
+    }
+    
+    .kaban-image {
+        height: 100%;
+        object-position: center;
     }
 }
 
 @media screen and (max-width: 480px) {
-    /* ======= KABAN MOBILE STYLES ======= */
-    
-    .kaban-section {
-        padding: 0;
-        height: auto;
-        min-height: 500px;
+    .kaban-section, .kaban-container {
+        height: 45vh;
     }
     
-    .image-container {
-        position: absolute;
-        height: 100%;
-    }
-    
-    .kitchen-image {
-        height: 100%;
-        max-height: 600px;
+    .image-container, .image-container:after {
+        height: 45vh;
+        width: 100%;
+        left: 0;
+        border-radius: 0 0 15px 15px;
     }
     
     .kaban-container {
-        padding: 1rem;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
     
     .text-container {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 1rem;
-        margin: 2rem auto;
-        width: 90%;
-        max-width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center !important;
-    }
-    
-    body.dark-mode .text-container {
-        background-color: rgba(18, 18, 18, 0.8);
+        padding: 1.5rem;
     }
     
     .kaban-text {
         font-size: 3.5rem;
-        text-align: center !important;
     }
     
     .typing-text {
-        font-size: 1.5rem;
-        text-align: center !important;
-        margin-top: 0.5rem;
+        font-size: 1.8rem;
+        white-space: nowrap;
+    }
+    
+    .image-container:after {
+        background: rgba(0,0,0,0.7);
     }
 }
 
@@ -877,7 +826,10 @@ body.dark-mode .text-container {
 .cabinet-section {
     padding: 3rem 1.5rem;
     max-width: 1400px;
-    margin: 0 auto 3rem;
+    margin: 1rem auto 3rem;
+    position: relative;
+    z-index: 10;
+    background-color: var(--secondary-color);
 }
 
 .section-title {
@@ -1039,3 +991,18 @@ body.dark-mode .text-container {
         padding: 10px 8px;
     }
 }
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    flex: 1;
+    padding-right: 5rem;
+    text-align: right !important;
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    margin-top: 0;
+}
+
