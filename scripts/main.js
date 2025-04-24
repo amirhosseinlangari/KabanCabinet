@@ -1,4 +1,8 @@
-// انتخاب عناصر منو
+/**
+ * کدهای جاوااسکریپت سایت کابینت کابان
+ */
+
+// ===== انتخاب عناصر =====
 const menuToggle = document.querySelector('.menu-toggle');
 const navContainer = document.querySelector('.nav-container');
 const overlay = document.querySelector('.overlay');
@@ -6,35 +10,30 @@ const dropdowns = document.querySelectorAll('.dropdown-cabinet, .dropdown-mahsoo
 const darkModeToggle = document.getElementById('darkModeToggle');
 const mobileDarkMode = document.getElementById('mobileDarkMode');
 const menuLinks = document.querySelectorAll('.nav-container a:not(.cabinet):not(.mahsool)');
-const menuButtons = document.querySelectorAll('.nav-container button');
 const cabinetLink = document.querySelector('.cabinet');
 const mahsoolLink = document.querySelector('.mahsool');
 
-// تابع تغییر حالت دارک مود
+// ===== تنظیمات دارک مود =====
+
+/**
+ * تغییر حالت دارک مود و ذخیره در localStorage
+ */
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    
-    // ذخیره تنظیمات در localStorage
     localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
 }
 
-// دکمه دارک مود در دسکتاپ
+// رویداد کلیک دکمه دارک مود در دسکتاپ
 darkModeToggle.addEventListener('click', toggleDarkMode);
 
-// دکمه دارک مود در موبایل
+// رویداد کلیک دکمه دارک مود در موبایل
 mobileDarkMode.addEventListener('click', toggleDarkMode);
 
-// بررسی تنظیمات ذخیره شده هنگام بارگذاری صفحه
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-    }
-    
-    // بررسی نمایش منو
-    checkMenuDisplay();
-});
+// ===== مدیریت منوی موبایل =====
 
-// بررسی عرض پنجره و نمایش/پنهان کردن دکمه همبرگر
+/**
+ * بررسی عرض پنجره و نمایش/پنهان کردن دکمه همبرگر
+ */
 function checkMenuDisplay() {
     if (window.innerWidth <= 768) {
         // فقط در حالت موبایل نمایش داده شود
@@ -50,15 +49,41 @@ function checkMenuDisplay() {
         
         // اطمینان از نمایش منو در حالت دسکتاپ
         if (window.innerWidth > 768) {
-            navContainer.style.transform = '';
+            navContainer.style.right = '';
             navContainer.style.visibility = 'visible';
             navContainer.style.pointerEvents = 'auto';
         }
     }
 }
 
-// تابع باز و بسته کردن منوی موبایل
-menuToggle.addEventListener('click', function() {
+/**
+ * بستن منو و زیرمنوها
+ */
+function closeMenu() {
+    menuToggle.classList.remove('active');
+    navContainer.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    // بستن تمام زیرمنوها فقط اگر منو بسته شود
+    if (!navContainer.classList.contains('active')) {
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+}
+
+// ممانعت از بستن منو با کلیک روی خود منو
+navContainer.addEventListener('click', function(event) {
+    // جلوگیری از انتشار رویداد کلیک به document
+    event.stopPropagation();
+});
+
+// رویداد کلیک دکمه همبرگر
+menuToggle.addEventListener('click', function(event) {
+    // جلوگیری از انتشار رویداد کلیک به document
+    event.stopPropagation();
+    
     this.classList.toggle('active');
     navContainer.classList.toggle('active');
     overlay.classList.toggle('active');
@@ -74,20 +99,16 @@ menuToggle.addEventListener('click', function() {
 // بستن منو با کلیک روی اورلی
 overlay.addEventListener('click', closeMenu);
 
-// تابع بستن منو
-function closeMenu() {
-    menuToggle.classList.remove('active');
-    navContainer.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-    
-    // بستن تمام زیرمنوها فقط اگر منو بسته شود
-    if (!navContainer.classList.contains('active')) {
-        dropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
+// بستن منو با کلیک روی هر جایی غیر از خود منو در حالت موبایل
+document.addEventListener('click', function(event) {
+    // اگر منو باز است و عرض صفحه کمتر از 768 پیکسل است
+    if (navContainer.classList.contains('active') && window.innerWidth <= 768) {
+        // منو را ببند (چون کلیک روی منو یا دکمه همبرگر propagate نمی‌شود)
+        closeMenu();
     }
-}
+});
+
+// ===== مدیریت زیرمنوها =====
 
 // باز و بسته کردن زیرمنوها
 dropdowns.forEach(dropdown => {
@@ -96,7 +117,20 @@ dropdowns.forEach(dropdown => {
     link.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
             e.preventDefault();
-            dropdown.classList.toggle('active');
+            
+            // اگر منو فعال است، آن را غیرفعال کن
+            if (dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+            } else {
+                // بستن سایر منوهای باز قبل از باز کردن منوی جدید
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.add('active');
+            }
         }
     });
 });
@@ -110,23 +144,23 @@ menuLinks.forEach(link => {
     });
 });
 
-// تنظیم مجدد منو در هنگام تغییر اندازه صفحه
-window.addEventListener('resize', function() {
-    checkMenuDisplay();
-});
+// ===== رویدادهای بارگذاری و تغییر اندازه =====
 
-// بررسی عملکرد زیرمنوها در زمان بارگذاری
-document.addEventListener('DOMContentLoaded', function() {
-    // کد موجود
+// بررسی تنظیمات ذخیره شده هنگام بارگذاری صفحه
+document.addEventListener('DOMContentLoaded', () => {
+    // تنظیم حالت دارک مود
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+    
+    // بررسی نمایش منو
+    checkMenuDisplay();
     
     // بازنشانی زیرمنوها
     dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-    
-    // بررسی رویدادهای کلیک برای زیرمنوها
-    console.log('تنظیم رویدادهای زیرمنو انجام شد');
-    
-    // نمایش وضعیت آمادگی زیرمنوها
-    if (window.innerWidth <= 768) {
-        console.log('منوی موبایل آماده است');
-    }
+});
+
+// تنظیم مجدد منو در هنگام تغییر اندازه صفحه
+window.addEventListener('resize', function() {
+    checkMenuDisplay();
 }); 

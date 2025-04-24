@@ -1,4 +1,6 @@
 @import url('font.css');
+
+/* تنظیمات عمومی */
 * {
     margin: 0;
     padding: 0;
@@ -6,53 +8,74 @@
     font-family: yekan;
 }
 
+/* متغیرهای رنگ و استایل */
 :root {
+    /* رنگ‌های اصلی */
     --bg-color: #fff;
     --text-color: #000;
     --nav-bg-color: rgb(241, 198, 142);
     --nav-text-color: #000;
+    
+    /* رنگ‌های زیرمنو */
     --submenu-bg-color: #fff;
     --submenu-text-color: #333;
     --submenu-hover-color: rgba(241, 198, 142, 0.2);
     --submenu-border-color: rgba(0, 0, 0, 0.05);
+    
+    /* رنگ‌های متن */
     --kaban-text-color: #333;
     --typing-text-color: #555;
+    
+    /* رنگ‌های دیگر */
     --menu-toggle-bg: #333;
     --overlay-bg: rgba(0, 0, 0, 0.5);
     --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    /* رنگ‌های کارت */
     --card-bg-color: #fff;
     --card-border-color: #eee;
     --card-title-bg: rgba(241, 198, 142, 0.6);
     --section-title-color: #333;
 }
 
+/* حالت تاریک */
 body.dark-mode {
+    /* رنگ‌های اصلی */
     --bg-color: #121212;
     --text-color: #f1f1f1;
     --nav-bg-color: #4d3c22;
     --nav-text-color: #f1f1f1;
+    
+    /* رنگ‌های زیرمنو */
     --submenu-bg-color: #2c2c2c;
     --submenu-text-color: #f1f1f1;
     --submenu-hover-color: rgba(241, 198, 142, 0.4);
     --submenu-border-color: rgba(255, 255, 255, 0.1);
+    
+    /* رنگ‌های متن */
     --kaban-text-color: #f1f1f1;
     --typing-text-color: #ccc;
+    
+    /* رنگ‌های دیگر */
     --menu-toggle-bg: #f1f1f1;
     --overlay-bg: rgba(0, 0, 0, 0.7);
     --shadow-color: rgba(0, 0, 0, 0.3);
+    
+    /* رنگ‌های کارت */
     --card-bg-color: #2c2c2c;
     --card-border-color: #444;
     --card-title-bg: rgba(90, 75, 55, 0.5);
     --section-title-color: #f1f1f1;
 }
 
+/* تنظیمات بدنه سایت */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* اضافه کردن استایل برای عکس پس‌زمینه */
+/* عکس پس‌زمینه */
 body::before {
     content: "";
     position: absolute;
@@ -65,9 +88,9 @@ body::before {
     z-index: -10;
 }
 
-.textlogo{
-    padding: 0.5rem;
-    padding-right: 1.5rem;
+/* استایل لوگوی متنی */
+.textlogo {
+    padding: 0.5rem 1.5rem;
     font-size: 4.2rem;
     font-family: bamdad;
     color: var(--nav-text-color);
@@ -80,7 +103,7 @@ body::before {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-/* دکمه دارک مود */
+/* ===== دکمه دارک مود ===== */
 .dark-mode-btn {
     cursor: pointer;
     background: none;
@@ -152,18 +175,17 @@ body.dark-mode .dark-mode-btn .moon,
     color: var(--nav-text-color);
 }
 
+/* ===== منوی اصلی ===== */
 #nav {
     background-color: rgba(241, 198, 142, 0.3);
     position: relative;
     z-index: 10;
     border-radius: 0 0 2rem 2rem;
-    margin: 1.3rem 2rem;
+    margin: 1.3rem auto;
     display: flex;
     align-items: center;
     max-width: 97%;
     max-height: 6rem;
-    margin-left: auto;
-    margin-right: auto;
     flex-direction: row;
     justify-content: space-between;
     backdrop-filter: blur(10px);
@@ -187,12 +209,44 @@ body.dark-mode #nav {
     justify-content: flex-start;
 }
 
-#logo-nav{
+#logo-nav {
     max-height: 6rem;
     width: auto;
     margin-right: 2rem;
 }
 
+/* نمایش زیرمنوها در حالت فعال - استایل عمومی */
+.dropdown-cabinet.active .submenu-cabinet,
+.dropdown-mahsool.active .submenu-mahsool {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* ===== استایل آیتم‌های منو ===== */
+.cabinet, .mahsool, .weblog, .about, .contact {
+    text-align: center;
+    box-sizing: border-box;
+    color: var(--nav-text-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    position: relative;
+}
+
+.cabinet {
+    margin: 1.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.mahsool, .weblog, .about, .contact {
+    margin: 0.75rem;
+    padding-left: 2rem;
+}
+
+/* ===== زیر منوی کابینت ===== */
 .dropdown-cabinet {
     position: relative;
     display: inline-block;
@@ -215,7 +269,7 @@ body.dark-mode #nav {
 }
 
 .submenu-cabinet a {
-    padding: 12px 12px;
+    padding: 12px;
     display: block;
     text-decoration: none;
     color: var(--submenu-text-color);
@@ -239,18 +293,7 @@ body.dark-mode #nav {
     animation: fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* تنضیمان زیر منو کابینت */
-
+/* ===== زیر منوی محصولات ===== */
 .dropdown-mahsool {
     position: relative;
     display: inline-block;
@@ -272,7 +315,7 @@ body.dark-mode #nav {
 }
 
 .submenu-mahsool a {
-    padding: 12px 12px;
+    padding: 12px;
     display: block;
     text-decoration: none;
     color: var(--submenu-text-color);
@@ -296,6 +339,7 @@ body.dark-mode #nav {
     animation: fadeIn 0.3s ease;
 }
 
+/* انیمیشن فید این */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -306,73 +350,8 @@ body.dark-mode #nav {
         transform: translateY(0);
     }
 }
-/* زیر منو محصول */
-.cabinet{
-    text-align: center;
-    box-sizing: border-box;
-    color: var(--nav-text-color);
-    margin: 1.5rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 1rem;
-}
-.mahsool{
-    text-align: center;
-    box-sizing: border-box;
-    color: var(--nav-text-color);
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
 
-.weblog{
-    text-align: center;
-    box-sizing: border-box;
-    color: var(--nav-text-color);
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.about{
-    text-align: center;
-    box-sizing: border-box;
-    color: var(--nav-text-color);
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.contact{
-    text-align: center;
-    box-sizing: border-box;
-    color: var(--nav-text-color);
-    margin: 0.75rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    padding-left: 2rem;
-}
-
-/* همبرگر منو - بسیار ساده */
+/* ===== منوی همبرگر ===== */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -415,7 +394,7 @@ body.dark-mode .menu-toggle span {
     transform: translateY(-7.5px) rotate(-45deg);
 }
 
-/* اورلی برای منوی موبایل */
+/* ===== اورلی منوی موبایل ===== */
 .overlay {
     position: fixed;
     top: 0;
@@ -436,7 +415,22 @@ body.dark-mode .menu-toggle span {
     pointer-events: auto;
 }
 
-/* مدیا کوئری‌ها برای رسپانسیو */
+/* ===== مدیا کوئری‌ها ===== */
+
+/* دسکتاپ بزرگ و متوسط */
+@media screen and (min-width: 769px) {
+    .menu-toggle {
+        display: none !important;
+    }
+    
+    .nav-container {
+        transform: none !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+}
+
+/* دسکتاپ کوچک */
 @media screen and (max-width: 1024px) {
     .textlogo {
         font-size: 3.5rem;
@@ -458,12 +452,7 @@ body.dark-mode .menu-toggle span {
     }
 }
 
-@media screen and (min-width: 769px) {
-    .menu-toggle {
-        display: none !important;
-    }
-}
-
+/* تبلت و موبایل */
 @media screen and (max-width: 768px) {
     /* نمایش دکمه همبرگر - فقط در حالت موبایل */
     .menu-toggle {
@@ -479,28 +468,35 @@ body.dark-mode .menu-toggle span {
         height: 100vh !important;
         display: flex !important;
         flex-direction: column !important;
-        background-color: var(--nav-bg-color) !important;
+        background-color: rgba(241, 198, 142, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1) !important;
         padding: 5rem 0 1rem !important;
         z-index: 10;
         overflow-y: auto !important;
         transition: transform 0.3s ease, visibility 0.3s ease !important;
-        transform: translateX(100%) !important;
         visibility: hidden;
         pointer-events: none;
+        transform: translateX(100%) !important;
+        margin: 0 !important; /* حذف هر نوع مارجین */
+        left: auto !important; /* اطمینان از عدم تأثیر left */
     }
     
     .nav-container.active {
-        transform: translateX(0%) !important;
         visibility: visible;
         pointer-events: auto;
+        transform: translateX(0) !important;
+        right: 0 !important; /* اطمینان از ماندن در سمت راست */
+        left: auto !important; /* اطمینان از عدم تأثیر left */
+        margin-right: 0 !important; /* حذف مارجین سمت راست */
+        margin-left: auto !important; /* اطمینان از چسبیدن به سمت راست */
     }
     
     /* تنظیم آیتم‌های منو به حالت عمودی */
     .cabinet, .mahsool, .weblog, .about, .contact {
         font-size: 1.2rem;
-        margin: 0.5rem 1.5rem;
-        padding: 0.5rem 0;
+        margin: 0.3rem 1.5rem;
+        padding: 0.4rem 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         width: calc(100% - 3rem);
         text-align: right;
@@ -518,49 +514,123 @@ body.dark-mode .menu-toggle span {
     /* تنظیم منوهای کشویی */
     .dropdown-cabinet, .dropdown-mahsool {
         width: 100%;
+        position: relative;
+        transition: margin-bottom 0.3s ease;
+        margin-bottom: 0.1rem;
+    }
+    
+    .dropdown-cabinet.active {
+        margin-bottom: 380px; /* کاهش مقداری فاصله */
+    }
+    
+    .dropdown-mahsool.active {
+        margin-bottom: 250px; /* کاهش مقداری فاصله */
     }
     
     /* زیرمنوها */
     .submenu-cabinet, .submenu-mahsool {
         display: none;
-        width: 100%;
-        padding: 0.5rem 0;
+        position: absolute;
+        width: calc(100% - 10px);
+        left: 5px;
+        right: 5px;
+        padding: 0.6rem 0;
         margin-top: 0.5rem;
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(241, 198, 142, 0.2);
+        border-radius: 0.8rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        border: 1px solid rgba(241, 198, 142, 0.4);
+        transition: all 0.3s ease;
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 85vh;
+        overflow-y: auto;
     }
     
     body.dark-mode .submenu-cabinet,
     body.dark-mode .submenu-mahsool {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(77, 60, 34, 0.25); /* رنگ یکسان برای هر دو زیرمنو */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(241, 198, 142, 0.25);
     }
     
     /* نمایش زیرمنوها در حالت فعال */
     .dropdown-cabinet.active .submenu-cabinet,
     .dropdown-mahsool.active .submenu-mahsool {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeIn 0.3s ease forwards;
     }
     
     /* آیتم‌های زیرمنو */
     .submenu-cabinet a, .submenu-mahsool a {
-        padding: 0.5rem 2rem;
-        font-size: 1rem;
+        padding: 1.2rem 2.2rem;
+        font-size: 1.15rem;
         display: block;
         color: var(--nav-text-color) !important;
+        text-align: left;
+        min-height: 60px;
+        border-bottom: 1px solid rgba(241, 198, 142, 0.3);
+        transition: all 0.2s ease;
+        line-height: 1.4;
+        margin-bottom: 0.2rem;
+    }
+    
+    .submenu-cabinet a:hover, .submenu-mahsool a:hover {
+        background-color: rgba(241, 198, 142, 0.3);
+        padding-left: 2.8rem;
+        padding-right: 2.2rem;
+    }
+    
+    body.dark-mode .submenu-cabinet a, 
+    body.dark-mode .submenu-mahsool a {
+        border-bottom: 1px solid rgba(241, 198, 142, 0.2);
+    }
+    
+    body.dark-mode .submenu-cabinet a:hover, 
+    body.dark-mode .submenu-mahsool a:hover {
+        background-color: rgba(241, 198, 142, 0.2);
+        padding-left: 2.8rem;
+        padding-right: 2.2rem;
+    }
+    
+    .submenu-cabinet a:last-child, 
+    .submenu-mahsool a:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
     }
     
     /* نشانگر منوهای کشویی */
     .cabinet::after, .mahsool::after {
-        content: "+";
+        content: "\25BC"; /* فلش رو به پایین */
         float: left;
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 0.8rem; /* کوچکتر کردن اندازه فلش */
+        font-weight: normal;
         margin-left: 0.5rem;
-        transition: transform 0.3s;
+        transition: transform 0.3s ease;
+        color: rgba(0, 0, 0, 0.7); /* رنگ فلش */
+        display: inline-block;
+        position: relative;
+        top: 0.15rem; /* تنظیم موقعیت عمودی */
+    }
+    
+    body.dark-mode .cabinet::after, 
+    body.dark-mode .mahsool::after {
+        color: rgba(255, 255, 255, 0.8); /* رنگ فلش در حالت تاریک */
     }
     
     .dropdown-cabinet.active .cabinet::after,
     .dropdown-mahsool.active .mahsool::after {
-        content: "-";
+        content: "\25BC"; /* همان فلش رو به پایین */
+        transform: rotate(180deg); /* چرخش فلش برای نشان دادن حالت باز */
+        color: rgba(0, 0, 0, 0.9); /* پررنگ کردن فلش در حالت فعال */
+    }
+    
+    body.dark-mode .dropdown-cabinet.active .cabinet::after,
+    body.dark-mode .dropdown-mahsool.active .mahsool::after {
+        color: rgba(255, 255, 255, 1); /* پررنگ کردن فلش در حالت فعال و تاریک */
     }
     
     /* استایل لینک فعال */
@@ -579,6 +649,7 @@ body.dark-mode .menu-toggle span {
     }
 }
 
+/* موبایل */
 @media screen and (max-width: 480px) {
     #nav {
         margin: 0.7rem;
@@ -626,14 +697,6 @@ body.dark-mode .menu-toggle span {
         margin-left: 1rem;
     }
     
-    .menu-toggle::after {
-        font-size: 24px;
-    }
-    
-    .menu-toggle.active::after {
-        font-size: 26px;
-    }
-    
     .cabinet, .mahsool, .weblog, .about, .contact {
         font-size: 1.3rem;
         margin: 0.6rem 1.5rem;
@@ -646,76 +709,30 @@ body.dark-mode .menu-toggle span {
         width: calc(100% - 3rem);
     }
     
-    /* ======= KABAN MOBILE STYLES COMPLETELY REWRITTEN ======= */
-    
-    .kaban-section {
-        padding: 0;
-        height: auto;
-        min-height: 500px;
-    }
-    
-    .image-container {
-        position: absolute;
-        height: 100%;
-    }
-    
-    .kitchen-image {
-        height: 100%;
-        max-height: 600px;
-    }
-    
-    .kaban-container {
-        padding: 1rem;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .text-container {
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 1rem;
-        margin: 2rem auto;
-        width: 90%;
-        max-width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center !important;
-    }
-    
-    body.dark-mode .text-container {
-        background-color: rgba(18, 18, 18, 0.8);
-    }
-    
-    .kaban-text {
-        font-size: 3.5rem;
-        text-align: center !important;
-    }
-    
-    .typing-text {
-        font-size: 1.5rem;
-        text-align: center !important;
-        margin-top: 0.5rem;
-    }
-
-    body::before {
-        height: 70vh;
-        background-position: center 8%;
-    }
-
     .nav-container {
         background-color: rgba(241, 198, 142, 0.95) !important;
         backdrop-filter: blur(10px) !important;
         width: 75% !important;
+        right: 0 !important;
+        transform: translateX(100%) !important;
+        margin: 0 !important; /* حذف هر نوع مارجین */
+        left: auto !important; /* اطمینان از عدم تأثیر left */
     }
     
     body.dark-mode .nav-container {
         background-color: rgba(77, 60, 34, 0.95) !important;
     }
+    
+    .nav-container.active {
+        transform: translateX(0) !important;
+        right: 0 !important; /* اطمینان از ماندن در سمت راست */
+        left: auto !important; /* اطمینان از عدم تأثیر left */
+        margin-right: 0 !important; /* حذف مارجین سمت راست */
+        margin-left: auto !important; /* اطمینان از چسبیدن به سمت راست */
+    }
 }
 
-/* بخش KABAN */
+/* ===== بخش KABAN ===== */
 .kaban-section {
     padding: 0;
     margin: 0 auto;
@@ -755,10 +772,10 @@ body.dark-mode .menu-toggle span {
     flex-direction: column;
     align-items: flex-end !important;
     justify-content: flex-end !important;
+    padding: 2rem;
     padding-right: 5rem;
     text-align: right !important;
     background-color: rgba(255, 255, 255, 0.7);
-    padding: 2rem;
     border-radius: 10px;
     backdrop-filter: blur(5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -851,8 +868,7 @@ body.dark-mode .text-container {
 }
 
 @media screen and (max-width: 480px) {
-    /* ======= KABAN MOBILE STYLES ======= */
-    
+    /* بازنویسی استایل‌های KABAN برای موبایل */
     .kaban-section {
         padding: 0;
         height: auto;
@@ -903,9 +919,14 @@ body.dark-mode .text-container {
         text-align: center !important;
         margin-top: 0.5rem;
     }
+
+    body::before {
+        height: 70vh;
+        background-position: center 8%;
+    }
 }
 
-/* بخش کابینت‌ها */
+/* ===== بخش کابینت‌ها ===== */
 .cabinet-section {
     padding: 3rem 1.5rem;
     max-width: 1400px;
