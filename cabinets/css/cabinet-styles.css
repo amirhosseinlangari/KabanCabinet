@@ -1,0 +1,250 @@
+/* استایل‌های مشترک برای همه صفحات کابینت */
+
+/* بخش اصلی صفحه جزئیات کابینت */
+.cabinet-detail-section {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cabinet-detail-container {
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* استایل عنوان صفحه */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h1 {
+    font-size: 2.8rem;
+    color: var(--section-title-color);
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.title-underline {
+    width: 120px;
+    height: 4px;
+    background-color: var(--nav-bg-color);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* محتوای اصلی کابینت */
+.cabinet-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+/* گالری تصاویر */
+.cabinet-gallery {
+    flex: 1;
+    min-width: 300px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.main-image img:hover {
+    transform: scale(1.03);
+}
+
+.gallery-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* اطلاعات کابینت */
+.cabinet-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cabinet-info h2 {
+    font-size: 2.2rem;
+    color: var(--section-title-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--nav-bg-color);
+    padding-bottom: 0.8rem;
+}
+
+.cabinet-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    text-align: justify;
+    color: var(--text-color);
+}
+
+/* ویژگی‌های کابینت */
+.features {
+    background-color: rgba(241, 198, 142, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .features {
+    background-color: rgba(77, 60, 34, 0.2);
+}
+
+.features h3 {
+    font-size: 1.5rem;
+    color: var(--section-title-color);
+    margin-bottom: 1rem;
+}
+
+.features ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features li {
+    position: relative;
+    padding-right: 25px;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.features li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: var(--nav-bg-color);
+    font-weight: bold;
+}
+
+/* بخش تماس */
+.contact-section {
+    background-color: rgba(241, 198, 142, 0.2);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+body.dark-mode .contact-section {
+    background-color: rgba(77, 60, 34, 0.3);
+}
+
+.contact-section h3 {
+    font-size: 1.5rem;
+    color: var(--section-title-color);
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+
+.contact-button {
+    display: inline-block;
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* رسپانسیو */
+@media screen and (max-width: 992px) {
+    .cabinet-detail-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .section-title h1 {
+        font-size: 2.4rem;
+    }
+    
+    .cabinet-info h2 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cabinet-detail-section {
+        padding: 2rem 1rem;
+    }
+    
+    .section-title h1 {
+        font-size: 2.2rem;
+    }
+    
+    .cabinet-detail-container {
+        padding: 1.5rem;
+    }
+    
+    .cabinet-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .cabinet-gallery {
+        order: 1;
+    }
+    
+    .cabinet-info {
+        order: 2;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cabinet-detail-section {
+        padding: 1.5rem 0.8rem;
+    }
+    
+    .cabinet-detail-container {
+        padding: 1rem;
+    }
+    
+    .section-title h1 {
+        font-size: 1.8rem;
+    }
+    
+    .cabinet-info h2 {
+        font-size: 1.6rem;
+    }
+    
+    .features h3, .contact-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .features li {
+        font-size: 1rem;
+    }
+    
+    .cabinet-info p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+} 

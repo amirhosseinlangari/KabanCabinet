@@ -1,0 +1,325 @@
+/* استایل‌های صفحه محصولات کابان */
+
+/* بخش اصلی صفحه محصولات */
+.mahsool-detail-section {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.mahsool-container {
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 4px solid rgb(241, 198, 142);
+}
+
+body.dark-mode .mahsool-container {
+    border-top: 4px solid rgb(77, 60, 34);
+}
+
+/* هدر صفحه محصولات */
+.mahsool-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.mahsool-header h1 {
+    font-size: 2.8rem;
+    color: var(--section-title-color);
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.mahsool-description {
+    max-width: 800px;
+    margin: 1.5rem auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* گرید محصولات */
+.mahsool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.mahsool-card {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    border: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.mahsool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.mahsool-link {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.mahsool-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.mahsool-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.mahsool-card:hover .mahsool-image img {
+    transform: scale(1.05);
+}
+
+.mahsool-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mahsool-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--section-title-color);
+    font-weight: bold;
+}
+
+.mahsool-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    color: var(--text-color);
+}
+
+.read-more {
+    display: inline-block;
+    color: rgb(241, 198, 142);
+    font-weight: bold;
+    margin-top: auto;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .read-more {
+    color: rgb(160, 132, 95);
+}
+
+.mahsool-card:hover .read-more {
+    color: rgb(217, 178, 128);
+}
+
+body.dark-mode .mahsool-card:hover .read-more {
+    color: rgb(200, 165, 119);
+}
+
+/* بخش ویژگی‌ها */
+.mahsool-features {
+    background-color: rgba(241, 198, 142, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+body.dark-mode .mahsool-features {
+    background-color: rgba(77, 60, 34, 0.2);
+}
+
+.mahsool-features h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--section-title-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--section-title-color);
+}
+
+.feature-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+/* بخش تماس */
+.contact-section {
+    text-align: center;
+    background-color: rgba(241, 198, 142, 0.15);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+}
+
+body.dark-mode .contact-section {
+    background-color: rgba(77, 60, 34, 0.25);
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--section-title-color);
+}
+
+.contact-section p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.contact-button {
+    display: inline-block;
+    background-color: rgb(241, 198, 142);
+    color: #333;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-button:hover {
+    background-color: rgb(217, 178, 128);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .contact-button {
+    background-color: rgb(77, 60, 34);
+    color: #fff;
+}
+
+body.dark-mode .contact-button:hover {
+    background-color: rgb(97, 76, 43);
+}
+
+/* رسپانسیو */
+@media screen and (max-width: 992px) {
+    .mahsool-detail-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .mahsool-header h1 {
+        font-size: 2.4rem;
+    }
+    
+    .mahsool-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mahsool-detail-section {
+        padding: 2rem 1rem;
+    }
+    
+    .mahsool-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .mahsool-description {
+        font-size: 1rem;
+    }
+    
+    .mahsool-container {
+        padding: 1.5rem;
+    }
+    
+    .mahsool-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mahsool-detail-section {
+        padding: 1.5rem 0.8rem;
+    }
+    
+    .mahsool-container {
+        padding: 1rem;
+    }
+    
+    .mahsool-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .mahsool-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mahsool-features {
+        padding: 1.5rem 1rem;
+    }
+    
+    .mahsool-features h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-section {
+        padding: 2rem 1rem;
+    }
+    
+    .contact-section h2 {
+        font-size: 1.8rem;
+    }
+} 

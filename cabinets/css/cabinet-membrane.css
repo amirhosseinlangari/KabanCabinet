@@ -1,0 +1,690 @@
+/* استایل‌های اختصاصی کابینت ممبران */
+
+/* رنگ‌های اختصاصی صفحه */
+:root {
+    --membrane-primary: #8b5a2b;
+    --membrane-secondary: #d7b989;
+    --membrane-accent: #f1c68e;
+    --membrane-highlight: #c9a06e;
+    --membrane-text: #3a2a15;
+    --membrane-light: #f7f2ea;
+    --membrane-dark: #3f2a17;
+    --membrane-shimmer: linear-gradient(45deg, #d7b989, #f1c68e, #d7b989);
+    --membrane-gradient: linear-gradient(135deg, #8b5a2b, #f1c68e);
+    --border-radius: 20px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.16);
+    --transition-std: all 0.3s ease;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+}
+
+body.dark-mode {
+    --membrane-primary: #d7b989;
+    --membrane-secondary: #8b5a2b;
+    --membrane-accent: #f1c68e;
+    --membrane-highlight: #e0bc87;
+    --membrane-text: #f7f2ea;
+    --membrane-light: #3f2a17;
+    --membrane-dark: #2a1c10;
+    --membrane-gradient: linear-gradient(135deg, #d7b989, #8b5a2b);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* اعمال ترنزیشن به کل المان‌ها برای دارک مود */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* زمینه صفحه */
+.cabinet-detail-container {
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px var(--shadow-md);
+    padding: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    overflow: hidden;
+    transition: var(--transition-std);
+}
+
+/* اورلی تصویر */
+.main-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-md);
+    transition: var(--transition-std);
+}
+
+.main-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 20%, rgba(255, 255, 255, 0.2) 50%, transparent 80%);
+    transform: skewX(-25deg);
+    pointer-events: none;
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.main-image:hover img {
+    transform: scale(1.05);
+}
+
+/* نوار تایتل */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h1 {
+    font-size: 2.5rem;
+    color: var(--membrane-primary);
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: var(--transition-std);
+}
+
+.cabinet-detail-container .title-underline {
+    background-color: var(--membrane-accent);
+    width: 100px;
+    height: 4px;
+    margin: 0 auto 30px;
+    transition: var(--transition-std);
+}
+
+/* بخش ویژگی‌ها */
+.cabinet-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.cabinet-gallery {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cabinet-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cabinet-info h2 {
+    color: var(--membrane-primary);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--membrane-accent);
+    display: inline-block;
+    font-weight: bold;
+    transition: var(--transition-std);
+}
+
+.cabinet-info p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--membrane-text);
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.features {
+    background-color: var(--membrane-light);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px var(--shadow-sm);
+    transition: var(--transition-std);
+}
+
+body.dark-mode .features {
+    background-color: var(--membrane-dark);
+}
+
+.features h3 {
+    font-size: 1.4rem;
+    color: var(--membrane-primary);
+    margin-bottom: 15px;
+    font-weight: bold;
+    transition: var(--transition-std);
+}
+
+.features ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features li {
+    color: var(--membrane-text);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    padding-right: 20px;
+    position: relative;
+    transition: var(--transition-std);
+}
+
+.features li::before {
+    content: '•';
+    color: var(--membrane-accent);
+    font-size: 1.4rem;
+    position: absolute;
+    right: 0;
+    top: -2px;
+}
+
+/* بخش تماس */
+.contact-section {
+    background: var(--membrane-gradient);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    color: white;
+    box-shadow: 0 5px 15px var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section h3 {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-section p {
+    margin-bottom: 20px;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+/* دکمه تماس */
+.contact-button {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: white;
+    color: var(--membrane-primary);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-std);
+    position: relative;
+    z-index: 2;
+}
+
+.contact-button:hover {
+    background-color: var(--membrane-light);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+        transform: translate(50%, 50%) rotate(45deg);
+    }
+}
+
+/* بخش‌های جدید توضیحات کابینت */
+.membrane-description, 
+.membrane-advantages, 
+.membrane-types, 
+.membrane-maintenance, 
+.membrane-faq {
+    margin: 40px 0;
+    background-color: var(--bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow-md);
+    position: relative;
+    transition: var(--transition-std);
+}
+
+/* ایجاد فاصله بیشتر بین بخش توضیحات و بخش قبلی */
+.membrane-description {
+    border-right: 4px solid var(--membrane-accent);
+}
+
+.membrane-description h2,
+.membrane-advantages h2,
+.membrane-types h2,
+.membrane-maintenance h2,
+.membrane-faq h2 {
+    font-size: 2rem;
+    color: var(--membrane-primary);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: bold;
+    transition: var(--transition-std);
+    display: inline-block;
+}
+
+.membrane-description h2:after,
+.membrane-advantages h2:after,
+.membrane-types h2:after,
+.membrane-maintenance h2:after,
+.membrane-faq h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 3px;
+    background-color: var(--membrane-accent);
+    transition: width 0.3s ease;
+}
+
+.membrane-description:hover h2::after,
+.membrane-advantages:hover h2::after,
+.membrane-types:hover h2::after,
+.membrane-maintenance:hover h2::after,
+.membrane-faq:hover h2::after {
+    width: 100%;
+}
+
+.membrane-description p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--membrane-text);
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* بخش مزایا */
+.membrane-advantages {
+    background-color: var(--membrane-light);
+}
+
+.membrane-advantages h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.advantages-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.advantage-item {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px var(--shadow-md);
+    transition: var(--transition-std);
+    border-top: 3px solid var(--membrane-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-mode .advantage-item {
+    background-color: var(--membrane-dark);
+}
+
+.advantage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-md);
+}
+
+.advantage-item h3 {
+    color: var(--membrane-primary);
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: var(--transition-std);
+    position: relative;
+    display: inline-block;
+}
+
+.advantage-item p {
+    color: var(--membrane-text);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* بخش انواع کابینت */
+.membrane-types {
+    background-color: var(--bg-color);
+}
+
+.membrane-types h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.type-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--membrane-light);
+    position: relative;
+    transition: var(--transition-std);
+    overflow: hidden;
+}
+
+body.dark-mode .type-item {
+    background-color: var(--membrane-dark);
+}
+
+.type-item:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 8px 20px var(--shadow-md);
+}
+
+.type-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--membrane-accent);
+    transition: width 0.3s ease;
+}
+
+.type-item:hover::before {
+    width: 10px;
+}
+
+.type-item h3 {
+    color: var(--membrane-primary);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    transition: var(--transition-std);
+}
+
+.type-item p {
+    color: var(--membrane-text);
+    line-height: 1.7;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* بخش نگهداری */
+.membrane-maintenance {
+    background-color: var(--membrane-light);
+    border-bottom: 4px solid var(--membrane-accent);
+}
+
+.membrane-maintenance h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.membrane-maintenance p {
+    color: var(--membrane-text);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.membrane-maintenance ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.membrane-maintenance ul li {
+    color: var(--membrane-text);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-right: 30px;
+    position: relative;
+    line-height: 1.6;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+body.dark-mode .membrane-maintenance ul li {
+    background-color: transparent;
+}
+
+.membrane-maintenance ul li:hover {
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.membrane-maintenance ul li:before {
+    content: '✓';
+    color: var(--membrane-accent);
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* بخش سوالات متداول */
+.membrane-faq {
+    background-color: var(--bg-color);
+}
+
+.membrane-faq h2 {
+    color: var(--membrane-primary);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px var(--shadow-md);
+    transition: var(--transition-std);
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 15px var(--shadow-md);
+}
+
+.faq-item h3 {
+    color: var(--membrane-text);
+    background-color: var(--membrane-light);
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition-std);
+    position: relative;
+    font-weight: bold;
+    margin: 0;
+}
+
+body.dark-mode .faq-item h3 {
+    background-color: var(--membrane-dark);
+}
+
+.faq-item h3:after {
+    content: '+';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--membrane-accent);
+    transition: transform 0.3s ease;
+}
+
+.faq-item h3:hover {
+    background-color: var(--membrane-light);
+}
+
+body.dark-mode .faq-item h3:hover {
+    background-color: var(--membrane-dark);
+}
+
+.faq-item h3.active {
+    background-color: var(--membrane-accent);
+    color: white;
+}
+
+.faq-item h3.active:after {
+    content: '-';
+    color: white;
+}
+
+.faq-item p {
+    color: var(--membrane-text);
+    line-height: 1.7;
+    padding: 15px 20px;
+    background-color: var(--bg-color);
+    margin: 0;
+    border: 1px solid var(--membrane-light);
+    border-top: none;
+    display: none;
+    font-size: 1.1rem;
+}
+
+body.dark-mode .faq-item p {
+    background-color: var(--membrane-dark);
+    border-color: var(--membrane-highlight);
+}
+
+.faq-item p.active {
+    display: block;
+}
+
+/* ریسپانسیو */
+@media (max-width: 992px) {
+    .cabinet-content {
+        flex-direction: column;
+    }
+    
+    .advantages-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .contact-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cabinet-detail-container {
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 15px;
+    }
+    
+    .section-title h1 {
+        font-size: 2rem;
+    }
+    
+    .membrane-description, 
+    .membrane-advantages, 
+    .membrane-types, 
+    .membrane-maintenance, 
+    .membrane-faq {
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 15px;
+    }
+    
+    .advantages-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantage-item,
+    .type-item,
+    .faq-item h3 {
+        padding: 15px;
+    }
+    
+    .membrane-description h2,
+    .membrane-advantages h2,
+    .membrane-types h2,
+    .membrane-maintenance h2,
+    .membrane-faq h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabinet-detail-container {
+        padding: 15px;
+        margin: 15px auto;
+        border-radius: 10px;
+    }
+    
+    .section-title h1 {
+        font-size: 1.8rem;
+    }
+    
+    .cabinet-info h2 {
+        font-size: 1.6rem;
+    }
+    
+    .features h3 {
+        font-size: 1.3rem;
+    }
+    
+    .membrane-description h2,
+    .membrane-advantages h2,
+    .membrane-types h2,
+    .membrane-maintenance h2,
+    .membrane-faq h2 {
+        font-size: 1.5rem;
+    }
+    
+    .type-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .advantage-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-button {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+} 

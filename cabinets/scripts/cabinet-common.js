@@ -1,5 +1,5 @@
 /**
- * کدهای جاوااسکریپت سایت کابینت کابان
+ * کدهای مشترک جاوااسکریپت برای صفحات کابینت کابان
  */
 
 // کش کردن انتخاب‌های DOM برای بهبود عملکرد
@@ -159,6 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // بررسی نمایش منو
     checkMenuDisplay();
+    
+    // اجرای تابع راه‌اندازی مخصوص صفحه (در صورت وجود)
+    if (typeof initCabinetPage === 'function') {
+        initCabinetPage();
+    }
 });
 
 // debounce کردن resize برای کاهش فراخوانی‌های مکرر

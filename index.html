@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="فروشگاه کابینت کابان - انواع کابینت‌های آشپزخانه با طراحی مدرن">
     <meta name="keywords" content="کابینت، کابینت آشپزخانه، کابان، mdf، ممبران، هایگلاس">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="preload" href="styles/main.css" as="style">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="preload" href="assets/Photo/نمادک کابان.png" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/Photo/kitchen.jpg" as="image" fetchpriority="high">
     <title>کابینت کابان</title>
 </head>
 <body>
@@ -13,7 +18,7 @@
     <section>
         <nav id="nav">
             <div class="header-content">
-                <img src="assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav">
+                <img src="assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav" width="96" height="96">
                 <div class="textlogo">کابینت کابان</div>
             </div>
             <div class="menu-toggle">
@@ -23,24 +28,25 @@
             </div>
             <div class="nav-container">
                 <div class="dropdown-cabinet">
-                    <a class="cabinet" href="#">کابینت</a>
+                    <a class="cabinet" href="mahsool/cabinet.html">کابینت</a>
                     <div class="submenu-cabinet">
-                        <a href="#">کابینت MDF</a>
-                        <a href="#">کابینت فلزی</a>
-                        <a href="#">کابینت هایگلاس</a>
-                        <a href="#">کابینت ممبران</a>
-                        <a href="#">کابینت نئو کلاسیک</a>
+                        <a href="cabinets/cabinet-mdf.html">کابینت MDF</a>
+                        <a href="cabinets/cabinet-metal.html">کابینت فلزی</a>
+                        <a href="cabinets/cabinet-highgloss.html">کابینت هایگلاس</a>
+                        <a href="cabinets/cabinet-membrane.html">کابینت ممبران</a>
+                        <a href="cabinets/cabinet-neoclassic.html">کابینت نئو کلاسیک</a>
                     </div>
                 </div>
                 <div class="dropdown-mahsool">
                     <a class="mahsool" href="#">محصولات</a>
                     <div class="submenu-mahsool">
-                        <a href="#">کابینت</a>
-                        <a href="#">یراق آلات</a>
-                        <a href="#">طرح سه بعدی</a>
+                        <a href="mahsool/cabinet.html">کابینت</a>
+                        <a href="mahsool/accessories.html">یراق آلات</a>
+                        <a href="mahsool/3d-designs.html">طرح سه بعدی</a>
                     </div>
                 </div>
-                <a class="weblog" href="#">وبلاگ</a>
+                <a class="weblog" href="weblog/index.html">وبلاگ</a>
+                <a class="portfolio" href="portfolio/index.html">نمونه کار</a>
                 <a class="about" href="#">درباره ما</a>
                 <a class="contact" href="#">تماس با ما</a>
                 <div class="mobile-dark-mode">
@@ -65,7 +71,8 @@
                 <div class="typing-text">کابینت کابان</div>
             </div>
             <div class="image-container">
-                <img src="assets/Photo/kitchen.jpg" alt="کابینت آشپزخانه" class="kitchen-image">
+                <img src="assets/Photo/kitchen.jpg" alt="کابینت آشپزخانه" class="kitchen-image light-mode-image" width="1200" height="800" loading="eager">
+                <img src="assets/Photo/minimalist kitchen 1.jpg" alt="کابینت آشپزخانه مدرن" class="kitchen-image dark-mode-image" width="1200" height="800" loading="lazy">
             </div>
         </div>
     </section>
@@ -77,45 +84,45 @@
         </div>
         <div class="cabinet-container">
             <div class="cabinet-card">
-                <a href="cabinet-mdf.html" class="cabinet-link">
+                <a href="cabinets/cabinet-mdf.html" class="cabinet-link">
                     <div class="cabinet-image">
-                        <img src="assets/Photo/کابینت mdf.jpg" alt="کابینت MDF">
+                        <img src="assets/Photo/کابینت mdf.jpg" alt="کابینت MDF" width="300" height="180" loading="lazy">
                     </div>
                     <div class="cabinet-title">کابینت MDF</div>
                 </a>
             </div>
             
             <div class="cabinet-card">
-                <a href="cabinet-metal.html" class="cabinet-link">
+                <a href="cabinets/cabinet-metal.html" class="cabinet-link">
                     <div class="cabinet-image">
-                        <img src="assets/Photo/کابینت فلزی.jpg" alt="کابینت فلزی">
+                        <img src="assets/Photo/کابینت فلزی.jpg" alt="کابینت فلزی" width="300" height="180" loading="lazy">
                     </div>
                     <div class="cabinet-title">کابینت فلزی</div>
                 </a>
             </div>
             
             <div class="cabinet-card">
-                <a href="cabinet-highgloss.html" class="cabinet-link">
+                <a href="cabinets/cabinet-highgloss.html" class="cabinet-link">
                     <div class="cabinet-image">
-                        <img src="assets/Photo/کابینت های گلاس.jpg" alt="کابینت هایگلاس">
+                        <img src="assets/Photo/کابینت های گلاس.jpg" alt="کابینت هایگلاس" width="300" height="180" loading="lazy">
                     </div>
                     <div class="cabinet-title">کابینت هایگلاس</div>
                 </a>
             </div>
             
             <div class="cabinet-card">
-                <a href="cabinet-membrane.html" class="cabinet-link">
+                <a href="cabinets/cabinet-membrane.html" class="cabinet-link">
                     <div class="cabinet-image">
-                        <img src="assets/Photo/کابینت ممبران.jpg" alt="کابینت ممبران">
+                        <img src="assets/Photo/کابینت ممبران.jpg" alt="کابینت ممبران" width="300" height="180" loading="lazy">
                     </div>
                     <div class="cabinet-title">کابینت ممبران</div>
                 </a>
             </div>
             
             <div class="cabinet-card">
-                <a href="cabinet-neoclassic.html" class="cabinet-link">
+                <a href="cabinets/cabinet-neoclassic.html" class="cabinet-link">
                     <div class="cabinet-image">
-                        <img src="assets/Photo/کابینت نئو کلاسیک.jpg" alt="کابینت نئو کلاسیک">
+                        <img src="assets/Photo/کابینت نئو کلاسیک.jpg" alt="کابینت نئو کلاسیک" width="300" height="180" loading="lazy">
                     </div>
                     <div class="cabinet-title">کابینت نئو کلاسیک</div>
                 </a>
@@ -123,6 +130,7 @@
         </div>
     </section>
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/index.js" defer></script>
 </body>
 </html>

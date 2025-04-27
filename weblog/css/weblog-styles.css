@@ -1,0 +1,658 @@
+/* استایل‌های وبلاگ کابینت کابان */
+
+/* استایل‌های کلی وبلاگ */
+body {
+    background-color: #f9f7f4; /* رنگ پس‌زمینه روشن‌تر */
+    line-height: 1.6;
+}
+
+body.dark-mode {
+    background-color: #111; /* رنگ پس‌زمینه تیره‌تر برای حالت شب */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* هدر وبلاگ */
+.weblog-header {
+    background-color: rgba(241, 198, 142, 0.600);
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 3px solid rgba(241, 198, 142, 0.3);
+}
+
+body.dark-mode .weblog-header {
+    background-color: rgba(77, 60, 34, 0.600);
+    border-bottom: 3px solid rgba(77, 60, 34, 0.4);
+}
+
+.weblog-header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.weblog-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--section-title-color);
+}
+
+.weblog-header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* محتوای اصلی وبلاگ */
+.weblog-content {
+    flex: 1;
+    max-width: 800px;
+    padding-right: 30px;
+}
+
+/* پست‌های وبلاگی */
+.blog-post {
+    background-color: var(--bg-color);
+    border-radius: 1rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.post-thumbnail {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-post:hover .post-thumbnail img {
+    transform: scale(1.03);
+}
+
+.post-content {
+    padding: 1.5rem;
+}
+
+.post-meta {
+    display: flex;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body.dark-mode .post-meta {
+    color: #aaa;
+}
+
+.post-date {
+    margin-left: 1rem;
+}
+
+.post-category {
+    color: rgb(241, 198, 142);
+    font-weight: bold;
+}
+
+body.dark-mode .post-category {
+    color: rgb(200, 165, 119);
+}
+
+.post-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.post-title a {
+    color: var(--section-title-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-title a:hover {
+    color: rgb(241, 198, 142);
+}
+
+body.dark-mode .post-title a:hover {
+    color: rgb(200, 165, 119);
+}
+
+.post-excerpt {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.read-more {
+    display: inline-block;
+    color: rgb(241, 198, 142);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 5px;
+}
+
+.read-more:after {
+    content: '←';
+    position: absolute;
+    right: -10px;
+    top: 0;
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.read-more:hover {
+    color: rgb(217, 178, 128);
+    padding-right: 25px;
+}
+
+.read-more:hover:after {
+    opacity: 1;
+    transform: translateX(-5px);
+}
+
+body.dark-mode .read-more {
+    color: rgb(180, 149, 107);
+}
+
+body.dark-mode .read-more:hover {
+    color: rgb(200, 165, 119);
+}
+
+/* پاگینیشن */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.pagination a.active {
+    background-color: rgb(241, 198, 142);
+    color: #fff;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: rgba(241, 198, 142, 0.2);
+}
+
+body.dark-mode .pagination a.active {
+    background-color: rgb(77, 60, 34);
+}
+
+body.dark-mode .pagination a:hover:not(.active) {
+    background-color: rgba(77, 60, 34, 0.3);
+}
+
+/* سایدبار وبلاگ */
+.weblog-sidebar {
+    width: 350px;
+}
+
+.sidebar-widget {
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.sidebar-widget h3 {
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    color: var(--section-title-color);
+    border-bottom: 2px solid rgba(241, 198, 142, 0.3);
+}
+
+/* ویجت جستجو */
+.search-form {
+    display: flex;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid rgba(241, 198, 142, 0.3);
+    border-radius: 5px;
+    font-family: yekan;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.search-form button {
+    padding: 10px 15px;
+    background-color: rgb(241, 198, 142);
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: yekan;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: rgb(217, 178, 128);
+}
+
+body.dark-mode .search-form button {
+    background-color: rgb(77, 60, 34);
+    color: #fff;
+}
+
+body.dark-mode .search-form button:hover {
+    background-color: rgb(97, 76, 43);
+}
+
+/* ویجت دسته‌بندی‌ها */
+.categories-widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categories-widget li {
+    border-bottom: 1px solid rgba(241, 198, 142, 0.2);
+    padding: 8px 0;
+}
+
+.categories-widget li:last-child {
+    border-bottom: none;
+}
+
+.categories-widget a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    transition: color 0.3s ease;
+}
+
+.categories-widget a:hover {
+    color: rgb(241, 198, 142);
+}
+
+body.dark-mode .categories-widget a:hover {
+    color: rgb(200, 165, 119);
+}
+
+.categories-widget span {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+body.dark-mode .categories-widget span {
+    color: #aaa;
+}
+
+/* ویجت پست‌های محبوب */
+.popular-posts {
+    display: flex;
+    flex-direction: column;
+}
+
+.popular-post {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.popular-post:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.popular-post a {
+    display: flex;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.popular-post img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.popular-post-content {
+    flex: 1;
+}
+
+.popular-post h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+    line-height: 1.4;
+}
+
+.popular-post a:hover h4 {
+    color: rgb(241, 198, 142);
+}
+
+body.dark-mode .popular-post a:hover h4 {
+    color: rgb(200, 165, 119);
+}
+
+.popular-post .post-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: 0;
+}
+
+body.dark-mode .popular-post .post-date {
+    color: #aaa;
+}
+
+/* ویجت برچسب‌ها */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags a {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: rgba(241, 198, 142, 0.15);
+    border-radius: 5px;
+    margin: 0 8px 8px 0;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.tags a:hover {
+    background-color: rgb(241, 198, 142);
+    color: #fff;
+}
+
+body.dark-mode .tags a {
+    background-color: rgba(77, 60, 34, 0.25);
+}
+
+body.dark-mode .tags a:hover {
+    background-color: rgb(77, 60, 34);
+}
+
+/* فوتر وبلاگ */
+.weblog-footer {
+    background-color: rgba(241, 198, 142, 0.15);
+    padding: 4rem 0 2rem;
+    margin-top: 3rem;
+    border-top: 3px solid rgba(241, 198, 142, 0.3);
+}
+
+body.dark-mode .weblog-footer {
+    background-color: rgba(30, 30, 30, 0.8);
+    border-top: 3px solid rgba(77, 60, 34, 0.4);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo img {
+    margin-bottom: 1rem;
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem;
+    color: var(--section-title-color);
+}
+
+.footer-links {
+    min-width: 200px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links h4, .footer-newsletter h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--section-title-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-links h4:after, .footer-newsletter h4:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(241, 198, 142, 0.5);
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: rgb(241, 198, 142);
+}
+
+body.dark-mode .footer-links a:hover {
+    color: rgb(200, 165, 119);
+}
+
+.footer-newsletter {
+    width: 300px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-newsletter p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.newsletter-form {
+    display: flex;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid rgba(241, 198, 142, 0.3);
+    border-radius: 5px 0 0 5px;
+    font-family: yekan;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.newsletter-form button {
+    padding: 10px 15px;
+    background-color: rgb(241, 198, 142);
+    color: #333;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-family: yekan;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: rgb(217, 178, 128);
+}
+
+body.dark-mode .newsletter-form button {
+    background-color: rgb(77, 60, 34);
+    color: #fff;
+}
+
+body.dark-mode .newsletter-form button:hover {
+    background-color: rgb(97, 76, 43);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(241, 198, 142, 0.2);
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* قالب‌بندی واکنشگرا */
+@media screen and (max-width: 1024px) {
+    .weblog-content {
+        max-width: 650px;
+        padding-right: 20px;
+    }
+    
+    .weblog-sidebar {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .weblog-content {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+    
+    .weblog-sidebar {
+        width: 100%;
+    }
+    
+    .post-thumbnail {
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .weblog-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .post-title {
+        font-size: 1.5rem;
+    }
+    
+    .post-thumbnail {
+        height: 300px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-links h4:after, .footer-newsletter h4:after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    
+    .footer-links, .footer-newsletter {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .weblog-header {
+        padding: 2rem 0;
+    }
+    
+    .weblog-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .weblog-header p {
+        font-size: 1rem;
+    }
+    
+    .post-thumbnail {
+        height: 220px;
+    }
+    
+    .post-content {
+        padding: 1rem;
+    }
+    
+    .post-title {
+        font-size: 1.3rem;
+    }
+    
+    .sidebar-widget {
+        padding: 1.2rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 5px;
+        width: 100%;
+    }
+} 
