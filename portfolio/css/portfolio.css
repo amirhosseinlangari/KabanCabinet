@@ -350,6 +350,37 @@ body.dark-mode {
         grid-template-columns: 1fr;
     }
     
+    /* اصلاح نمایش کارت‌ها در موبایل */
+    .portfolio-overlay {
+        transform: translateY(0);
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent);
+        padding-bottom: 25px;
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+        transform: translateY(0);
+    }
+    
+    .portfolio-item:hover .portfolio-image img {
+        transform: scale(1.05);
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .view-details {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+    
     .cta-section {
         padding: 40px 15px;
     }
