@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نقشه سایت کابینت کابان - دسترسی آسان به تمام صفحات وب سایت">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="icon" href="assets/Photo/نمادک کابان.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>نقشه سایت | کابینت کابان</title>
+    <style>
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sitemap-section {
+            margin-bottom: 40px;
+        }
+        
+        .sitemap-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--section-title-color);
+            border-bottom: 2px solid var(--nav-bg-color);
+            padding-bottom: 10px;
+        }
+        
+        .sitemap-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .sitemap-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            background-color: rgba(241, 198, 142, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .sitemap-links a:hover {
+            background-color: rgba(241, 198, 142, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .sitemap-container {
+                padding: 20px;
+                margin: 30px 15px;
+            }
+            
+            .sitemap-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sitemap-container">
+        <h1>نقشه سایت کابینت کابان</h1>
+        
+        <div class="sitemap-section">
+            <h2>صفحات اصلی</h2>
+            <div class="sitemap-links">
+                <a href="/">صفحه اصلی</a>
+                <a href="/portfolio/index.html">نمونه کار</a>
+                <a href="/weblog/index.html">وبلاگ</a>
+            </div>
+        </div>
+        
+        <div class="sitemap-section">
+            <h2>کابینت‌ها</h2>
+            <div class="sitemap-links">
+                <a href="/cabinets/cabinet-mdf.html">کابینت MDF</a>
+                <a href="/cabinets/cabinet-metal.html">کابینت فلزی</a>
+                <a href="/cabinets/cabinet-highgloss.html">کابینت هایگلاس</a>
+                <a href="/cabinets/cabinet-membrane.html">کابینت ممبران</a>
+                <a href="/cabinets/cabinet-neoclassic.html">کابینت نئو کلاسیک</a>
+            </div>
+        </div>
+        
+        <div class="sitemap-section">
+            <h2>محصولات</h2>
+            <div class="sitemap-links">
+                <a href="/mahsool/cabinet.html">کابینت</a>
+                <a href="/mahsool/accessories.html">یراق آلات</a>
+                <a href="/mahsool/3d-designs/index.html">طرح سه بعدی</a>
+            </div>
+        </div>
+
+        <div class="sitemap-section">
+            <h2>بازگشت به سایت</h2>
+            <div class="sitemap-links">
+                <a href="/">بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تنظیم حالت دارک مود براساس تنظیمات ذخیره شده
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+</body>
+</html> 

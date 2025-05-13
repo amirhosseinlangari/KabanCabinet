@@ -1,0 +1,494 @@
+/* استایل‌های صفحه مقاله وبلاگ */
+
+.post-container {
+    max-width: 1000px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+}
+
+.blog-post-content {
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    border: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.post-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    color: var(--section-title-color);
+}
+
+.post-meta {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #777;
+    font-size: 0.95rem;
+}
+
+body.dark-mode .post-meta {
+    color: #aaa;
+}
+
+.post-date {
+    margin: 0 10px;
+}
+
+.post-category {
+    color: rgb(241, 198, 142);
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+body.dark-mode .post-category {
+    color: rgb(200, 165, 119);
+}
+
+.post-featured-image {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.post-featured-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.post-content-body {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.post-content-body h2 {
+    font-size: 1.8rem;
+    margin: 35px 0 20px;
+    color: var(--section-title-color);
+    position: relative;
+    padding-right: 15px;
+}
+
+.post-content-body h2::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: rgb(241, 198, 142);
+    border-radius: 3px;
+}
+
+body.dark-mode .post-content-body h2::before {
+    background-color: rgb(180, 149, 107);
+}
+
+.post-content-body h3 {
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+    color: var(--section-title-color);
+}
+
+.post-content-body p {
+    margin-bottom: 20px;
+}
+
+.post-content-body ul, 
+.post-content-body ol {
+    margin: 0 30px 20px;
+}
+
+.post-content-body li {
+    margin-bottom: 10px;
+}
+
+.post-content-body blockquote {
+    background-color: rgba(241, 198, 142, 0.1);
+    border-right: 4px solid rgb(241, 198, 142);
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 5px 5px 0;
+    font-style: italic;
+}
+
+body.dark-mode .post-content-body blockquote {
+    background-color: rgba(77, 60, 34, 0.2);
+    border-right: 4px solid rgb(180, 149, 107);
+}
+
+.post-content-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 30px auto;
+}
+
+.post-content-body .image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+body.dark-mode .post-content-body .image-caption {
+    color: #aaa;
+}
+
+.post-content-body a {
+    color: rgb(241, 198, 142);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border-bottom: 1px dashed;
+}
+
+.post-content-body a:hover {
+    color: rgb(217, 178, 128);
+}
+
+body.dark-mode .post-content-body a {
+    color: rgb(200, 165, 119);
+}
+
+body.dark-mode .post-content-body a:hover {
+    color: rgb(220, 185, 139);
+}
+
+.post-tags {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(241, 198, 142, 0.2);
+}
+
+.post-tags span {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.post-tags a {
+    display: inline-block;
+    background-color: rgba(241, 198, 142, 0.1);
+    color: var(--section-title-color);
+    padding: 5px 12px;
+    margin: 5px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.post-tags a:hover {
+    background-color: rgba(241, 198, 142, 0.3);
+}
+
+body.dark-mode .post-tags a {
+    background-color: rgba(77, 60, 34, 0.2);
+}
+
+body.dark-mode .post-tags a:hover {
+    background-color: rgba(77, 60, 34, 0.4);
+}
+
+.author-box {
+    margin-top: 50px;
+    padding: 25px;
+    background-color: rgba(241, 198, 142, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(241, 198, 142, 0.1);
+}
+
+.author-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    margin-bottom: 5px;
+    color: var(--section-title-color);
+}
+
+.author-info p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.related-posts {
+    margin-top: 60px;
+}
+
+.related-posts h3 {
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    color: var(--section-title-color);
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(241, 198, 142, 0.2);
+}
+
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.related-post {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(241, 198, 142, 0.1);
+}
+
+.related-post:hover {
+    transform: translateY(-5px);
+}
+
+.related-post-thumbnail {
+    height: 150px;
+    overflow: hidden;
+}
+
+.related-post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.related-post:hover .related-post-thumbnail img {
+    transform: scale(1.05);
+}
+
+.related-post-content {
+    padding: 15px;
+}
+
+.related-post-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.related-post-title a {
+    color: var(--section-title-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.related-post-title a:hover {
+    color: rgb(241, 198, 142);
+}
+
+body.dark-mode .related-post-title a:hover {
+    color: rgb(200, 165, 119);
+}
+
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 30px;
+}
+
+.post-navigation a {
+    background-color: var(--bg-color);
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--section-title-color);
+    border: 1px solid rgba(241, 198, 142, 0.2);
+    transition: all 0.3s ease;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+
+.post-navigation .prev-post {
+    text-align: right;
+}
+
+.post-navigation .next-post {
+    text-align: left;
+    flex-direction: row-reverse;
+}
+
+.post-navigation span {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.post-navigation a:hover {
+    background-color: rgba(241, 198, 142, 0.1);
+}
+
+/* جدول محتوا */
+.table-of-contents {
+    background-color: rgba(241, 198, 142, 0.05);
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin: 30px 0;
+    border: 1px solid rgba(241, 198, 142, 0.1);
+}
+
+.table-of-contents h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: var(--section-title-color);
+}
+
+.table-of-contents ol {
+    counter-reset: item;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.table-of-contents li {
+    counter-increment: item;
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 30px;
+}
+
+.table-of-contents li:before {
+    content: counter(item);
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgb(241, 198, 142);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22px;
+    font-size: 0.8rem;
+}
+
+body.dark-mode .table-of-contents li:before {
+    background-color: rgb(180, 149, 107);
+}
+
+.table-of-contents a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    line-height: 1.5;
+}
+
+.table-of-contents a:hover {
+    color: rgb(241, 198, 142);
+}
+
+body.dark-mode .table-of-contents a:hover {
+    color: rgb(200, 165, 119);
+}
+
+.table-of-contents .toc-subitem {
+    padding-right: 25px;
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+.table-of-contents .toc-subitem:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: rgb(241, 198, 142);
+    border-radius: 50%;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+
+body.dark-mode .table-of-contents .toc-subitem:before {
+    background-color: rgb(180, 149, 107);
+}
+
+/* پاسخگو */
+@media screen and (max-width: 900px) {
+    .related-posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .post-container {
+        padding: 0 15px;
+    }
+    
+    .blog-post-content {
+        padding: 20px;
+    }
+    
+    .post-title {
+        font-size: 2rem;
+    }
+    
+    .post-content-body {
+        font-size: 1rem;
+    }
+    
+    .post-content-body h2 {
+        font-size: 1.6rem;
+    }
+    
+    .post-content-body h3 {
+        font-size: 1.3rem;
+    }
+    
+    .author-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .author-avatar {
+        margin: 0 0 15px 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .related-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-navigation {
+        flex-direction: column;
+    }
+    
+    .post-navigation a {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .post-title {
+        font-size: 1.8rem;
+    }
+} 

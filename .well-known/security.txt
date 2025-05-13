@@ -1,0 +1,5 @@
+Contact: mailto:security@kabancabinet.ir
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: fa, en
+Canonical: https://kabancabinet.ir/.well-known/security.txt
+Policy: https://kabancabinet.ir/security-policy 

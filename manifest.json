@@ -1,0 +1,21 @@
+{
+  "name": "کابینت کابان",
+  "short_name": "کابان",
+  "description": "فروشگاه کابینت کابان - انواع کابینت‌های آشپزخانه با طراحی مدرن و کیفیت بالا",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f1c68e",
+  "icons": [
+    {
+      "src": "/assets/Photo/نمادک کابان.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/Photo/نمادک کابان.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 
