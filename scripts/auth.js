@@ -44,6 +44,9 @@ class AuthManager {
             localStorage.setItem(this.tokenKey, data.token);
             localStorage.setItem(this.userKey, JSON.stringify(data.user));
             
+            // Redirect to homepage after successful registration
+            window.location.href = '/index.html';
+            
             return data;
         } catch (error) {
             console.error('Registration error:', error);

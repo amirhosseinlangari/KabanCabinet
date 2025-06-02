@@ -31,19 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show success message
                 showNotification('ورود موفقیت‌آمیز بود', 'success');
                 
-                // Get redirect URL from session storage
-                const redirectUrl = sessionStorage.getItem('loginRedirect');
-                
-                // Clear redirect URL from session storage
-                sessionStorage.removeItem('loginRedirect');
-                
-                // Redirect after a short delay
+                // Redirect to homepage after a short delay
                 setTimeout(() => {
-                    if (redirectUrl) {
-                        window.location.href = decodeURIComponent(redirectUrl);
-                    } else {
-                        window.location.href = 'profile.html';
-                    }
+                    window.location.href = '/index.html';
                 }, 1000);
             } else {
                 showNotification('لطفا ایمیل و رمز عبور را وارد کنید', 'error');

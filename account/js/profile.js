@@ -50,9 +50,82 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Profile form submit event
     if (profileForm) {
-        profileForm.addEventListener('submit', function(e) {
+        profileForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            updateProfile();
+            
+            // Get form data
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            // Split full name into first and last name
+            const nameParts = fullName.split(' ');
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts.slice(1).join(' ') || '';
+            
+            // Validate data
+            if (!fullName) {
+                showNotification('لطفا نام و نام خانوادگی خود را وارد کنید', 'error');
+                return;
+            }
+            
+            if (phone && !isValidMobile(phone)) {
+                showNotification('لطفا یک شماره موبایل معتبر وارد کنید', 'error');
+                return;
+            }
+            
+            // Show loading
+            const submitButton = this.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="loading-spinner"></span> در حال پردازش...';
+            
+            try {
+                // Get current user data
+                const userData = JSON.parse(localStorage.getItem('kabanUser')) || {};
+                
+                // Update user data
+                const updatedUserData = {
+                    ...userData,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    mobile: phone,
+                    address: address
+                };
+                
+                // Save updated user data
+                localStorage.setItem('kabanUser', JSON.stringify(updatedUserData));
+                
+                // Update sidebar info
+                const userNameElement = document.getElementById('userName');
+                const userEmailElement = document.getElementById('userEmail');
+                
+                if (userNameElement) {
+                    userNameElement.textContent = `${firstName} ${lastName}`;
+                }
+                
+                if (userEmailElement) {
+                    userEmailElement.textContent = email;
+                }
+                
+                // Show success message
+                showNotification('اطلاعات شما با موفقیت به‌روزرسانی شد', 'success');
+                
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-save"></i> ذخیره تغییرات';
+                
+                // Redirect to homepage after successful update
+                setTimeout(() => {
+                    window.location.href = '/index.html';
+                }, 1500);
+            } catch (error) {
+                console.error('Error updating user data:', error);
+                showNotification('خطا در ذخیره اطلاعات', 'error');
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-save"></i> ذخیره تغییرات';
+            }
         });
     }
     
@@ -74,12 +147,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to update user info in sidebar
     function updateUserInfo() {
-        userNameElements.forEach(element => {
-            element.textContent = `${user.firstName} ${user.lastName}`;
-        });
+        const userData = JSON.parse(localStorage.getItem('kabanUser'));
+        if (!userData) return;
+        
+        // Update user name and email in sidebar
+        const userNameElements = document.querySelectorAll('.user-name');
+        const userEmailElement = document.getElementById('userEmail');
+        
+        if (userNameElements) {
+            userNameElements.forEach(element => {
+                element.textContent = `${userData.firstName} ${userData.lastName}`;
+            });
+        }
         
         if (userEmailElement) {
-            userEmailElement.textContent = user.email;
+            userEmailElement.textContent = userData.email || '';
         }
     }
     
@@ -87,52 +169,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function fillProfileForm() {
         if (!profileForm) return;
         
-        document.getElementById('profileFirstName').value = user.firstName || '';
-        document.getElementById('profileLastName').value = user.lastName || '';
-        document.getElementById('profileEmail').value = user.email || '';
-        document.getElementById('profileMobile').value = user.mobile || '';
-    }
-    
-    // Function to update profile
-    function updateProfile() {
-        // Get form data
-        const firstName = document.getElementById('profileFirstName').value;
-        const lastName = document.getElementById('profileLastName').value;
-        const mobile = document.getElementById('profileMobile').value;
+        const userData = JSON.parse(localStorage.getItem('kabanUser'));
+        if (!userData) return;
         
-        // Validate data
-        if (!firstName || !lastName) {
-            showNotification('لطفا نام و نام خانوادگی خود را وارد کنید', 'error');
-            return;
-        }
-        
-        if (mobile && !isValidMobile(mobile)) {
-            showNotification('لطفا یک شماره موبایل معتبر وارد کنید', 'error');
-            return;
-        }
-        
-        // Show loading
-        showLoading('updateProfileBtn');
-        
-        // Simulate API call delay
-        setTimeout(() => {
-            // Update user data
-            user.firstName = firstName;
-            user.lastName = lastName;
-            user.mobile = mobile;
-            
-            // Save updated user data
-            localStorage.setItem('kabanUser', JSON.stringify(user));
-            
-            // Update user info in sidebar
-            updateUserInfo();
-            
-            // Show success message
-            showNotification('اطلاعات شما با موفقیت به‌روزرسانی شد', 'success');
-            
-            // Hide loading
-            hideLoading('updateProfileBtn');
-        }, 1000);
+        document.getElementById('fullName').value = `${userData.firstName} ${userData.lastName}`.trim();
+        document.getElementById('email').value = userData.email || '';
+        document.getElementById('phone').value = userData.mobile || '';
+        document.getElementById('address').value = userData.address || '';
     }
     
     // Function to change password

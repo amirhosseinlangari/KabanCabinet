@@ -170,17 +170,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show success message
                 showNotification('ورود با موفقیت انجام شد', 'success');
                 
-                // Check if there's a redirect URL stored
-                const redirectUrl = sessionStorage.getItem('loginRedirect');
-                
-                // Redirect to stored URL or default page
+                // Redirect to homepage
                 setTimeout(() => {
-                    if (redirectUrl) {
-                        sessionStorage.removeItem('loginRedirect'); // Clear the stored URL
-                        window.location.href = redirectUrl;
-                    } else {
-                        window.location.href = '/account/profile.html';
-                    }
+                    window.location.href = '/index.html';
                 }, 1500);
             } else {
                 showError('loginForm', 'ایمیل یا رمز عبور اشتباه است');
@@ -227,17 +219,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show success message
             showNotification('ثبت نام با موفقیت انجام شد', 'success');
             
-            // Check if there's a redirect URL stored
-            const redirectUrl = sessionStorage.getItem('loginRedirect');
-            
-            // Redirect to stored URL or default page
+            // Redirect to homepage
             setTimeout(() => {
-                if (redirectUrl) {
-                    sessionStorage.removeItem('loginRedirect'); // Clear the stored URL
-                    window.location.href = redirectUrl;
-                } else {
-                    window.location.href = '/account/profile.html';
-                }
+                window.location.href = '/index.html';
             }, 1500);
         }, 1500);
     }

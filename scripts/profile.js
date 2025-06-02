@@ -104,23 +104,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load User Data
     function loadUserData() {
-        // Here you would typically fetch the user's data from your server
-        const userData = {
-            fullName: 'نام کاربر',
-            email: 'user@example.com',
-            phone: '09121773915',
-            address: 'آدرس کاربر'
-        };
+        // Get user data from localStorage
+        const userData = JSON.parse(localStorage.getItem('kabanUser'));
+        
+        if (!userData) {
+            // Redirect to login page if no user data found
+            window.location.href = '/account/login.html';
+            return;
+        }
         
         // Populate form fields
-        document.getElementById('fullName').value = userData.fullName;
-        document.getElementById('email').value = userData.email;
-        document.getElementById('phone').value = userData.phone;
-        document.getElementById('address').value = userData.address;
+        document.getElementById('fullName').value = `${userData.firstName} ${userData.lastName}`;
+        document.getElementById('email').value = userData.email || '';
+        document.getElementById('phone').value = userData.mobile || '';
+        document.getElementById('address').value = userData.address || '';
         
         // Update header
-        document.getElementById('userName').textContent = userData.fullName;
-        document.getElementById('userEmail').textContent = userData.email;
+        document.getElementById('userName').textContent = `${userData.firstName} ${userData.lastName}`;
+        document.getElementById('userEmail').textContent = userData.email || '';
+        
+        // Show the info section by default
+        document.getElementById('info').classList.add('active');
     }
 
     // Initialize

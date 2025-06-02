@@ -88,9 +88,10 @@ const PORT = process.env.PORT || 3000;
 const startServer = async () => {
   await connectDB();
   
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
     console.log(`🌐 محیط: ${process.env.NODE_ENV}`);
+    console.log(`🌐 آدرس سرور: http://0.0.0.0:${PORT}`);
   });
 };
 
