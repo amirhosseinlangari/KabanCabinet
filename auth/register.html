@@ -93,6 +93,12 @@
                     password: document.getElementById('password').value
                 };
 
+                console.log('Form data before submission:', formData);
+                console.log('Name value:', document.getElementById('name').value);
+                console.log('Email value:', document.getElementById('email').value);
+                console.log('Phone value:', document.getElementById('phone').value);
+                console.log('Password value:', document.getElementById('password').value);
+
                 const confirmPassword = document.getElementById('confirmPassword').value;
                 
                 if (formData.password !== confirmPassword) {

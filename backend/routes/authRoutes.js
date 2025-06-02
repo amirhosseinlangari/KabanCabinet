@@ -133,7 +133,7 @@ router.post('/login', async (req, res) => {
     }
     
     // بررسی صحت رمز عبور
-    const isMatch = await user.matchPassword(password);
+    const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -287,7 +287,7 @@ router.put('/change-password', protect, async (req, res) => {
     }
     
     // بررسی صحت رمز عبور فعلی
-    const isMatch = await user.matchPassword(currentPassword);
+    const isMatch = await user.comparePassword(currentPassword);
     if (!isMatch) {
       return res.status(400).json({
         success: false,
