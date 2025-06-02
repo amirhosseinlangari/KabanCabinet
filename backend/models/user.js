@@ -19,8 +19,10 @@ const UserSchema = new Schema({
     lowercase: true,
     match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'لطفا یک ایمیل معتبر وارد کنید']
   },
-  phoneNumber: {
+  phone: {
     type: String,
+    required: true,
+    unique: true,
     trim: true
   },
   password: {

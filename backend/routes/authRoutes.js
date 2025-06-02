@@ -15,12 +15,45 @@ router.post('/register', async (req, res) => {
   try {
     const { fullName, email, phone, password } = req.body;
     
-    // بررسی وجود کاربر با ایمیل مشابه
-    const existingUser = await User.findOne({ $or: [{ email }, { phone }] });
-    if (existingUser) {
+    // بررسی وجود فیلدهای اجباری
+    if (!fullName || !email || !phone || !password) {
       return res.status(400).json({
         success: false,
-        message: 'کاربری با این ایمیل یا شماره تلفن قبلاً ثبت‌نام کرده است'
+        message: 'تمامی فیلدها الزامی هستند',
+        errors: {
+          fullName: !fullName ? 'نام و نام خانوادگی الزامی است' : null,
+          email: !email ? 'ایمیل الزامی است' : null,
+          phone: !phone ? 'شماره تلفن الزامی است' : null,
+          password: !password ? 'رمز عبور الزامی است' : null
+        }
+      });
+    }
+
+    // بررسی طول رمز عبور
+    if (password.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: 'رمز عبور باید حداقل 6 کاراکتر باشد',
+        errors: {
+          password: 'رمز عبور باید حداقل 6 کاراکتر باشد'
+        }
+      });
+    }
+    
+    // بررسی وجود کاربر با ایمیل یا شماره تلفن مشابه
+    const existingUser = await User.findOne({ $or: [{ email }, { phone }] });
+    if (existingUser) {
+      const errors = {};
+      if (existingUser.email === email) {
+        errors.email = 'این ایمیل قبلاً ثبت شده است';
+      }
+      if (existingUser.phone === phone) {
+        errors.phone = 'این شماره تلفن قبلاً ثبت شده است';
+      }
+      return res.status(400).json({
+        success: false,
+        message: 'کاربری با این اطلاعات قبلاً ثبت‌نام کرده است',
+        errors
       });
     }
     
@@ -32,14 +65,8 @@ router.post('/register', async (req, res) => {
       password
     });
     
-    // تولید توکن تأیید ایمیل
-    const verificationToken = user.generateVerificationToken();
-    
     // ذخیره کاربر در دیتابیس
     await user.save();
-    
-    // ارسال ایمیل تأیید (در اینجا فقط توکن برگردانده می‌شود)
-    // TODO: پیاده‌سازی ارسال ایمیل
     
     // ساخت توکن JWT
     const token = user.generateAuthToken();
@@ -53,15 +80,17 @@ router.post('/register', async (req, res) => {
         fullName: user.fullName,
         email: user.email,
         phone: user.phone,
-        role: user.role,
-        isVerified: user.isVerified
+        role: user.role
       }
     });
   } catch (error) {
     console.error('خطا در ثبت‌نام کاربر:', error);
     
     if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map(err => err.message);
+      const validationErrors = {};
+      Object.keys(error.errors).forEach(key => {
+        validationErrors[key] = error.errors[key].message;
+      });
       return res.status(400).json({
         success: false,
         message: 'خطا در اطلاعات ورودی',
