@@ -31,7 +31,9 @@ const app = express();
 // ====== MIDDLEWARE SETUP ======
 // Allow cross-origin requests
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*',
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 // Parse JSON in request bodies
@@ -83,14 +85,14 @@ const connectDB = async () => {
 connectDB();
 
 // ====== START SERVER ======
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await connectDB();
   
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
-    console.log(`🌐 محیط: ${process.env.NODE_ENV}`);
+    console.log(`🌐 محیط: ${process.env.NODE_ENV || 'development'}`);
     console.log(`🌐 آدرس سرور: http://0.0.0.0:${PORT}`);
   });
 };
