@@ -1,0 +1,490 @@
+/**
+ * صفحه جزئیات محصول - کابینت کابان
+ * Product detail page styles - Kaban Cabinet
+ */
+
+/* === نمایشگر بارگذاری === */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(241, 198, 142, 0.3);
+    border-radius: 50%;
+    border-top-color: #f1c68e;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === پیام خطا === */
+.error-message {
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(255, 0, 0, 0.05);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.error-message h2 {
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+.error-message p {
+    margin-bottom: 20px;
+}
+
+/* === مسیر صفحه (breadcrumbs) === */
+.product-bread-crumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-bread-crumbs a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.product-bread-crumbs a:hover {
+    color: var(--primary-color);
+}
+
+.product-bread-crumbs span {
+    color: var(--text-secondary);
+}
+
+/* === جزئیات اصلی محصول === */
+.product-main-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .product-main-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* === گالری تصاویر === */
+.product-gallery {
+    position: relative;
+}
+
+.main-image {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.main-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.thumbnail.active, .thumbnail:hover {
+    opacity: 1;
+    border-color: var(--primary-color);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === اطلاعات محصول === */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: var(--heading-color);
+}
+
+.product-availability {
+    margin-bottom: 10px;
+}
+
+.in-stock-badge {
+    display: inline-block;
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.out-of-stock-badge {
+    display: inline-block;
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.product-description {
+    line-height: 1.7;
+    color: var(--text-color);
+    text-align: justify;
+}
+
+/* === ویژگی‌ها، ابعاد، رنگ‌ها و مواد === */
+.product-features, 
+.product-dimensions, 
+.product-colors-section, 
+.product-materials {
+    margin-top: 20px;
+}
+
+.product-features h3, 
+.product-dimensions h3, 
+.product-colors-section h3, 
+.product-materials h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.product-features ul {
+    padding-right: 20px;
+}
+
+.product-features li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.product-features li::before {
+    content: "•";
+    position: absolute;
+    right: -15px;
+    color: var(--primary-color);
+}
+
+.dimensions-info, 
+.materials-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dimensions-info span, 
+.materials-info span {
+    background-color: var(--bg-secondary);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+/* === قیمت و دکمه‌های خرید === */
+.product-price-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.product-price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.quantity-selector button {
+    width: 40px;
+    height: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quantity-selector button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.quantity-selector input {
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    border: none;
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.add-to-cart-btn {
+    flex-grow: 1;
+    height: 40px;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.add-to-cart-btn:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* === تب‌های محصول === */
+.product-tabs {
+    margin-top: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.tab-btn {
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--primary-color);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.tab-pane h2 {
+    margin-bottom: 20px;
+    color: var(--heading-color);
+    font-size: 1.3rem;
+}
+
+.tab-description {
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.specs-table th, 
+.specs-table td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.specs-table th {
+    width: 30%;
+    background-color: var(--bg-secondary);
+    color: var(--heading-color);
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* === محصولات مرتبط === */
+.related-products {
+    margin-top: 50px;
+}
+
+.related-products h2 {
+    margin-bottom: 20px;
+    color: var(--heading-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .related-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .related-products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.related-product-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.related-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.related-product-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.related-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.related-product-card:hover .related-product-image img {
+    transform: scale(1.05);
+}
+
+.related-product-details {
+    padding: 15px;
+}
+
+.related-product-details h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+}
+
+.related-product-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+} 

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تکمیل سفارش کابینت کابان - انتخاب آدرس، روش پرداخت و نهایی‌سازی سفارش شما">
+    <meta name="keywords" content="کابینت کابان, تکمیل سفارش, پرداخت, کابینت‌سازی, سفارش کابینت">
+    <meta name="theme-color" content="#f1c68e">
+    <title>تکمیل سفارش | کابینت کابان</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="لوگوی کابینت کابان">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="mahsool/cabinet.html">محصولات</a></li>
+                    <li><a href="portfolio/index.html">نمونه کارها</a></li>
+                    <li><a href="weblog/index.html">وبلاگ</a></li>
+                    <li><a href="about-us.html">درباره ما</a></li>
+                    <li><a href="contact-us.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-wrapper">
+                    <a href="#" class="cart-icon" id="cart-toggle">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="cart-dropdown" id="cart-dropdown">
+                        <div class="cart-items">
+                            <!-- Cart items will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-header">
+                <h1>تکمیل سفارش</h1>
+                <div class="checkout-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-name">سبد خرید</span>
+                    </div>
+                    <div class="step active">
+                        <span class="step-number">2</span>
+                        <span class="step-name">اطلاعات ارسال</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-name">پرداخت</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span class="step-name">تأیید سفارش</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-content">
+                <div class="checkout-form-container">
+                    <form id="checkout-form" class="checkout-form">
+                        <div class="form-section">
+                            <h2>اطلاعات شخصی</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">نام و نام خانوادگی <span class="required">*</span></label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">شماره تماس <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" pattern="(\+98|0)?9\d{9}" 
+                                        placeholder="09121773915" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">ایمیل</label>
+                                <input type="email" id="email" name="email" placeholder="example@domain.com">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2>آدرس تحویل</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="province">استان <span class="required">*</span></label>
+                                    <select id="province" name="province" required>
+                                        <option value="">انتخاب استان</option>
+                                        <option value="تهران">تهران</option>
+                                        <option value="البرز">البرز</option>
+                                        <option value="اصفهان">اصفهان</option>
+                                        <option value="مشهد">مشهد</option>
+                                        <option value="تبریز">تبریز</option>
+                                        <option value="شیراز">شیراز</option>
+                                        <!-- سایر استان‌ها -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">شهر <span class="required">*</span></label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">آدرس کامل <span class="required">*</span></label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">کد پستی</label>
+                                <input type="text" id="postalCode" name="postalCode" pattern="\d{10}" placeholder="1234567890">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2>روش پرداخت</h2>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="cash" name="paymentMethod" value="cash" checked>
+                                    <label for="cash">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>پرداخت نقدی هنگام تحویل</span>
+                                    </label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="card" name="paymentMethod" value="card">
+                                    <label for="card">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>پرداخت کارت به کارت</span>
+                                    </label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="online" name="paymentMethod" value="online">
+                                    <label for="online">
+                                        <i class="fas fa-globe"></i>
+                                        <span>پرداخت آنلاین</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2>توضیحات سفارش</h2>
+                            <div class="form-group">
+                                <label for="notes">توضیحات اضافی</label>
+                                <textarea id="notes" name="notes" rows="4" placeholder="اگر درخواست خاصی دارید یا توضیحی برای سفارش خود دارید، اینجا بنویسید..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="javascript:history.back()" class="return-btn">بازگشت به سبد خرید</a>
+                            <button type="submit" class="submit-btn">ادامه و پرداخت</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <h2>خلاصه سفارش</h2>
+                    <div class="order-items">
+                        <!-- Order items will be loaded here dynamically -->
+                    </div>
+                    <div class="order-totals">
+                        <div class="order-subtotal">
+                            <span>جمع کل:</span>
+                            <span class="subtotal-value">0 تومان</span>
+                        </div>
+                        <div class="order-discount">
+                            <span>تخفیف:</span>
+                            <span class="discount-value">0 تومان</span>
+                        </div>
+                        <div class="order-final">
+                            <span>مبلغ قابل پرداخت:</span>
+                            <span class="final-value">0 تومان</span>
+                        </div>
+                    </div>
+                    <div class="discount-code">
+                        <input type="text" id="discount-code-input" placeholder="کد تخفیف دارید؟">
+                        <button id="apply-discount">اعمال</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>تأیید سفارش</h2>
+            </div>
+            <div class="modal-body">
+                <p>آیا از ثبت سفارش خود اطمینان دارید؟</p>
+                <div class="order-summary-modal">
+                    <!-- Order summary will be shown here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-order" class="btn-secondary">انصراف</button>
+                <button id="confirm-order" class="btn-primary">تأیید و ثبت نهایی</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header success">
+                <i class="fas fa-check-circle"></i>
+                <h2>سفارش شما با موفقیت ثبت شد</h2>
+            </div>
+            <div class="modal-body">
+                <p>از خرید شما سپاسگزاریم. تیم ما در اسرع وقت با شما تماس خواهد گرفت.</p>
+                <div class="order-details">
+                    <p>شماره سفارش: <span id="order-id"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="index.html" class="btn-primary">بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="لوگوی کابینت کابان">
+                    </div>
+                    <p class="footer-description">
+                        کابینت کابان با بیش از ۱۵ سال تجربه در زمینه طراحی و تولید انواع کابینت‌های مدرن و کلاسیک، آماده ارائه خدمات به شما عزیزان است.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="واتس‌اپ"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>دسترسی سریع</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="mahsool/cabinet.html">محصولات</a></li>
+                        <li><a href="portfolio/index.html">نمونه کارها</a></li>
+                        <li><a href="weblog/index.html">وبلاگ</a></li>
+                        <li><a href="about-us.html">درباره ما</a></li>
+                        <li><a href="contact-us.html">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>خدمات ما</h3>
+                    <ul class="footer-links">
+                        <li><a href="mahsool/cabinet.html">کابینت MDF</a></li>
+                        <li><a href="mahsool/cabinet.html">کابینت هایگلاس</a></li>
+                        <li><a href="mahsool/cabinet.html">کابینت ممبران</a></li>
+                        <li><a href="mahsool/cabinet.html">کابینت فلزی</a></li>
+                        <li><a href="mahsool/accessories.html">یراق‌آلات کابینت</a></li>
+                        <li><a href="mahsool/3d-designs/index.html">طراحی سه‌بعدی</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>تماس با ما</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> تهران، خیابان ستارخان، بین فلکه اول و دوم صادقیه</p>
+                        <p><i class="fas fa-phone"></i> <span>۰۹۱۲۱۷۷۳۹۱۵</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>info@kabancabinet.com</span></p>
+                        <p><i class="fas fa-clock"></i> شنبه تا پنجشنبه ۹ الی ۱۹</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>تمامی حقوق برای کابینت کابان محفوظ است. &copy; ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/orderAPI.js"></script>
+    <script src="scripts/checkout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('auth_token');
+            const user = JSON.parse(localStorage.getItem('user_data'));
+            
+            if (!token || !user) {
+                // Save current URL for redirect after login
+                sessionStorage.setItem('redirectAfterLogin', window.location.href);
+                // Redirect to login
+                window.location.href = '/account/login.html';
+                return;
+            }
+
+            // Initialize order manager
+            const orderManager = new OrderManager();
+            
+            // Check if cart is empty
+            if (!orderManager.cart || orderManager.cart.items.length === 0) {
+                window.location.href = '/account/cart.html';
+                return;
+            }
+
+            // Rest of your checkout page code...
+        });
+    </script>
+</body>
+</html> 

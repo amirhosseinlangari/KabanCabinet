@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دستگیره کابینت با کیفیت - انواع دستگیره های مدرن و کلاسیک در کابینت کابان">
+    <meta name="keywords" content="دستگیره کابینت، یراق آلات، کابینت کابان، دستگیره مدرن، دستگیره کلاسیک">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../css/mahsool-styles.css">
+    <title>دستگیره کابینت | کابینت کابان</title>
+    <style>
+        .notification {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            width: auto !important;
+            max-width: 300px !important;
+            height: auto !important;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.error {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <section>
+        <nav id="nav">
+            <div class="header-content">
+                <a href="../../index.html">
+                    <img src="../../assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav">
+                </a>
+                <div class="textlogo">کابینت کابان</div>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-container">
+                <div class="dropdown-cabinet">
+                    <a class="cabinet" href="#">کابینت</a>
+                    <div class="submenu-cabinet">
+                        <a href="../../cabinets/cabinet-mdf.html">کابینت MDF</a>
+                        <a href="../../cabinets/cabinet-metal.html">کابینت فلزی</a>
+                        <a href="../../cabinets/cabinet-highgloss.html">کابینت هایگلاس</a>
+                        <a href="../../cabinets/cabinet-membrane.html">کابینت ممبران</a>
+                        <a href="../../cabinets/cabinet-neoclassic.html">کابینت نئو کلاسیک</a>
+                    </div>
+                </div>
+                <div class="dropdown-mahsool">
+                    <a class="mahsool" href="#">محصولات</a>
+                    <div class="submenu-mahsool">
+                        <a href="../cabinet.html">کابینت</a>
+                        <a href="../accessories.html">یراق آلات</a>
+                        <a href="../3d-designs/index.html">طرح سه بعدی</a>
+                    </div>
+                </div>
+                <a class="weblog" href="../../weblog/index.html">وبلاگ</a>
+                <a class="portfolio" href="../../portfolio/index.html">نمونه کار</a>
+                <a class="about" href="#">درباره ما</a>
+                <a class="contact" href="#">تماس با ما</a>
+                <div class="mobile-nav-buttons">
+                    <a class="login-register" id="login-register-menu" href="../../account/login.html">
+                        <img src="../../assets/icon/log in.png" alt="ورود" class="login-icon">
+                        <span class="login-text">ورود / ثبت نام</span>
+                    </a>
+                </div>
+                <div class="mobile-dark-mode">
+                    <button id="mobileDarkMode" class="dark-mode-btn mobile">
+                        <span class="moon">🌙</span>
+                        <span class="sun">☀️</span>
+                        <span class="dark-mode-text">حالت شب</span>
+                    </button>
+                </div>
+            </div>
+            <button id="darkModeToggle" class="dark-mode-btn desktop">
+                <span class="moon">🌙</span>
+                <span class="sun">☀️</span>
+            </button>
+        </nav>
+    </section>
+
+    <section class="mahsool-detail-section">
+        <div class="mahsool-container">
+            <div class="mahsool-header">
+                <h1>دستگیره کابینت</h1>
+                <div class="title-underline"></div>
+                <p class="mahsool-description">
+                    دستگیره‌های کابینت ما با طراحی مدرن و شیک، جلوه‌ای خاص به کابینت شما می‌بخشند. 
+                    این دستگیره‌ها از آلیاژهای مقاوم و با کیفیت ساخته شده‌اند تا در استفاده‌های روزمره، دوام و زیبایی خود را حفظ کنند.
+                </p>
+            </div>
+
+            <div class="product-details">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img src="../../assets/Photo/mahsool/dastgireh.jpg" alt="دستگیره کابینت">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h2>ویژگی‌های محصول</h2>
+                    <ul class="features-list">
+                        <li>طراحی مدرن و خطی مناسب برای کابینت‌های مدرن</li>
+                        <li>ساخته شده از آلیاژ آلومینیوم با روکش استیل ضد زنگ</li>
+                        <li>مقاوم در برابر خراش و رطوبت</li>
+                        <li>سطح صیقلی و ضد اثر انگشت</li>
+                        <li>سهولت در نصب با پیچ‌های تنظیم شونده</li>
+                        <li>بسته‌بندی شامل ۵ عدد دستگیره به همراه پیچ و اتصالات</li>
+                    </ul>
+                    
+                    <div class="product-price">
+                        <span class="price-label">قیمت:</span>
+                        <span class="price-value">۳۵۰,۰۰۰ تومان</span>
+                    </div>
+                    
+                    <button class="add-to-cart-btn"
+                        data-id="handle-001"
+                        data-name="دستگیره کابینت"
+                        data-price="350000"
+                        data-image="../../assets/Photo/mahsool/dastgireh.jpg">
+                        <span class="cart-icon">🛒</span>
+                        افزودن به سبد خرید
+                    </button>
+                </div>
+            </div>
+            
+            <div class="technical-specs">
+                <h2>مشخصات فنی</h2>
+                <table class="specs-table">
+                    <tr>
+                        <td>جنس</td>
+                        <td>آلیاژ آلومینیوم با روکش استیل</td>
+                    </tr>
+                    <tr>
+                        <td>ابعاد</td>
+                        <td>طول: ۱۵ سانتیمتر، قطر: ۱.۲ سانتیمتر</td>
+                    </tr>
+                    <tr>
+                        <td>فاصله سوراخ‌ها</td>
+                        <td>۱۲.۸ سانتیمتر</td>
+                    </tr>
+                    <tr>
+                        <td>تعداد در بسته</td>
+                        <td>۵ عدد دستگیره + پیچ و اتصالات</td>
+                    </tr>
+                    <tr>
+                        <td>گارانتی</td>
+                        <td>۱۸ ماه</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="contact-section">
+                <h2>مشاوره و استعلام قیمت</h2>
+                <p>برای کسب اطلاعات بیشتر و مشاوره رایگان با کارشناسان ما تماس بگیرید</p>
+                <a href="#" class="contact-button">تماس با ما</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo-container">
+                <div class="footer-logo-wrapper">
+                    <img src="../../assets/Photo/نمادک کابان.png" alt="لوگو کابان" class="footer-logo" width="65" height="65">
+                </div>
+                <div class="footer-logo-text">کابینت کابان</div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="اینستاگرام"><i>📸</i></a>
+                    <a href="#" class="social-icon" aria-label="تلگرام"><i>📬</i></a>
+                    <a href="#" class="social-icon" aria-label="واتساپ"><i>📱</i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links-container">
+                <div class="footer-address">
+                    <h4>آدرس ما</h4>
+                    <p><i class="address-icon">📍</i>صفادشت، جنب کوچه نبوت، کابینت کابان</p>
+                    <p><i class="address-icon">🕒</i>ساعات کاری: شنبه تا پنجشنبه از ساعت ۸ صبح تا ۸ شب</p>
+                </div>
+                <div class="footer-links">
+                    <h4>ارتباط با ما</h4>
+                    <ul>
+                        <li><a href="#">تماس با ما</a></li>
+                        <li><a href="#">درباره ما</a></li>
+                        <li class="footer-contact-item"><i class="footer-icon">📱</i><span>۰۹۱۲۳۴۵۶۷۸۹</span></li>
+                        <li class="footer-contact-item"><i class="footer-icon">📧</i><span>info@kabancabinet.ir</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© ۱۴۰۳ - تمامی حقوق برای کابینت کابان محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/sw-register.js" defer></script>
+    
+    <script>
+    // Custom cart functionality for this page only
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Custom cart handler loaded");
+        
+        // Update cart badge on page load
+        updateCartBadge();
+        
+        // Function to update cart badge
+        function updateCartBadge() {
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCount = cart.reduce((total, item) => total + (item?.quantity || 0), 0);
+                
+                // Update desktop cart badge
+                const cartBadgeDesktop = document.getElementById('cart-badge-desktop');
+                if (cartBadgeDesktop) {
+                    cartBadgeDesktop.textContent = cartCount;
+                    cartBadgeDesktop.style.display = cartCount > 0 ? 'flex' : 'none';
+                }
+                
+                // Update mobile cart badge
+                const cartBadgeMobile = document.getElementById('cart-badge');
+                if (cartBadgeMobile) {
+                    cartBadgeMobile.textContent = cartCount;
+                    cartBadgeMobile.style.display = cartCount > 0 ? 'flex' : 'none';
+                }
+                
+                console.log("Cart badge updated: count =", cartCount);
+            } catch (error) {
+                console.error("Error updating cart badge:", error);
+            }
+        }
+        
+        // Check if user is logged in - check both token keys for compatibility
+        function isUserLoggedIn() {
+            const authToken = localStorage.getItem('auth_token');
+            const kabanToken = localStorage.getItem('kabanToken');
+            const isLoggedIn = !!authToken || !!kabanToken;
+            console.log("Login check:", isLoggedIn, { authToken, kabanToken });
+            return isLoggedIn;
+        }
+
+        // Add direct event listener for our specific button
+        const addButton = document.querySelector('.add-to-cart-btn');
+        if (addButton) {
+            addButton.addEventListener('click', function(e) {
+                console.log("Add to cart button clicked");
+                e.preventDefault();
+                
+                // Check if user is logged in
+                if (!isUserLoggedIn()) {
+                    showNotification('لطفا ابتدا وارد حساب کاربری خود شوید', 'error');
+                    // Save current page for redirect after login
+                    sessionStorage.setItem('redirectAfterLogin', window.location.href);
+                    // Redirect to login page after a delay
+                    setTimeout(() => {
+                        window.location.href = '../../auth/login.html?redirect=' + encodeURIComponent(window.location.href);
+                    }, 1500);
+                    return;
+                }
+                
+                // Hardcoded product data for this specific handle product
+                const productId = "handle-001";
+                const productName = "دستگیره کابینت";
+                const productPrice = 350000;
+                const productImage = "../../assets/Photo/mahsool/dastgireh.jpg";
+                
+                console.log("Adding product to cart:", {
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    image: productImage
+                });
+                
+                // Add to cart
+                addToCart(productId, productName, productPrice, productImage);
+                showNotification('محصول به سبد خرید اضافه شد', 'success');
+            });
+        } else {
+            console.error("Add to cart button not found");
+        }
+        
+        // Function to add product to cart
+        function addToCart(id, name, price, image) {
+            try {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                // Check if product already exists in cart
+                const existingItemIndex = cart.findIndex(item => item && item.id === id);
+                
+                if (existingItemIndex > -1) {
+                    // Increment quantity if product already in cart
+                    cart[existingItemIndex].quantity = (cart[existingItemIndex].quantity || 0) + 1;
+                } else {
+                    // Add new item to cart
+                    cart.push({
+                        id: id,
+                        name: name,
+                        price: price,
+                        image: image,
+                        quantity: 1
+                    });
+                }
+                
+                console.log('Added to cart:', {id, name, price, image});
+                console.log('Updated cart:', cart);
+                
+                // Save updated cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Update the cart badge
+                updateCartBadge();
+            } catch (error) {
+                console.error("Error adding to cart:", error);
+                showNotification('خطا در افزودن محصول به سبد خرید', 'error');
+            }
+        }
+        
+        // Function to show notification
+        function showNotification(message, type = 'success') {
+            // Remove any existing notifications
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(n => n.remove());
+            
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'notification ' + type;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Hide and remove notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    });
+    </script>
+</body>
+</html> 
