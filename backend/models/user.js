@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 /**
  * مدل کاربر
@@ -81,6 +82,15 @@ UserSchema.pre('save', async function(next) {
 // متد برای بررسی صحت پسورد
 UserSchema.methods.comparePassword = async function(candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
+};
+
+// متد برای ساخت توکن JWT
+UserSchema.methods.generateAuthToken = function() {
+  return jwt.sign(
+    { id: this._id, role: this.role },
+    process.env.JWT_SECRET || 'your-secret-key',
+    { expiresIn: '7d' }
+  );
 };
 
 // متد برای دریافت اطلاعات عمومی کاربر (بدون پسورد)
