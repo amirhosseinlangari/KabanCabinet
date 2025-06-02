@@ -1,4 +1,11 @@
+/**
+ * Service Worker for Kaban Cabinet
+ * Provides offline functionality and caching
+ */
+
 const CACHE_NAME = 'kaban-cabinet-v1';
+
+// Assets to cache on install
 const ASSETS = [
   '/',
   '/index.html',
@@ -6,6 +13,7 @@ const ASSETS = [
   '/styles/font.css',
   '/scripts/main.js',
   '/scripts/index.js',
+  '/scripts/sw-register.js',
   '/assets/Photo/نمادک کابان.png',
   '/assets/Photo/kitchen.jpg',
   '/assets/Photo/minimalist kitchen 1.jpg',
@@ -23,39 +31,54 @@ const ASSETS = [
   '/weblog/posts/rahnama-entekhab-cabinet.html'
 ];
 
-// Service Worker Installation
-self.addEventListener('install', (event) => {
+/**
+ * Service Worker Installation
+ * Caches essential files for offline access
+ */
+self.addEventListener('install', event => {
+  // Skip waiting to ensure the new service worker activates immediately
+  self.skipWaiting();
+  
+  // Cache all essential assets
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(ASSETS);
-      })
-      .then(() => self.skipWaiting())
+      .then(cache => cache.addAll(ASSETS))
   );
 });
 
-// Service Worker Activation - Clean up old caches
-self.addEventListener('activate', (event) => {
+/**
+ * Service Worker Activation
+ * Cleans up old caches when a new service worker is activated
+ */
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames
-          .filter((name) => name !== CACHE_NAME)
-          .map((name) => caches.delete(name))
+        cacheNames.filter(cacheName => {
+          return cacheName !== CACHE_NAME;
+        }).map(cacheName => {
+          return caches.delete(cacheName);
+        })
       );
-    }).then(() => self.clients.claim())
+    }).then(() => {
+      // Take control of all clients as soon as activated
+      return self.clients.claim();
+    })
   );
 });
 
-// Fetch Event - Cache Strategy: Cache First, falling back to Network
-self.addEventListener('fetch', (event) => {
+/**
+ * Fetch Event Handler
+ * Strategy: Cache First, falling back to Network
+ */
+self.addEventListener('fetch', event => {
   // Skip cross-origin requests
   if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
+    caches.match(event.request).then(cachedResponse => {
       // Return cached response if available
       if (cachedResponse) {
         return cachedResponse;
@@ -63,8 +86,8 @@ self.addEventListener('fetch', (event) => {
 
       // Otherwise, fetch from network
       return fetch(event.request)
-        .then((response) => {
-          // Don't cache non-successful responses or those from external URLs
+        .then(response => {
+          // Don't cache non-successful responses or external URLs
           if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
@@ -74,7 +97,7 @@ self.addEventListener('fetch', (event) => {
           
           // Add to cache for next time
           caches.open(CACHE_NAME)
-            .then((cache) => {
+            .then(cache => {
               cache.put(event.request, responseToCache);
             });
 
@@ -82,12 +105,12 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           // If both cache and network fail, serve the offline page for HTML requests
-          if (event.request.headers.get('Accept').includes('text/html')) {
+          if (event.request.headers.get('Accept')?.includes('text/html')) {
             return caches.match('/404.html');
           }
           
-          // Otherwise, just return the error
-          return new Response('Network error happened', {
+          // Otherwise, return a network error response
+          return new Response('Network error occurred', {
             status: 408,
             headers: { 'Content-Type': 'text/plain' },
           });

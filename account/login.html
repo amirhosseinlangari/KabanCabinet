@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ورود به حساب کاربری کابینت کابان - خرید آسان و پیگیری سفارشات">
+    <meta name="keywords" content="ورود، حساب کاربری، کابینت کابان، ثبت نام">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/auth.css">
+    <title>ورود به حساب کاربری | کابینت کابان</title>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <img src="../assets/Photo/نمادک کابان.png" alt="لوگوی کابینت کابان" class="auth-logo">
+                <h1>ورود به حساب کاربری</h1>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">ایمیل</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">رمز عبور</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">ورود</button>
+                </div>
+
+                <div class="auth-links">
+                    <a href="register.html">حساب کاربری ندارید؟ ثبت نام کنید</a>
+                    <a href="forgot-password.html">رمز عبور خود را فراموش کرده‌اید؟</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../scripts/auth.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await window.authManager.login(email, password);
+                window.location.href = 'profile.html';
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+</body>
+</html> 

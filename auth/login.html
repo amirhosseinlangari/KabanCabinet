@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1c68e">
+    <title>ورود به حساب کاربری | کابینت کابان</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/auth.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1>ورود به حساب کاربری</h1>
+            </div>
+            <div class="auth-form">
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        ایمیل
+                    </label>
+                    <input type="email" id="email" name="email">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        رمز عبور
+                    </label>
+                    <input type="password" id="password" name="password">
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                <button type="button" class="btn btn-primary" id="loginButton">
+                    <i class="fas fa-sign-in-alt"></i>
+                    ورود
+                </button>
+                <div class="auth-links">
+                    <a href="register.html">ثبت نام</a>
+                    <a href="../index.html">بازگشت به صفحه اصلی</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginButton = document.getElementById('loginButton');
+            
+            loginButton.addEventListener('click', async function() {
+                document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (!email) {
+                    document.getElementById('emailError').textContent = 'لطفا ایمیل خود را وارد کنید';
+                    return;
+                }
+                
+                if (!password) {
+                    document.getElementById('passwordError').textContent = 'لطفا رمز عبور را وارد کنید';
+                    return;
+                }
+                
+                try {
+                    loginButton.disabled = true;
+                    loginButton.textContent = '...در حال ورود';
+                    
+                    const authManager = new AuthManager();
+                    const response = await authManager.login(email, password);
+                    
+                    console.log('Login response:', response);
+                    
+                    if (response) {
+                        // Store token in both formats for compatibility
+                        localStorage.setItem('auth_token', response.token);
+                        localStorage.setItem('kabanToken', response.token);
+                        localStorage.setItem('user_data', JSON.stringify(response.user));
+                        localStorage.setItem('kabanUser', JSON.stringify(response.user));
+                        localStorage.setItem('isLoggedIn', 'true');
+                        
+                        console.log('Login successful, token stored');
+                        
+                        // Get redirect URL from query parameters
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirectUrl = urlParams.get('redirect');
+                        
+                        // Use a delay to ensure localStorage is updated
+                        setTimeout(() => {
+                            if (redirectUrl) {
+                                console.log("Redirecting to:", decodeURIComponent(redirectUrl));
+                                window.location.href = decodeURIComponent(redirectUrl);
+                            } else {
+                                console.log("Redirecting to homepage");
+                                window.location.href = '/index.html';
+                            }
+                        }, 300);
+                    } else {
+                        document.getElementById('emailError').textContent = 'خطا در ورود';
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    document.getElementById('emailError').textContent = 
+                        error.message || 'خطا در ورود';
+                } finally {
+                    loginButton.disabled = false;
+                    loginButton.innerHTML = '<i class="fas fa-sign-in-alt"></i> ورود';
+                }
+            });
+
+            document.getElementById('password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    loginButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

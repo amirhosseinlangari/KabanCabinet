@@ -49,6 +49,12 @@
                 <a class="portfolio" href="../portfolio/index.html">نمونه کار</a>
                 <a class="about" href="#">درباره ما</a>
                 <a class="contact" href="#">تماس با ما</a>
+                <div class="mobile-nav-buttons">
+                    <a class="login-register" id="login-register-menu" href="../account/login.html">
+                        <img src="../assets/icon/log in.png" alt="ورود" class="login-icon">
+                        <span class="login-text">ورود / ثبت نام</span>
+                    </a>
+                </div>
                 <div class="mobile-dark-mode">
                     <button id="mobileDarkMode" class="dark-mode-btn mobile">
                         <span class="moon">🌙</span>
@@ -61,8 +67,27 @@
                 <span class="moon">🌙</span>
                 <span class="sun">☀️</span>
             </button>
+            <div class="desktop-nav-buttons">
+                <a class="login-register" id="login-register-menu-desktop" href="../account/login.html">
+                    <img src="../assets/icon/log in.png" alt="ورود" class="login-icon">
+                </a>
+                <a class="cart-link" href="../account/cart.html">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cart-badge-desktop">0</span>
+                </a>
+            </div>
         </nav>
     </section>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>کابینت‌های کابان</h1>
+            <p class="subtitle">طراحی و تولید انواع کابینت‌های مدرن و کلاسیک با بالاترین کیفیت</p>
+        </section>
+
+        <div class="products-container">
+            <!-- محصولات از API بارگذاری خواهند شد -->
+        </div>
 
     <section class="mahsool-detail-section">
         <div class="mahsool-container">
@@ -172,53 +197,205 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-logo-container">
-                <img src="../assets/Photo/نمادک کابان.png" alt="لوگو کابان" class="footer-logo" width="80" height="80">
+                <div class="footer-logo-wrapper">
+                    <img src="../assets/Photo/نمادک کابان.png" alt="لوگو کابان" class="footer-logo" width="65" height="65">
+                </div>
                 <div class="footer-logo-text">کابینت کابان</div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="اینستاگرام"><i>📸</i></a>
+                    <a href="#" class="social-icon" aria-label="تلگرام"><i>📬</i></a>
+                    <a href="#" class="social-icon" aria-label="واتساپ"><i>📱</i></a>
+                </div>
             </div>
             
             <div class="footer-links-container">
-                <div class="footer-links">
-                    <h4>دسترسی سریع</h4>
-                    <ul>
-                        <li><a href="../index.html">صفحه اصلی</a></li>
-                        <li><a href="../cabinets/cabinet-mdf.html">کابینت MDF</a></li>
-                        <li><a href="../weblog/index.html">وبلاگ</a></li>
-                        <li><a href="../portfolio/index.html">نمونه کار</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>محصولات</h4>
-                    <ul>
-                        <li><a href="cabinet.html">انواع کابینت</a></li>
-                        <li><a href="accessories.html">یراق آلات</a></li>
-                        <li><a href="3d-designs/index.html">طرح سه بعدی</a></li>
-                    </ul>
+                <div class="footer-address">
+                    <h4>آدرس ما</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> تهران، صفادشت، جنب کوچه نبوت، کابینت کابان</p>
+                        <p><i class="fas fa-phone"></i> <span>۰۹۱۲۱۷۷۳۹۱۵</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>info@kabancabinet.com</span></p>
+                        <p><i class="fas fa-clock"></i> شنبه تا پنجشنبه ۹ الی ۱۹</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>ارتباط با ما</h4>
                     <ul>
                         <li><a href="#">تماس با ما</a></li>
-                        <li><a href="#">درباره ما</a></li>
-                        <li class="footer-contact-item"><i class="footer-icon">📱</i>۰۹۱۲۳۴۵۶۷۸۹</li>
+                        <li><a href="../about-us/index.html">درباره ما</a></li>
+                        <li class="footer-contact-item"><i class="footer-icon">📱</i><span>۰۹۱۲۱۷۷۳۹۱۵</span></li>
+                        <li class="footer-contact-item"><i class="footer-icon">📧</i><span>info@kabancabinet.ir</span></li>
                     </ul>
                 </div>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <div class="social-icons">
-                <a href="#" class="social-icon"><i>📸</i></a>
-                <a href="#" class="social-icon"><i>📬</i></a>
-                <a href="#" class="social-icon"><i>📱</i></a>
-            </div>
             <p class="copyright">© ۱۴۰۳ کابینت کابان - تمامی حقوق محفوظ است</p>
         </div>
     </footer>
 
     <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/sw-register.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // دریافت محصولات دسته‌بندی کابینت از API
+        getCabinetProducts();
+    });
+
+    /**
+     * دریافت محصولات کابینت از API
+     */
+    function getCabinetProducts() {
+        const productsContainer = document.querySelector('.products-container');
+        
+        // نمایش وضعیت بارگذاری
+        productsContainer.innerHTML = '<div class="loading-spinner">در حال بارگذاری محصولات...</div>';
+        
+        // درخواست فیلتر شده به API برای دریافت فقط محصولات دسته‌بندی کابینت
+        fetch("http://localhost:3000/api/products?category=cabinet")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`خطای HTTP: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(products => {
+                console.log("کابینت‌های دریافت شده:", products);
+                
+                // نمایش محصولات در صفحه
+                displayCabinetProducts(products, productsContainer);
+            })
+            .catch(error => {
+                console.error("خطا در دریافت کابینت‌ها:", error);
+                productsContainer.innerHTML = `
+                    <div class="error-message">
+                        <p>متأسفانه در دریافت اطلاعات کابینت‌ها خطایی رخ داده است.</p>
+                        <p>لطفاً صفحه را دوباره بارگذاری کنید یا بعداً تلاش کنید.</p>
+                        <p>جزئیات خطا: ${error.message}</p>
+                    </div>
+                `;
+            });
+    }
+
+    /**
+     * نمایش محصولات کابینت در صفحه
+     */
+    function displayCabinetProducts(products, container) {
+        // اگر محصولی وجود نداشت، پیام مناسب نمایش بده
+        if (!products || products.length === 0) {
+            container.innerHTML = '<div class="no-products">محصولی برای نمایش وجود ندارد</div>';
+            return;
+        }
+        
+        // پاک کردن محتوای قبلی
+        container.innerHTML = '';
+        
+        // ایجاد و افزودن کارت محصول برای هر کابینت
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            
+            // تصویر پیش‌فرض اگر محصول تصویر نداشت
+            const imageUrl = product.images && product.images.length > 0 
+                ? product.images[0] 
+                : '../assets/Photo/placeholder.jpg';
+            
+            // ویژگی‌های محصول
+            const featuresList = product.features && product.features.length > 0
+                ? `<ul class="product-features">
+                    ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                   </ul>`
+                : '';
+            
+            // رنگ‌های موجود
+            const colorsList = product.colors && product.colors.length > 0
+                ? `<div class="product-colors">
+                    ${product.colors.map(color => `<span class="color-option" style="background-color: ${color}"></span>`).join('')}
+                   </div>`
+                : '';
+            
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${imageUrl}" alt="${product.name}" loading="lazy">
+                    ${product.inStock ? '<span class="badge in-stock">موجود</span>' : '<span class="badge out-of-stock">ناموجود</span>'}
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-description">${product.description.substring(0, 100)}...</p>
+                    ${featuresList}
+                    ${colorsList}
+                    <div class="product-price">${formatPrice(product.price)} تومان</div>
+                    <div class="product-actions">
+                        <button class="btn view-product" data-id="${product._id}">مشاهده جزئیات</button>
+                        <button class="btn add-to-cart" data-id="${product._id}" ${!product.inStock ? 'disabled' : ''}>
+                            ${product.inStock ? 'افزودن به سبد' : 'ناموجود'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(productCard);
+        });
+        
+        // اضافه کردن رویدادها به دکمه‌های محصول
+        addCabinetProductEventListeners();
+    }
+
+    /**
+     * فرمت کردن قیمت به صورت خوانا با جداکننده هزارگان
+     */
+    function formatPrice(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    /**
+     * اضافه کردن رویدادها به دکمه‌های محصول
+     */
+    function addCabinetProductEventListeners() {
+        // رویداد دکمه مشاهده جزئیات
+        document.querySelectorAll('.view-product').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                window.location.href = `product.html?id=${productId}`;
+            });
+        });
+        
+        // رویداد دکمه افزودن به سبد خرید
+        document.querySelectorAll('.add-to-cart:not([disabled])').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                
+                // دریافت اطلاعات محصول از API
+                fetch(`http://localhost:3000/api/products/${productId}`)
+                    .then(res => res.json())
+                    .then(product => {
+                        // استفاده از کلاس OrderManager موجود برای افزودن به سبد خرید
+                        if (window.orderManager) {
+                            window.orderManager.addToCart({
+                                id: product._id,
+                                name: product.name,
+                                type: product.category,
+                                price: product.price,
+                                quantity: 1
+                            });
+                        } else {
+                            console.error('OrderManager در دسترس نیست');
+                            alert('محصول به سبد خرید اضافه شد');
+                        }
+                    })
+                    .catch(error => {
+                        console.error("خطا در افزودن به سبد خرید:", error);
+                        alert('خطا در افزودن محصول به سبد خرید');
+                    });
+            });
+        });
+    }
+    </script>
 </body>
 </html> 

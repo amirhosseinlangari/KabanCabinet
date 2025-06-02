@@ -322,4 +322,385 @@ body.dark-mode .contact-button:hover {
     .contact-section h2 {
         font-size: 1.8rem;
     }
+}
+
+/* استایل برای صفحات محصولات */
+/* استایل‌های بخش جزئیات محصول */
+.product-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.product-images {
+    flex: 1;
+    min-width: 300px;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.main-image img:hover {
+    transform: scale(1.03);
+}
+
+.product-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.product-info h2 {
+    color: var(--section-title-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.product-info h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #f1c68e;
+    border-radius: 2px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.features-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-right: 22px;
+    line-height: 1.5;
+}
+
+.features-list li::before {
+    content: '•';
+    position: absolute;
+    right: 0;
+    color: #f1c68e;
+    font-size: 1.2rem;
+}
+
+.product-price {
+    margin: 25px 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.price-label {
+    font-weight: bold;
+    margin-left: 10px;
+    color: var(--section-title-color);
+}
+
+.price-value {
+    font-size: 1.3rem;
+    color: #4a4a4a;
+    background-color: rgba(241, 198, 142, 0.15);
+    padding: 5px 15px;
+    border-radius: 25px;
+}
+
+.add-to-cart-btn {
+    background: linear-gradient(135deg, #f1c68e, #e6a95f);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(230, 169, 95, 0.3);
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(230, 169, 95, 0.4);
+}
+
+.cart-icon {
+    margin-left: 8px;
+    font-size: 1.1rem;
+}
+
+/* استایل‌های بخش مشخصات فنی */
+.technical-specs {
+    margin: 40px 0;
+}
+
+.technical-specs h2 {
+    color: var(--section-title-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.technical-specs h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #f1c68e;
+    border-radius: 2px;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.specs-table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease;
+}
+
+.specs-table tr:hover {
+    background-color: rgba(241, 198, 142, 0.08);
+}
+
+.specs-table td {
+    padding: 12px 15px;
+}
+
+.specs-table td:first-child {
+    font-weight: bold;
+    width: 30%;
+    color: var(--section-title-color);
+}
+
+/* استایل‌های گرید محصولات */
+.mahsool-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.mahsool-card {
+    flex: 0 0 calc(33.333% - 25px);
+    min-width: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+body.dark-mode .mahsool-card {
+    background-color: #2a2a2a;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mahsool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.mahsool-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.mahsool-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.mahsool-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.mahsool-card:hover .mahsool-image img {
+    transform: scale(1.05);
+}
+
+.mahsool-info {
+    padding: 20px;
+}
+
+.mahsool-info h3 {
+    color: var(--section-title-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.mahsool-info p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-block;
+    color: #e6a95f;
+    font-size: 0.9rem;
+    position: relative;
+    padding-left: 22px;
+    transition: all 0.3s ease;
+}
+
+.read-more::after {
+    content: '←';
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.mahsool-card:hover .read-more {
+    padding-left: 30px;
+}
+
+.mahsool-card:hover .read-more::after {
+    transform: translateX(-5px);
+}
+
+/* استایل‌های بخش ویژگی‌ها */
+.features-section {
+    margin: 50px 0;
+}
+
+.features-section h2 {
+    color: var(--section-title-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.features-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background-color: #f1c68e;
+    border-radius: 2px;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.feature-item {
+    flex: 0 0 calc(33.333% - 30px);
+    min-width: 250px;
+    text-align: center;
+    padding: 25px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .feature-item {
+    background-color: rgba(42, 42, 42, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    color: #e6a95f;
+}
+
+.feature-item h3 {
+    color: var(--section-title-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* استایل‌های ریسپانسیو */
+@media screen and (max-width: 992px) {
+    .product-details {
+        flex-direction: column;
+    }
+    
+    .product-images, .product-info {
+        min-width: 100%;
+    }
+    
+    .mahsool-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .feature-item {
+        flex: 0 0 calc(50% - 15px);
+    }
+    
+    .specs-table td:first-child {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mahsool-card, .feature-item {
+        flex: 0 0 100%;
+    }
+    
+    .mahsool-image {
+        height: 180px;
+    }
+    
+    .product-price {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .price-label {
+        margin-bottom: 8px;
+    }
 } 

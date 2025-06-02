@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1c68e">
+    <title>پروفایل کاربری | کابینت کابان</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-sidebar">
+            <div class="profile-header">
+                <h2 id="userName">نام کاربر</h2>
+                <p id="userEmail">ایمیل کاربر</p>
+            </div>
+            <nav class="profile-nav">
+                <a href="#info" class="nav-item active">
+                    <i class="fas fa-user"></i>
+                    اطلاعات شخصی
+                </a>
+                <a href="#orders" class="nav-item">
+                    <i class="fas fa-shopping-bag"></i>
+                    سفارش‌های من
+                </a>
+                <button type="button" id="logoutBtn" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    خروج از حساب کاربری
+                </button>
+            </nav>
+            <div class="theme-toggle">
+                <button id="themeToggle" class="btn btn-outline">
+                    <i class="fas fa-moon"></i>
+                    <span>حالت تاریک</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-section" id="info">
+                <h3>اطلاعات شخصی</h3>
+                <form class="profile-form" id="profileForm">
+                    <div class="form-group">
+                        <label for="fullName">
+                            <i class="fas fa-user"></i>
+                            نام و نام خانوادگی
+                        </label>
+                        <input type="text" id="fullName" name="fullName" placeholder="نام و نام خانوادگی خود را وارد کنید" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            ایمیل
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="ایمیل خود را وارد کنید" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i>
+                            شماره موبایل
+                        </label>
+                        <input type="tel" id="phone" name="phone" placeholder="شماره موبایل خود را وارد کنید" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            آدرس
+                        </label>
+                        <textarea id="address" name="address" rows="3" placeholder="آدرس خود را وارد کنید"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        ذخیره تغییرات
+                    </button>
+                </form>
+            </div>
+
+            <div class="profile-section" id="orders">
+                <h3>سفارش‌های من</h3>
+                <div class="orders-list">
+                    <div class="order-card">
+                        <div class="order-header">
+                            <span class="order-id">#12345</span>
+                            <span class="order-status success">تکمیل شده</span>
+                        </div>
+                        <div class="order-details">
+                            <p class="order-date">تاریخ: ۱۴۰۲/۱۲/۱۵</p>
+                            <p class="order-total">مبلغ کل: ۱۵,۰۰۰,۰۰۰ تومان</p>
+                        </div>
+                        <button class="btn btn-outline">مشاهده جزئیات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script>
+        // تابع نمایش نوتیفیکیشن
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // نمایش نوتیفیکیشن
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // حذف نوتیفیکیشن بعد از 3 ثانیه
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

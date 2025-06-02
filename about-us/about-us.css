@@ -1,0 +1,690 @@
+/**
+ * استایل‌های اختصاصی صفحه درباره ما
+ * About Us Page Specific Styles
+ */
+
+/* استایل‌های عمومی صفحه درباره ما */
+.about-page {
+    padding: 2rem 0;
+}
+
+.about-page section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    color: #222;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--nav-bg-color);
+}
+
+.section-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+}
+
+/* بخش مقدمه */
+.about-intro {
+    text-align: center;
+    padding: 3rem 0;
+    background-color: transparent;
+    border-radius: 8px;
+    margin: 2rem 0 3rem;
+    box-shadow: none;
+}
+
+.intro-title {
+    font-size: 2.5rem;
+    color: var(--section-title-color);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.intro-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.intro-logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 2rem;
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.intro-logo:hover {
+    transform: scale(1.05);
+}
+
+/* بخش ارزش‌های ما */
+.about-values {
+    padding: 3rem 0;
+}
+
+.values-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.value-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+    flex: 1 1 300px;
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid rgba(209, 127, 15, 0.3);
+}
+
+.value-card.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    color: #d17f0f;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.value-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #222;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.value-description {
+    color: #333333;
+    line-height: 1.7;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* بخش روند کار ما */
+.about-process {
+    background-color: rgba(241, 198, 142, 0.25);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-align: center;
+}
+
+.process-step.step-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.step-number {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--nav-bg-color);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #222;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.step-description {
+    color: #333333;
+    line-height: 1.7;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* بخش تیم ما */
+.about-team {
+    padding: 3rem 0;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    flex: 1 1 250px;
+    max-width: 280px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(209, 127, 15, 0.3);
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.member-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.member-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.member-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.member-position {
+    font-size: 0.9rem;
+    color: #d17f0f;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.member-bio {
+    color: #333333;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: center;
+    font-weight: 600;
+}
+
+.member-socials {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.member-socials a {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.member-socials a:hover {
+    color: var(--nav-bg-color);
+}
+
+/* بخش دستاوردهای ما */
+.about-achievement {
+    background-color: rgba(241, 198, 142, 0.25);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.achievements-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.achievement-item {
+    flex: 1 1 200px;
+    max-width: 250px;
+    padding: 2rem;
+}
+
+.achievement-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d17f0f;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.achievement-title {
+    font-size: 1.2rem;
+    color: #222;
+    font-weight: bold;
+}
+
+/* بخش تماس با ما */
+.about-cta {
+    background-color: #d17f0f;
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #000;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+}
+
+.cta-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-weight: bold;
+    color: #000;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    font-weight: 600;
+    color: #000;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    color: var(--nav-bg-color);
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.cta-button:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* انیمیشن‌های اسکرول */
+.section-to-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* دیگر استایل‌ها */
+.about-hero {
+    background-image: none;
+    background-color: rgba(241, 198, 142, 0.4);
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+    max-width: 850px;
+    width: 100%;
+    padding: 2rem 3rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border: 1px solid rgba(241, 198, 142, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.hero-image {
+    flex: 0 0 auto;
+}
+
+.hero-image img {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+}
+
+.about-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-weight: bold;
+    color: #222;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-shadow: none;
+    font-weight: 600;
+    color: #333;
+}
+
+.accent-text {
+    color: #d17f0f;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-weight: 800;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* تنظیمات حالت تاریک */
+body.dark-mode .section-description,
+body.dark-mode .step-description,
+body.dark-mode .value-description,
+body.dark-mode .member-bio {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .about-cta {
+    color: #000;
+}
+
+body.dark-mode .step-number {
+    color: #000;
+}
+
+body.dark-mode .value-card,
+body.dark-mode .team-member {
+    background-color: rgba(35, 35, 35, 0.95);
+    border: 1px solid rgba(241, 198, 142, 0.4);
+}
+
+body.dark-mode .value-icon,
+body.dark-mode .member-position,
+body.dark-mode .achievement-number,
+body.dark-mode .accent-text {
+    color: #f1c68e;
+}
+
+body.dark-mode .about-title,
+body.dark-mode .section-title,
+body.dark-mode .value-title,
+body.dark-mode .step-title,
+body.dark-mode .member-name,
+body.dark-mode .achievement-title {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .hero-content {
+    background-color: rgba(35, 35, 35, 0.85);
+    border: 1px solid rgba(241, 198, 142, 0.5);
+}
+
+body.dark-mode .about-hero {
+    background-color: rgba(241, 198, 142, 0.25);
+}
+
+body.dark-mode .section-title {
+    color: rgba(255, 255, 255, 0.97);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .about-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* واکنش‌گرایی */
+@media (max-width: 991px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .intro-title {
+        font-size: 2.2rem;
+    }
+    
+    .achievement-number {
+        font-size: 2.5rem;
+    }
+    
+    .cta-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-text {
+        padding-right: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-page section {
+        margin-bottom: 3rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .intro-title {
+        font-size: 2rem;
+    }
+    
+    .value-card {
+        max-width: 100%;
+    }
+    
+    .process-step {
+        flex-direction: column;
+    }
+    
+    .step-number {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .team-member {
+        max-width: 100%;
+    }
+    
+    .achievement-item {
+        flex: 1 1 150px;
+    }
+    
+    .about-cta {
+        padding: 2rem;
+    }
+    
+    .cta-title {
+        font-size: 1.6rem;
+    }
+    
+    .cta-text {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.6rem;
+        font-size: 1rem;
+    }
+    
+    .hero-content {
+        flex-direction: column-reverse;
+        padding: 1.5rem;
+    }
+    
+    .hero-text {
+        text-align: center;
+        padding-right: 0;
+        margin-top: 1.5rem;
+    }
+    
+    .hero-image {
+        margin-bottom: 1rem;
+    }
+    
+    .about-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-page section {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .intro-title {
+        font-size: 1.8rem;
+    }
+    
+    .intro-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .about-intro,
+    .about-process,
+    .about-achievement,
+    .about-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .achievement-number {
+        font-size: 2.2rem;
+    }
+    
+    .achievement-title {
+        font-size: 1rem;
+    }
+}
+
+/* بخش داستان ما */
+.section-company {
+    position: relative;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+.section-company::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to left, #d17f0f, transparent);
+}
+
+.section-company .section-title {
+    margin-bottom: 2rem;
+    color: var(--section-title-color);
+}
+
+.section-company .section-description {
+    color: var(--text-color);
+}
+
+body.dark-mode .section-company {
+    background-color: var(--bg-color);
+} 

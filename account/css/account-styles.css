@@ -1,0 +1,226 @@
+/* استایل‌های صفحات مربوط به حساب کاربری */
+.account-section {
+    padding: 40px 20px;
+    min-height: calc(100vh - 300px);
+}
+
+body.dark-mode .account-section {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.account-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.account-card {
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    transition: all 0.4s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .account-card {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.account-header {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.account-header h1 {
+    color: var(--section-title-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, transparent, #f1c68e, transparent);
+    margin: 15px auto 25px;
+    border-radius: 2px;
+}
+
+.account-description {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* استایل‌های فرم ورود */
+.login-form, .register-form {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .form-group input {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #f1c68e;
+    box-shadow: 0 0 0 4px rgba(241, 198, 142, 0.15);
+    background-color: #fff;
+}
+
+body.dark-mode .form-group input:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.form-checkbox input {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #f1c68e;
+}
+
+.form-checkbox label {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.login-btn, .register-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #f1c68e, #e6a95f);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 169, 95, 0.3);
+}
+
+.login-btn:hover, .register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 169, 95, 0.4);
+}
+
+.form-links {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.form-links a {
+    color: #e6a95f;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0 8px;
+    font-weight: 500;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+}
+
+/* حذف استایل‌های مربوط به دکمه گوگل */
+.divider,
+.social-login,
+.google-login,
+.google-icon {
+    display: none;
+}
+
+/* استایل‌های ریسپانسیو */
+@media screen and (max-width: 992px) {
+    .account-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .account-card {
+        min-width: 100%;
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .account-section {
+        padding: 30px 15px;
+    }
+    
+    .account-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .account-card {
+        padding: 30px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .account-card {
+        padding: 25px 15px;
+    }
+    
+    .account-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .form-checkbox {
+        flex-wrap: wrap;
+    }
+    
+    .form-group input {
+        padding: 12px 15px;
+    }
+    
+    .login-btn, .register-btn {
+        padding: 12px;
+    }
+} 
