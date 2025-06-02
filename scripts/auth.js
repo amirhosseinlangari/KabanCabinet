@@ -5,7 +5,7 @@
 
 class AuthManager {
     constructor() {
-        this.baseUrl = 'http://127.0.0.1:5000/api';
+        this.baseUrl = 'https://api.kabancabinet.com/api';
         this.tokenKey = 'auth_token';
         this.userKey = 'user_data';
         this.sessionKey = 'session_id';
