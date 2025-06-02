@@ -37,6 +37,12 @@ class AuthManager {
             console.log('Server response:', data);
 
             if (!response.ok) {
+                if (data.errors) {
+                    // نمایش خطاهای اعتبارسنجی
+                    Object.keys(data.errors).forEach(field => {
+                        showError(field, data.errors[field]);
+                    });
+                }
                 throw new Error(data.message || 'خطا در ثبت نام');
             }
 
@@ -51,7 +57,9 @@ class AuthManager {
         } catch (error) {
             console.error('Registration error:', error);
             if (error.message === 'Failed to fetch') {
-                throw new Error('خطا در اتصال به سرور. لطفاً مطمئن شوید که سرور در حال اجراست');
+                showError('general', 'خطا در اتصال به سرور. لطفاً مطمئن شوید که سرور در حال اجراست');
+            } else {
+                showError('general', error.message || 'خطا در ثبت نام');
             }
             throw error;
         }
