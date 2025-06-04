@@ -68,7 +68,7 @@ app.use((req, res, next) => {
 // ====== CONNECT TO MONGODB ======
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/kabancabinet', {
+    await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       autoIndex: true
