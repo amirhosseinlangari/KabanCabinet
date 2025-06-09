@@ -5,7 +5,7 @@
 
 class AuthManager {
     constructor() {
-        this.baseUrl = 'https://www.kabancabinet.ir/api';
+        this.baseUrl = 'http://localhost:5000/api';
         this.tokenKey = 'auth_token';
         this.userKey = 'user_data';
         this.sessionKey = 'session_id';
@@ -40,41 +40,28 @@ class AuthManager {
                 if (data.errors) {
                     // نمایش خطاهای اعتبارسنجی
                     Object.keys(data.errors).forEach(field => {
-                        const errorElement = document.getElementById(`${field}Error`);
-                        if (errorElement) {
-                            errorElement.textContent = data.errors[field];
-                            errorElement.style.display = 'block';
-                        }
+                        showError(field, data.errors[field]);
                     });
                 }
                 throw new Error(data.message || 'خطا در ثبت نام');
             }
 
             // Store auth data
-            if (data.token) {
-                localStorage.setItem(this.tokenKey, data.token);
-                localStorage.setItem(this.compatTokenKey, data.token);
-            }
+            localStorage.setItem(this.tokenKey, data.token);
+            localStorage.setItem(this.userKey, JSON.stringify(data.user));
             
-            if (data.user) {
-                localStorage.setItem(this.userKey, JSON.stringify(data.user));
-                localStorage.setItem(this.compatUserKey, JSON.stringify(data.user));
-            }
-
-            // Set login flag
-            localStorage.setItem('isLoggedIn', 'true');
-            
-            // Redirect to homepage
+            // Redirect to homepage after successful registration
             window.location.href = '/index.html';
             
             return data;
         } catch (error) {
             console.error('Registration error:', error);
             if (error.message === 'Failed to fetch') {
-                throw new Error('خطا در اتصال به سرور. لطفاً مطمئن شوید که سرور در حال اجراست');
+                showError('general', 'خطا در اتصال به سرور. لطفاً مطمئن شوید که سرور در حال اجراست');
             } else {
-                throw error;
+                showError('general', error.message || 'خطا در ثبت نام');
             }
+            throw error;
         }
     }
 
@@ -344,63 +331,57 @@ if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Get form values
-        const fullName = document.getElementById('fullName').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
+        // پاک کردن پیام‌های خطای قبلی
+        clearErrors();
+        
+        const username = document.getElementById('username').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
-        // Clear previous errors
-        document.querySelectorAll('.error-message').forEach(el => {
-            el.textContent = '';
-            el.style.display = 'none';
-        });
-
-        // Validate fields
-        let hasError = false;
-        if (!fullName) {
-            document.getElementById('fullNameError').textContent = 'لطفاً نام و نام خانوادگی را وارد کنید';
-            hasError = true;
-        }
-        if (!email) {
-            document.getElementById('emailError').textContent = 'لطفاً ایمیل را وارد کنید';
-            hasError = true;
-        }
-        if (!phone) {
-            document.getElementById('phoneError').textContent = 'لطفاً شماره موبایل را وارد کنید';
-            hasError = true;
-        }
-        if (!password) {
-            document.getElementById('passwordError').textContent = 'لطفاً رمز عبور را وارد کنید';
-            hasError = true;
-        }
-        if (!confirmPassword) {
-            document.getElementById('confirmPasswordError').textContent = 'لطفاً تکرار رمز عبور را وارد کنید';
-            hasError = true;
-        }
-
-        if (hasError) return;
-
-        // Validate password match
+        // بررسی تطابق رمز عبور
         if (password !== confirmPassword) {
-            document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
+            showError('confirmPassword', 'رمز عبور و تکرار آن مطابقت ندارند');
             return;
         }
 
         try {
-            const formData = {
-                fullName,
-                email,
-                phone,
-                password,
-                cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
-            };
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    name,
+                    email,
+                    phone,
+                    password
+                })
+            });
 
-            await authManager.register(formData);
+            const data = await response.json();
+
+            if (!response.ok) {
+                if (data.errors) {
+                    // نمایش خطاهای اعتبارسنجی
+                    Object.keys(data.errors).forEach(field => {
+                        showError(field, data.errors[field]);
+                    });
+                } else {
+                    showError('general', data.message || 'خطا در ثبت نام');
+                }
+                return;
+            }
+
+            // نمایش پیام موفقیت
+            alert('ثبت نام با موفقیت انجام شد');
+            window.location.href = 'login.html';
         } catch (error) {
             console.error('Registration error:', error);
-            alert(error.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+            showError('general', 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
         }
     });
 }

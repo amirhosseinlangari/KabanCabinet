@@ -31,9 +31,10 @@ const app = express();
 // ====== MIDDLEWARE SETUP ======
 // Allow cross-origin requests
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5501',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 // Parse JSON in request bodies
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -65,25 +66,29 @@ app.use((req, res, next) => {
 });
 
 // ====== CONNECT TO MONGODB ======
-console.log('Attempting to connect to MongoDB...');
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-        console.log('Connected to MongoDB successfully');
-    })
-    .catch(err => {
-        console.error('MongoDB connection error:', err);
-        process.exit(1);
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      autoIndex: true
     });
+    
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+    process.exit(1);
+  }
+};
+
+// Initialize DB connection
+connectDB();
 
 // ====== START SERVER ======
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
-  await mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    autoIndex: true
-  });
+  await connectDB();
   
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
@@ -123,14 +128,14 @@ if (process.env.NODE_ENV === 'production') {
 
 // میدلور مدیریت خطاهای کلی
 app.use((err, req, res, next) => {
-  console.error('Server error:', err);
+  console.error('خطای سرور:', err);
   
   const statusCode = err.statusCode || 500;
   
   res.status(statusCode).json({
     success: false,
-    message: 'خطا در سرور',
-    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    message: err.message || 'خطای سرور',
+    error: process.env.NODE_ENV === 'development' ? err.stack : undefined
   });
 });
 

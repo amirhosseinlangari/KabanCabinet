@@ -129,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize
     loadUserData();
-});
-
+}); 
  
  

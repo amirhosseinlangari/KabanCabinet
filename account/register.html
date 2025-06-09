@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ثبت نام در کابینت کابان - ایجاد حساب کاربری برای خرید آسان و پیگیری سفارشات">
+    <meta name="keywords" content="ثبت نام، حساب کاربری، کابینت کابان، عضویت">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/auth.css">
+    <title>ثبت نام | کابینت کابان</title>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <img src="../assets/Photo/نمادک کابان.png" alt="لوگوی کابینت کابان" class="auth-logo">
+                <h1>ثبت نام در کابینت کابان</h1>
+            </div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">نام و نام خانوادگی</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">ایمیل</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">شماره موبایل</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">رمز عبور</label>
+                    <input type="password" id="password" name="password" minlength="6" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">تکرار رمز عبور</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" minlength="6" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">ثبت نام</button>
+                </div>
+
+                <div class="auth-links">
+                    <a href="login.html">قبلا ثبت نام کرده‌اید؟ وارد شوید</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../scripts/auth.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('رمز عبور و تکرار آن مطابقت ندارند');
+                return;
+            }
+            
+            const userData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                password: password
+            };
+            
+            try {
+                const response = await window.authManager.register(userData);
+                window.location.href = 'profile.html';
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+</body>
+</html> 
