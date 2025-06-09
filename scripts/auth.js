@@ -51,8 +51,21 @@ class AuthManager {
             }
 
             // Store auth data
-            localStorage.setItem(this.tokenKey, data.token);
-            localStorage.setItem(this.userKey, JSON.stringify(data.user));
+            if (data.token) {
+                localStorage.setItem(this.tokenKey, data.token);
+                localStorage.setItem(this.compatTokenKey, data.token);
+            }
+            
+            if (data.user) {
+                localStorage.setItem(this.userKey, JSON.stringify(data.user));
+                localStorage.setItem(this.compatUserKey, JSON.stringify(data.user));
+            }
+
+            // Set login flag
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Redirect to homepage
+            window.location.href = '/index.html';
             
             return data;
         } catch (error) {
@@ -330,58 +343,103 @@ const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log('Form submitted');
         
         // پاک کردن پیام‌های خطای قبلی
         clearErrors();
         
-        const username = document.getElementById('username').value;
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-
-        // بررسی تطابق رمز عبور
-        if (password !== confirmPassword) {
-            showError('confirmPassword', 'رمز عبور و تکرار آن مطابقت ندارند');
-            return;
-        }
-
         try {
-            const response = await fetch('/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    name,
-                    email,
-                    phone,
-                    password
-                })
-            });
+            // Get form values
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
 
-            const data = await response.json();
+            console.log('Form values:', { fullName, email, phone, password: '***' });
 
-            if (!response.ok) {
-                if (data.errors) {
-                    // نمایش خطاهای اعتبارسنجی
-                    Object.keys(data.errors).forEach(field => {
-                        showError(field, data.errors[field]);
-                    });
-                } else {
-                    showError('general', data.message || 'خطا در ثبت نام');
-                }
+            let hasError = false;
+
+            // Validate all fields are filled
+            if (!fullName) {
+                showError('fullName', 'لطفاً نام و نام خانوادگی را وارد کنید');
+                hasError = true;
+            }
+            if (!email) {
+                showError('email', 'لطفاً ایمیل را وارد کنید');
+                hasError = true;
+            }
+            if (!phone) {
+                showError('phone', 'لطفاً شماره موبایل را وارد کنید');
+                hasError = true;
+            }
+            if (!password) {
+                showError('password', 'لطفاً رمز عبور را وارد کنید');
+                hasError = true;
+            }
+            if (!confirmPassword) {
+                showError('confirmPassword', 'لطفاً تکرار رمز عبور را وارد کنید');
+                hasError = true;
+            }
+
+            if (hasError) {
+                console.log('Form validation failed');
                 return;
             }
 
-            // نمایش پیام موفقیت
-            alert('ثبت نام با موفقیت انجام شد');
-            window.location.href = 'login.html';
+            // Validate password match
+            if (password !== confirmPassword) {
+                showError('confirmPassword', 'رمز عبور و تکرار آن مطابقت ندارند');
+                return;
+            }
+
+            // Validate password length
+            if (password.length < 6) {
+                showError('password', 'رمز عبور باید حداقل ۶ کاراکتر باشد');
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('email', 'لطفاً یک ایمیل معتبر وارد کنید');
+                return;
+            }
+
+            // Validate phone number format (Iranian mobile)
+            const phoneRegex = /^09[0-9]{9}$/;
+            if (!phoneRegex.test(phone)) {
+                showError('phone', 'لطفاً یک شماره موبایل معتبر وارد کنید');
+                return;
+            }
+
+            const formData = {
+                fullName,
+                email,
+                phone,
+                password,
+                cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
+            };
+
+            console.log('Form data prepared:', { ...formData, password: '***' });
+
+            try {
+                console.log('Creating AuthManager instance...');
+                const authManager = new AuthManager();
+                console.log('AuthManager instance created');
+
+                console.log('Calling register method...');
+                await authManager.register(formData);
+                console.log('Registration successful');
+                
+                // No need to redirect here as it's handled in AuthManager
+            } catch (registerError) {
+                console.error('Registration error:', registerError);
+                showError('general', registerError.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+            }
         } catch (error) {
-            console.error('Registration error:', error);
-            showError('general', 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+            console.error('Form processing error:', error);
+            showError('general', error.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
         }
     });
 }
