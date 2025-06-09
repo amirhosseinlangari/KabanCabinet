@@ -19,12 +19,12 @@
             </div>
             <form class="auth-form" id="registerForm">
                 <div class="form-group">
-                    <label for="name">
+                    <label for="fullName">
                         <i class="fas fa-id-card"></i>
                         نام و نام خانوادگی
                     </label>
-                    <input type="text" id="name" name="name" required placeholder="نام و نام خانوادگی خود را وارد کنید">
-                    <div class="error-message" id="nameError"></div>
+                    <input type="text" id="fullName" name="fullName" required placeholder="نام و نام خانوادگی خود را وارد کنید">
+                    <div class="error-message" id="fullNameError"></div>
                 </div>
                 <div class="form-group">
                     <label for="email">
@@ -85,24 +85,47 @@
             e.preventDefault();
             console.log('Form submitted');
 
+            // Clear previous error messages
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
             try {
                 const formData = {
-                    fullName: document.getElementById('name').value,
+                    fullName: document.getElementById('fullName').value,
                     email: document.getElementById('email').value,
                     phone: document.getElementById('phone').value,
-                    password: document.getElementById('password').value
+                    password: document.getElementById('password').value,
+                    cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
                 };
 
+                // Format cart items to match server expectations
+                if (formData.cartItems.length > 0) {
+                    formData.cartItems = formData.cartItems.map(item => ({
+                        productId: item.id,
+                        name: item.name,
+                        price: item.price,
+                        quantity: item.quantity,
+                        image: item.image || ''
+                    }));
+                }
+
                 console.log('Form data before submission:', formData);
-                console.log('Name value:', document.getElementById('name').value);
-                console.log('Email value:', document.getElementById('email').value);
-                console.log('Phone value:', document.getElementById('phone').value);
-                console.log('Password value:', document.getElementById('password').value);
 
                 const confirmPassword = document.getElementById('confirmPassword').value;
                 
                 if (formData.password !== confirmPassword) {
                     document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
+                    return;
+                }
+
+                // Validate required fields
+                if (!formData.fullName || !formData.email || !formData.phone || !formData.password) {
+                    const missingFields = [];
+                    if (!formData.fullName) missingFields.push('نام و نام خانوادگی');
+                    if (!formData.email) missingFields.push('ایمیل');
+                    if (!formData.phone) missingFields.push('شماره موبایل');
+                    if (!formData.password) missingFields.push('رمز عبور');
+                    
+                    alert(`لطفاً فیلدهای زیر را پر کنید:\n${missingFields.join('\n')}`);
                     return;
                 }
 
@@ -116,7 +139,11 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert(error.message);
+                if (error.message) {
+                    alert(error.message);
+                } else {
+                    alert('خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+                }
             }
         });
     </script>

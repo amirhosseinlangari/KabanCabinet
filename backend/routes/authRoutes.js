@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');
 const User = require('../models/user');
+const Cart = require('../models/cart');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
@@ -13,7 +14,7 @@ const crypto = require('crypto');
  */
 router.post('/register', async (req, res) => {
   try {
-    const { fullName, email, phone, password } = req.body;
+    const { fullName, email, phone, password, cartItems } = req.body;
     
     // بررسی وجود فیلدهای اجباری
     if (!fullName || !email || !phone || !password) {
@@ -67,6 +68,25 @@ router.post('/register', async (req, res) => {
     
     // ذخیره کاربر در دیتابیس
     await user.save();
+    
+    // ایجاد سبد خرید برای کاربر جدید
+    if (cartItems && cartItems.length > 0) {
+      const cart = new Cart({
+        userId: user._id,
+        items: cartItems.map(item => ({
+          product: item.productId,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          totalPrice: item.price * item.quantity,
+          image: item.image || ''
+        })),
+        totalPrice: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        discount: 0,
+        finalPrice: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+      });
+      await cart.save();
+    }
     
     // ساخت توکن JWT
     const token = user.generateAuthToken();
