@@ -81,96 +81,105 @@
     
     <!-- Then add our registration handling code -->
     <script>
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log('Form submitted');
-
-            // Clear previous error messages
-            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-
-            try {
-                // Get form values
-                const fullName = document.getElementById('fullName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-
-                // Validate all fields are filled
-                if (!fullName || !email || !phone || !password || !confirmPassword) {
-                    const missingFields = [];
-                    if (!fullName) missingFields.push('نام و نام خانوادگی');
-                    if (!email) missingFields.push('ایمیل');
-                    if (!phone) missingFields.push('شماره موبایل');
-                    if (!password) missingFields.push('رمز عبور');
-                    if (!confirmPassword) missingFields.push('تکرار رمز عبور');
-                    
-                    alert(`لطفاً فیلدهای زیر را پر کنید:\n${missingFields.join('\n')}`);
-                    return;
-                }
-
-                // Validate password match
-                if (password !== confirmPassword) {
-                    document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
-                    return;
-                }
-
-                // Validate password length
-                if (password.length < 6) {
-                    document.getElementById('passwordError').textContent = 'رمز عبور باید حداقل ۶ کاراکتر باشد';
-                    return;
-                }
-
-                // Validate email format
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    document.getElementById('emailError').textContent = 'لطفاً یک ایمیل معتبر وارد کنید';
-                    return;
-                }
-
-                // Validate phone number format (Iranian mobile)
-                const phoneRegex = /^09[0-9]{9}$/;
-                if (!phoneRegex.test(phone)) {
-                    document.getElementById('phoneError').textContent = 'لطفاً یک شماره موبایل معتبر وارد کنید';
-                    return;
-                }
-
-                const formData = {
-                    fullName,
-                    email,
-                    phone,
-                    password,
-                    cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
-                };
-
-                // Format cart items to match server expectations
-                if (formData.cartItems.length > 0) {
-                    formData.cartItems = formData.cartItems.map(item => ({
-                        productId: item.id,
-                        name: item.name,
-                        price: item.price,
-                        quantity: item.quantity,
-                        image: item.image || ''
-                    }));
-                }
-
-                console.log('Form data before submission:', formData);
-
-                const authManager = new AuthManager();
-                const response = await authManager.register(formData);
-                
-                if (response.success) {
-                    alert('ثبت نام با موفقیت انجام شد');
-                    window.location.href = 'login.html';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                if (error.message) {
-                    alert(error.message);
-                } else {
-                    alert('خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
-                }
+        // Wait for AuthManager to be available
+        window.addEventListener('load', () => {
+            if (typeof AuthManager === 'undefined') {
+                console.error('AuthManager not loaded');
+                alert('خطا در بارگذاری سیستم احراز هویت. لطفاً صفحه را رفرش کنید.');
+                return;
             }
+
+            document.getElementById('registerForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                console.log('Form submitted');
+
+                // Clear previous error messages
+                document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+                try {
+                    // Get form values
+                    const fullName = document.getElementById('fullName').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+
+                    // Validate all fields are filled
+                    if (!fullName || !email || !phone || !password || !confirmPassword) {
+                        const missingFields = [];
+                        if (!fullName) missingFields.push('نام و نام خانوادگی');
+                        if (!email) missingFields.push('ایمیل');
+                        if (!phone) missingFields.push('شماره موبایل');
+                        if (!password) missingFields.push('رمز عبور');
+                        if (!confirmPassword) missingFields.push('تکرار رمز عبور');
+                        
+                        alert(`لطفاً فیلدهای زیر را پر کنید:\n${missingFields.join('\n')}`);
+                        return;
+                    }
+
+                    // Validate password match
+                    if (password !== confirmPassword) {
+                        document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
+                        return;
+                    }
+
+                    // Validate password length
+                    if (password.length < 6) {
+                        document.getElementById('passwordError').textContent = 'رمز عبور باید حداقل ۶ کاراکتر باشد';
+                        return;
+                    }
+
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        document.getElementById('emailError').textContent = 'لطفاً یک ایمیل معتبر وارد کنید';
+                        return;
+                    }
+
+                    // Validate phone number format (Iranian mobile)
+                    const phoneRegex = /^09[0-9]{9}$/;
+                    if (!phoneRegex.test(phone)) {
+                        document.getElementById('phoneError').textContent = 'لطفاً یک شماره موبایل معتبر وارد کنید';
+                        return;
+                    }
+
+                    const formData = {
+                        fullName,
+                        email,
+                        phone,
+                        password,
+                        cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
+                    };
+
+                    // Format cart items to match server expectations
+                    if (formData.cartItems.length > 0) {
+                        formData.cartItems = formData.cartItems.map(item => ({
+                            productId: item.id,
+                            name: item.name,
+                            price: item.price,
+                            quantity: item.quantity,
+                            image: item.image || ''
+                        }));
+                    }
+
+                    console.log('Form data before submission:', formData);
+
+                    const authManager = new AuthManager();
+                    const response = await authManager.register(formData);
+                    
+                    if (response.success) {
+                        alert('ثبت نام با موفقیت انجام شد');
+                        window.location.href = 'login.html';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    if (error.message) {
+                        alert(error.message);
+                    } else {
+                        alert('خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+                    }
+                }
+            });
         });
     </script>
 </body>
