@@ -155,9 +155,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const userEmailElement = document.getElementById('userEmail');
         
         if (userNameElements) {
-            userNameElements.forEach(element => {
+        userNameElements.forEach(element => {
                 element.textContent = `${userData.firstName} ${userData.lastName}`;
-            });
+        });
         }
         
         if (userEmailElement) {
