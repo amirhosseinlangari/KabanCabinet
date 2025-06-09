@@ -89,11 +89,57 @@
             document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
 
             try {
+                // Get form values
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                // Validate all fields are filled
+                if (!fullName || !email || !phone || !password || !confirmPassword) {
+                    const missingFields = [];
+                    if (!fullName) missingFields.push('نام و نام خانوادگی');
+                    if (!email) missingFields.push('ایمیل');
+                    if (!phone) missingFields.push('شماره موبایل');
+                    if (!password) missingFields.push('رمز عبور');
+                    if (!confirmPassword) missingFields.push('تکرار رمز عبور');
+                    
+                    alert(`لطفاً فیلدهای زیر را پر کنید:\n${missingFields.join('\n')}`);
+                    return;
+                }
+
+                // Validate password match
+                if (password !== confirmPassword) {
+                    document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
+                    return;
+                }
+
+                // Validate password length
+                if (password.length < 6) {
+                    document.getElementById('passwordError').textContent = 'رمز عبور باید حداقل ۶ کاراکتر باشد';
+                    return;
+                }
+
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById('emailError').textContent = 'لطفاً یک ایمیل معتبر وارد کنید';
+                    return;
+                }
+
+                // Validate phone number format (Iranian mobile)
+                const phoneRegex = /^09[0-9]{9}$/;
+                if (!phoneRegex.test(phone)) {
+                    document.getElementById('phoneError').textContent = 'لطفاً یک شماره موبایل معتبر وارد کنید';
+                    return;
+                }
+
                 const formData = {
-                    fullName: document.getElementById('fullName').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    password: document.getElementById('password').value,
+                    fullName,
+                    email,
+                    phone,
+                    password,
                     cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
                 };
 
@@ -110,26 +156,6 @@
 
                 console.log('Form data before submission:', formData);
 
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                
-                if (formData.password !== confirmPassword) {
-                    document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
-                    return;
-                }
-
-                // Validate required fields
-                if (!formData.fullName || !formData.email || !formData.phone || !formData.password) {
-                    const missingFields = [];
-                    if (!formData.fullName) missingFields.push('نام و نام خانوادگی');
-                    if (!formData.email) missingFields.push('ایمیل');
-                    if (!formData.phone) missingFields.push('شماره موبایل');
-                    if (!formData.password) missingFields.push('رمز عبور');
-                    
-                    alert(`لطفاً فیلدهای زیر را پر کنید:\n${missingFields.join('\n')}`);
-                    return;
-                }
-
-                console.log('Sending registration data:', formData);
                 const authManager = new AuthManager();
                 const response = await authManager.register(formData);
                 
