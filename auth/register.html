@@ -108,23 +108,23 @@
 
                     // Validate all fields are filled
                     if (!fullName) {
-                        document.getElementById('fullNameError').textContent = 'لطفاً نام و نام خانوادگی را وارد کنید';
+                        showError('fullName', 'لطفاً نام و نام خانوادگی را وارد کنید');
                         hasError = true;
                     }
                     if (!email) {
-                        document.getElementById('emailError').textContent = 'لطفاً ایمیل را وارد کنید';
+                        showError('email', 'لطفاً ایمیل را وارد کنید');
                         hasError = true;
                     }
                     if (!phone) {
-                        document.getElementById('phoneError').textContent = 'لطفاً شماره موبایل را وارد کنید';
+                        showError('phone', 'لطفاً شماره موبایل را وارد کنید');
                         hasError = true;
                     }
                     if (!password) {
-                        document.getElementById('passwordError').textContent = 'لطفاً رمز عبور را وارد کنید';
+                        showError('password', 'لطفاً رمز عبور را وارد کنید');
                         hasError = true;
                     }
                     if (!confirmPassword) {
-                        document.getElementById('confirmPasswordError').textContent = 'لطفاً تکرار رمز عبور را وارد کنید';
+                        showError('confirmPassword', 'لطفاً تکرار رمز عبور را وارد کنید');
                         hasError = true;
                     }
 
@@ -132,27 +132,27 @@
 
                     // Validate password match
                     if (password !== confirmPassword) {
-                        document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
+                        showError('confirmPassword', 'رمز عبور و تکرار آن مطابقت ندارند');
                         return;
                     }
 
                     // Validate password length
                     if (password.length < 6) {
-                        document.getElementById('passwordError').textContent = 'رمز عبور باید حداقل ۶ کاراکتر باشد';
+                        showError('password', 'رمز عبور باید حداقل ۶ کاراکتر باشد');
                         return;
                     }
 
                     // Validate email format
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!emailRegex.test(email)) {
-                        document.getElementById('emailError').textContent = 'لطفاً یک ایمیل معتبر وارد کنید';
+                        showError('email', 'لطفاً یک ایمیل معتبر وارد کنید');
                         return;
                     }
 
                     // Validate phone number format (Iranian mobile)
                     const phoneRegex = /^09[0-9]{9}$/;
                     if (!phoneRegex.test(phone)) {
-                        document.getElementById('phoneError').textContent = 'لطفاً یک شماره موبایل معتبر وارد کنید';
+                        showError('phone', 'لطفاً یک شماره موبایل معتبر وارد کنید');
                         return;
                     }
 
@@ -187,9 +187,9 @@
                 } catch (error) {
                     console.error('Error:', error);
                     if (error.message) {
-                        alert(error.message);
+                        showError('general', error.message);
                     } else {
-                        alert('خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+                        showError('general', 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
                     }
                 }
             });
