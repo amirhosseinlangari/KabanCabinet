@@ -89,12 +89,29 @@
                 return;
             }
 
+            // Function to show error messages
+            function showError(field, message) {
+                const errorElement = document.getElementById(`${field}Error`);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                }
+            }
+
+            // Function to clear all error messages
+            function clearErrors() {
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.textContent = '';
+                    el.style.display = 'none';
+                });
+            }
+
             document.getElementById('registerForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 console.log('Form submitted');
 
                 // Clear previous error messages
-                document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+                clearErrors();
 
                 try {
                     // Get form values
