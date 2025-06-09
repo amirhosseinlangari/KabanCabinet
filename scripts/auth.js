@@ -343,76 +343,52 @@ const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log('Form submitted');
         
-        // پاک کردن پیام‌های خطای قبلی
-        clearErrors();
-        
+        // Get form values
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Clear previous errors
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+
+        // Validate fields
+        let hasError = false;
+        if (!fullName) {
+            document.getElementById('fullNameError').textContent = 'لطفاً نام و نام خانوادگی را وارد کنید';
+            hasError = true;
+        }
+        if (!email) {
+            document.getElementById('emailError').textContent = 'لطفاً ایمیل را وارد کنید';
+            hasError = true;
+        }
+        if (!phone) {
+            document.getElementById('phoneError').textContent = 'لطفاً شماره موبایل را وارد کنید';
+            hasError = true;
+        }
+        if (!password) {
+            document.getElementById('passwordError').textContent = 'لطفاً رمز عبور را وارد کنید';
+            hasError = true;
+        }
+        if (!confirmPassword) {
+            document.getElementById('confirmPasswordError').textContent = 'لطفاً تکرار رمز عبور را وارد کنید';
+            hasError = true;
+        }
+
+        if (hasError) return;
+
+        // Validate password match
+        if (password !== confirmPassword) {
+            document.getElementById('confirmPasswordError').textContent = 'رمز عبور و تکرار آن مطابقت ندارند';
+            return;
+        }
+
         try {
-            // Get form values
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            console.log('Form values:', { fullName, email, phone, password: '***' });
-
-            let hasError = false;
-
-            // Validate all fields are filled
-            if (!fullName) {
-                showError('fullName', 'لطفاً نام و نام خانوادگی را وارد کنید');
-                hasError = true;
-            }
-            if (!email) {
-                showError('email', 'لطفاً ایمیل را وارد کنید');
-                hasError = true;
-            }
-            if (!phone) {
-                showError('phone', 'لطفاً شماره موبایل را وارد کنید');
-                hasError = true;
-            }
-            if (!password) {
-                showError('password', 'لطفاً رمز عبور را وارد کنید');
-                hasError = true;
-            }
-            if (!confirmPassword) {
-                showError('confirmPassword', 'لطفاً تکرار رمز عبور را وارد کنید');
-                hasError = true;
-            }
-
-            if (hasError) {
-                console.log('Form validation failed');
-                return;
-            }
-
-            // Validate password match
-            if (password !== confirmPassword) {
-                showError('confirmPassword', 'رمز عبور و تکرار آن مطابقت ندارند');
-                return;
-            }
-
-            // Validate password length
-            if (password.length < 6) {
-                showError('password', 'رمز عبور باید حداقل ۶ کاراکتر باشد');
-                return;
-            }
-
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showError('email', 'لطفاً یک ایمیل معتبر وارد کنید');
-                return;
-            }
-
-            // Validate phone number format (Iranian mobile)
-            const phoneRegex = /^09[0-9]{9}$/;
-            if (!phoneRegex.test(phone)) {
-                showError('phone', 'لطفاً یک شماره موبایل معتبر وارد کنید');
-                return;
-            }
-
             const formData = {
                 fullName,
                 email,
@@ -421,25 +397,10 @@ if (registerForm) {
                 cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
             };
 
-            console.log('Form data prepared:', { ...formData, password: '***' });
-
-            try {
-                console.log('Creating AuthManager instance...');
-                const authManager = new AuthManager();
-                console.log('AuthManager instance created');
-
-                console.log('Calling register method...');
-                await authManager.register(formData);
-                console.log('Registration successful');
-                
-                // No need to redirect here as it's handled in AuthManager
-            } catch (registerError) {
-                console.error('Registration error:', registerError);
-                showError('general', registerError.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
-            }
+            await authManager.register(formData);
         } catch (error) {
-            console.error('Form processing error:', error);
-            showError('general', error.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
+            console.error('Registration error:', error);
+            alert(error.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
         }
     });
 }
