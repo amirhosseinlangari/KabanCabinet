@@ -83,11 +83,15 @@
     <script>
         // Wait for AuthManager to be available
         window.addEventListener('load', () => {
+            console.log('Window loaded, checking AuthManager...');
+            
             if (typeof AuthManager === 'undefined') {
                 console.error('AuthManager not loaded');
                 alert('خطا در بارگذاری سیستم احراز هویت. لطفاً صفحه را رفرش کنید.');
                 return;
             }
+
+            console.log('AuthManager is available');
 
             // Function to show error messages
             function showError(field, message) {
@@ -106,7 +110,10 @@
                 });
             }
 
-            document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            const form = document.getElementById('registerForm');
+            console.log('Form element:', form);
+
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 console.log('Form submitted');
 
@@ -120,6 +127,8 @@
                     const phone = document.getElementById('phone').value.trim();
                     const password = document.getElementById('password').value;
                     const confirmPassword = document.getElementById('confirmPassword').value;
+
+                    console.log('Form values:', { fullName, email, phone, password: '***' });
 
                     let hasError = false;
 
@@ -145,7 +154,10 @@
                         hasError = true;
                     }
 
-                    if (hasError) return;
+                    if (hasError) {
+                        console.log('Form validation failed');
+                        return;
+                    }
 
                     // Validate password match
                     if (password !== confirmPassword) {
@@ -181,33 +193,30 @@
                         cartItems: JSON.parse(localStorage.getItem('cartItems')) || []
                     };
 
-                    // Format cart items to match server expectations
-                    if (formData.cartItems.length > 0) {
-                        formData.cartItems = formData.cartItems.map(item => ({
-                            productId: item.id,
-                            name: item.name,
-                            price: item.price,
-                            quantity: item.quantity,
-                            image: item.image || ''
-                        }));
-                    }
+                    console.log('Form data prepared:', { ...formData, password: '***' });
 
-                    console.log('Form data before submission:', formData);
+                    try {
+                        console.log('Creating AuthManager instance...');
+                        const authManager = new AuthManager();
+                        console.log('AuthManager instance created');
 
-                    const authManager = new AuthManager();
-                    const response = await authManager.register(formData);
-                    
-                    if (response.success) {
-                        alert('ثبت نام با موفقیت انجام شد');
-                        window.location.href = 'login.html';
+                        console.log('Calling register method...');
+                        const response = await authManager.register(formData);
+                        console.log('Register response:', response);
+                        
+                        if (response.success) {
+                            alert('ثبت نام با موفقیت انجام شد');
+                            window.location.href = 'login.html';
+                        } else {
+                            showError('general', response.message || 'خطا در ثبت نام');
+                        }
+                    } catch (registerError) {
+                        console.error('Registration error:', registerError);
+                        showError('general', registerError.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
                     }
                 } catch (error) {
-                    console.error('Error:', error);
-                    if (error.message) {
-                        showError('general', error.message);
-                    } else {
-                        showError('general', 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
-                    }
+                    console.error('Form processing error:', error);
+                    showError('general', error.message || 'خطا در ثبت نام. لطفاً دوباره تلاش کنید.');
                 }
             });
         });

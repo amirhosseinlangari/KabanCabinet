@@ -40,7 +40,11 @@ class AuthManager {
                 if (data.errors) {
                     // نمایش خطاهای اعتبارسنجی
                     Object.keys(data.errors).forEach(field => {
-                        showError(field, data.errors[field]);
+                        const errorElement = document.getElementById(`${field}Error`);
+                        if (errorElement) {
+                            errorElement.textContent = data.errors[field];
+                            errorElement.style.display = 'block';
+                        }
                     });
                 }
                 throw new Error(data.message || 'خطا در ثبت نام');
@@ -50,18 +54,14 @@ class AuthManager {
             localStorage.setItem(this.tokenKey, data.token);
             localStorage.setItem(this.userKey, JSON.stringify(data.user));
             
-            // Redirect to homepage after successful registration
-            window.location.href = '/index.html';
-            
             return data;
         } catch (error) {
             console.error('Registration error:', error);
             if (error.message === 'Failed to fetch') {
-                showError('general', 'خطا در اتصال به سرور. لطفاً مطمئن شوید که سرور در حال اجراست');
+                throw new Error('خطا در اتصال به سرور. لطفاً مطمئن شوید که سرور در حال اجراست');
             } else {
-                showError('general', error.message || 'خطا در ثبت نام');
+                throw error;
             }
-            throw error;
         }
     }
 
