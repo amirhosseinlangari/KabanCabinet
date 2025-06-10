@@ -76,9 +76,41 @@ body.dark-mode .mahsool-container {
 /* گرید محصولات */
 .mahsool-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    justify-items: center;
+}
+
+.single-3d-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+}
+
+/* استایل برای بخش توضیحات */
+.description-3d {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(241, 198, 142, 0.2);
+    line-height: 2;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
+}
+
+body.dark-mode .description-3d {
+    border: 1px solid rgba(77, 60, 34, 0.4);
 }
 
 .mahsool-card {
@@ -151,6 +183,7 @@ body.dark-mode .mahsool-container {
 /* بخش ویژگی‌ها */
 .mahsool-features {
     margin-bottom: 3rem;
+    margin-top: 8rem;
 }
 
 .mahsool-features h2 {

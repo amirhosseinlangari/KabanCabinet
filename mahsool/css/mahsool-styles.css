@@ -42,6 +42,74 @@ body.dark-mode .mahsool-container {
     text-align: center;
 }
 
+/* Styling for the page header */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    border-top: 4px solid rgb(241, 198, 142);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark-mode .page-header {
+    border-top: 4px solid rgb(77, 60, 34);
+}
+
+.page-header h1 {
+    font-size: 2.8rem;
+    color: var(--section-title-color);
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.page-header .subtitle {
+    max-width: 800px;
+    margin: 1.5rem auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Styling for error messages */
+.error-message {
+    background-color: #ffe0e0; /* Light red for error */
+    color: #cc0000; /* Dark red text */
+    border: 1px solid #cc0000;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+body.dark-mode .error-message {
+    background-color: #4d0000;
+    color: #ffcccc;
+    border: 1px solid #ffcccc;
+}
+
+.error-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #cc0000;
+}
+
+body.dark-mode .error-message h2 {
+    color: #ffcccc;
+}
+
+.error-message p {
+    margin-bottom: 0.5rem;
+}
+
 /* گرید محصولات */
 .mahsool-grid {
     display: grid;
@@ -703,4 +771,21 @@ body.dark-mode .feature-item {
     .price-label {
         margin-bottom: 8px;
     }
+}
+
+/* استایل‌های جدید */
+:root {
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.16);
+    --transition-std: all 0.3s ease;
+
+    /* New variables for mahsool-header background */
+    --mahsool-header-bg-color: #ffffff;
+}
+
+body.dark-mode {
+    --3d-primary: #3498db;
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+
+    /* New variables for mahsool-header dark mode background */
+    --mahsool-header-dark-bg-color: #1f1f1f;
 } 
