@@ -258,7 +258,7 @@
         productsContainer.innerHTML = '<div class="loading-spinner">در حال بارگذاری محصولات...</div>';
         
         // درخواست فیلتر شده به API برای دریافت فقط محصولات دسته‌بندی کابینت
-        fetch("http://localhost:3000/api/products?category=cabinet")
+        fetch("https://www.kabancabinet.ir/api/products?category=cabinet")
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`خطای HTTP: ${response.status}`);
@@ -372,7 +372,7 @@
                 const productId = this.getAttribute('data-id');
                 
                 // دریافت اطلاعات محصول از API
-                fetch(`http://localhost:3000/api/products/${productId}`)
+                fetch(`https://www.kabancabinet.ir/api/products/${productId}`)
                     .then(res => res.json())
                     .then(product => {
                         // استفاده از کلاس OrderManager موجود برای افزودن به سبد خرید

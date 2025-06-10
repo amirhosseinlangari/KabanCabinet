@@ -152,7 +152,7 @@
      * دریافت اطلاعات محصول از API بک‌اند
      */
     function fetchProductDetails(id) {
-        fetch(`http://localhost:3000/api/products/${id}`)
+        fetch(`https://www.kabancabinet.ir/api/products/${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`خطای HTTP: ${response.status}`);
@@ -496,7 +496,7 @@
     function loadRelatedProducts(category, currentProductId) {
         const relatedContainer = document.querySelector('.related-products-container');
         
-        fetch(`http://localhost:3000/api/products?category=${category}&limit=4`)
+        fetch(`/api/products?category=${category}&limit=4`)
             .then(response => response.json())
             .then(result => {
                 if (!result.success || !result.data) {

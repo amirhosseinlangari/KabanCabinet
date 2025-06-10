@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function loadProducts() {
     try {
         // دریافت محصولات از API
-        fetch('http://localhost:3000/api/products')
+        fetch('https://www.kabancabinet.ir/api/products')
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -275,7 +275,7 @@ function addProductEventListeners() {
             const productId = this.getAttribute('data-id');
             
             // دریافت اطلاعات محصول از API
-            fetch(`http://localhost:3000/api/products/${productId}`)
+            fetch(`https://www.kabancabinet.ir/api/products/${productId}`)
                 .then(res => res.json())
                 .then(product => {
                     // استفاده از کلاس OrderManager موجود برای افزودن به سبد خرید

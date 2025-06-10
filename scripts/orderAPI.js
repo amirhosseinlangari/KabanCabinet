@@ -4,7 +4,7 @@
  */
 
 // تنظیمات API
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://www.kabancabinet.ir/api';
 
 /**
  * کلاس مدیریت سبد خرید و سفارش‌ها
