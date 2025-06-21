@@ -1,0 +1,146 @@
+<!--
+    صفحه محصول میز تلویزیون سه‌بعدی
+    ساختار و استایل مشابه سایر محصولات سایت
+    مدل سه‌بعدی با model-viewer و فایل glb از assets/table/table.glb
+-->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="میز تلویزیون سه‌بعدی - محصول جدید یراق آلات کابان">
+    <meta name="keywords" content="میز تلویزیون، یراق آلات، کابینت کابان، سه‌بعدی">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../css/mahsool-styles.css">
+    <title>میز تلویزیون سه‌بعدی | کابینت کابان</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <section>
+        <nav id="nav">
+            <div class="header-content">
+                <a href="../../index.html">
+                    <img src="../../assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav">
+                </a>
+                <div class="textlogo">کابینت کابان</div>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-container">
+                <div class="dropdown-cabinet">
+                    <a class="cabinet" href="#">کابینت</a>
+                    <div class="submenu-cabinet">
+                        <a href="../../cabinets/cabinet-mdf.html">کابینت MDF</a>
+                        <a href="../../cabinets/cabinet-metal.html">کابینت فلزی</a>
+                        <a href="../../cabinets/cabinet-highgloss.html">کابینت هایگلاس</a>
+                        <a href="../../cabinets/cabinet-membrane.html">کابینت ممبران</a>
+                        <a href="../../cabinets/cabinet-neoclassic.html">کابینت نئو کلاسیک</a>
+                    </div>
+                </div>
+                <div class="dropdown-mahsool">
+                    <a class="mahsool" href="#">محصولات</a>
+                    <div class="submenu-mahsool">
+                        <a href="../cabinet.html">کابینت</a>
+                        <a href="../accessories.html">یراق آلات</a>
+                        <a href="../3d-designs/index.html">طرح سه بعدی</a>
+                    </div>
+                </div>
+                <a class="weblog" href="../../weblog/index.html">وبلاگ</a>
+                <a class="portfolio" href="../../portfolio/index.html">نمونه کار</a>
+                <a class="about" href="#">درباره ما</a>
+                <a class="contact" href="#">تماس با ما</a>
+                <a class="login-register" id="login-register-menu" href="../../account/login.html">
+                    <img src="../../assets/icon/log in.png" alt="ورود" class="login-icon">
+                    <span class="login-text">ورود / ثبت نام</span>
+                </a>
+            </div>
+        </nav>
+    </section>
+
+    <section class="mahsool-detail-section">
+        <div class="mahsool-container">
+            <div class="mahsool-header">
+                <h1>میز تلویزیون سه‌بعدی</h1>
+                <div class="title-underline"></div>
+                <p class="mahsool-description">
+                    میز تلویزیون مدرن با قابلیت مشاهده سه‌بعدی و چرخش در تمام جهات. این محصول نمونه‌ای از نوآوری در طراحی و نمایش محصولات کابان است.
+                </p>
+            </div>
+
+            <div class="product-details">
+                <div class="product-images">
+                    <div class="main-image">
+                        <!-- نمایش مدل سه‌بعدی میز تلویزیون با model-viewer -->
+                        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                        <model-viewer 
+                            src="/assets/table/table.glb"
+                            alt="میز تلویزیون سه‌بعدی"
+                            auto-rotate
+                            camera-controls
+                            style="width:100%;height:350px;background:#222;border-radius:10px;">
+                        </model-viewer>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2>ویژگی‌های محصول</h2>
+                    <ul class="features-list">
+                        <li>نمایش سه‌بعدی قابل چرخش</li>
+                        <li>طراحی مدرن و شیک</li>
+                        <li>مناسب برای انواع دکوراسیون داخلی</li>
+                        <li>کیفیت ساخت بالا</li>
+                        <li>قابلیت سفارشی‌سازی ابعاد و رنگ</li>
+                    </ul>
+                    <div class="product-price">
+                        <span class="price-label">قیمت:</span>
+                        <span class="price-value">تماس بگیرید</span>
+                    </div>
+                    <button class="add-to-cart-btn"
+                        data-id="tv-table-001"
+                        data-name="میز تلویزیون سه‌بعدی"
+                        data-price="0"
+                        data-image="../../assets/table/render 2.jpg">
+                        <span class="cart-icon">🛒</span>
+                        افزودن به سبد خرید
+                    </button>
+                </div>
+            </div>
+
+            <div class="technical-specs">
+                <h2>مشخصات فنی</h2>
+                <table class="specs-table">
+                    <tr>
+                        <td>جنس</td>
+                        <td>چوب و MDF</td>
+                    </tr>
+                    <tr>
+                        <td>ابعاد</td>
+                        <td>طول: ۱۴۰ سانتیمتر، عرض: ۴۰ سانتیمتر، ارتفاع: ۵۰ سانتیمتر</td>
+                    </tr>
+                    <tr>
+                        <td>رنگ‌بندی</td>
+                        <td>سفارشی</td>
+                    </tr>
+                    <tr>
+                        <td>گارانتی</td>
+                        <td>۱۸ ماه</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="contact-section">
+                <h2>مشاوره و استعلام قیمت</h2>
+                <p>برای کسب اطلاعات بیشتر و مشاوره رایگان با کارشناسان ما تماس بگیرید</p>
+                <a href="#" class="contact-button">تماس با ما</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../scripts/main.js" defer></script>
+    <script src="../../scripts/cart.js" defer></script>
+</body>
+</html> 

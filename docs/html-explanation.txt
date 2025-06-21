@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Product Details</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <nav id="nav">
+        <div class="logo">Logo</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="mahsool-detail-section">
+        <div class="mahsool-header">
+            <h1>Product Name</h1>
+            <p>Short product description.</p>
+        </div>
+        <div class="product-details">
+            <div id="tv-3d-viewer"></div>
+            <div class="product-info">
+                <p>Features and Add to Cart button.</p>
+            </div>
+        </div>
+        <div class="technical-specs">
+            <table>
+                <tr>
+                    <th>Specification</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Resolution</td>
+                    <td>1920x1080</td>
+                </tr>
+                <tr>
+                    <td>Refresh Rate</td>
+                    <td>60Hz</td>
+                </tr>
+            </table>
+        </div>
+        <div class="contact-section">
+            <p>Contact Information and Consultation.</p>
+        </div>
+    </section>
+    <script src="main.js"></script>
+    <script src="cart.js"></script>
+    <script src="three.js"></script>
+    <script src="product-script.js"></script>
+</body>
+</html> 
