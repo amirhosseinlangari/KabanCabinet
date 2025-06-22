@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="سفارش طراحی سه‌بعدی کابینت - آپلود نقشه و ثبت سفارش">
+    <meta name="keywords" content="طراحی سه‌بعدی، کابینت، نقشه، سفارش، کابینت کابان">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#f1c68e">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="css/order-3d.css">
+    <title>سفارش طراحی سه‌بعدی | کابینت کابان</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <section>
+        <nav id="nav">
+            <div class="header-content">
+                <a href="../index.html">
+                    <img src="../assets/Photo/نمادک کابان.png" alt="logo" id="logo-nav">
+                </a>
+                <div class="textlogo">کابینت کابان</div>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-container">
+                <div class="dropdown-cabinet">
+                    <a class="cabinet" href="#">کابینت</a>
+                    <div class="submenu-cabinet">
+                        <a href="../cabinets/cabinet-mdf.html">کابینت MDF</a>
+                        <a href="../cabinets/cabinet-metal.html">کابینت فلزی</a>
+                        <a href="../cabinets/cabinet-highgloss.html">کابینت هایگلاس</a>
+                        <a href="../cabinets/cabinet-membrane.html">کابینت ممبران</a>
+                        <a href="../cabinets/cabinet-neoclassic.html">کابینت نئو کلاسیک</a>
+                    </div>
+                </div>
+                <div class="dropdown-mahsool">
+                    <a class="mahsool" href="#">محصولات</a>
+                    <div class="submenu-mahsool">
+                        <a href="../mahsool/cabinet.html">کابینت</a>
+                        <a href="../mahsool/accessories.html">یراق آلات</a>
+                        <a href="../mahsool/3d-designs/index.html">طرح سه بعدی</a>
+                    </div>
+                </div>
+                <a class="weblog" href="../weblog/index.html">وبلاگ</a>
+                <a class="portfolio" href="../portfolio/index.html">نمونه کار</a>
+                <a class="about" href="#">درباره ما</a>
+                <a class="contact" href="#">تماس با ما</a>
+                <a class="login-register" id="login-register-menu" href="../account/login.html">
+                    <img src="../assets/icon/log in.png" alt="ورود" class="login-icon">
+                    <span class="login-text">ورود / ثبت نام</span>
+                </a>
+            </div>
+            <button id="darkModeToggle" class="dark-mode-btn desktop" title="تغییر حالت روشن/تاریک" aria-label="تغییر حالت روشن/تاریک">
+                <span class="moon">🌙</span>
+                <span class="sun">☀️</span>
+            </button>
+        </nav>
+    </section>
+
+    <section class="order-3d-section">
+        <div class="order-container">
+            <div class="order-header">
+                <div class="order-header-bg">
+                    <h1>سفارش طراحی سه‌بعدی کابینت</h1>
+                    <div class="title-underline"></div>
+                    <p class="order-description">
+                        با آپلود نقشه و مشخصات مورد نظر خود، سفارش طراحی سه‌بعدی کابینت را ثبت کنید. 
+                        کارشناسان ما در کمترین زمان ممکن طرح سه‌بعدی شما را آماده خواهند کرد.
+                    </p>
+                </div>
+            </div>
+
+            <div class="order-form-container">
+                <form id="order3dForm" class="order-form">
+                    <!-- بخش آپلود نقشه -->
+                    <div class="form-section">
+                        <h3>📋 آپلود نقشه و تصاویر</h3>
+                        <div class="upload-area">
+                            <div class="file-upload-container">
+                                <input type="file" id="blueprintFile" name="blueprintFile" accept="image/*,.pdf" class="file-input">
+                                <label for="blueprintFile" class="file-label">
+                                    <div class="upload-icon">📄</div>
+                                    <div class="upload-text">
+                                        <strong>نقشه کابینت را انتخاب کنید</strong>
+                                        <span>فرمت‌های مجاز: JPG, PNG, PDF</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="file-preview" id="blueprintPreview"></div>
+                        </div>
+
+                        <div class="upload-area">
+                            <div class="file-upload-container">
+                                <input type="file" id="referenceImages" name="referenceImages" accept="image/*" multiple class="file-input">
+                                <label for="referenceImages" class="file-label">
+                                    <div class="upload-icon">🖼️</div>
+                                    <div class="upload-text">
+                                        <strong>تصاویر مرجع (اختیاری)</strong>
+                                        <span>تصاویر مشابه برای الهام‌گیری</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="file-preview" id="referencePreview"></div>
+                        </div>
+                    </div>
+
+                    <!-- بخش اطلاعات سفارش -->
+                    <div class="form-section">
+                        <h3>🏠 اطلاعات پروژه</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projectType">نوع پروژه *</label>
+                                <select id="projectType" name="projectType" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="kitchen">کابینت آشپزخانه</option>
+                                    <option value="bathroom">کابینت حمام</option>
+                                    <option value="bedroom">کابینت اتاق خواب</option>
+                                    <option value="living">کابینت پذیرایی</option>
+                                    <option value="office">کابینت اداری</option>
+                                    <option value="other">سایر</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="roomSize">ابعاد فضا (متر مربع) *</label>
+                                <input type="text" id="roomSize" name="roomSize" placeholder="مثال: 12 متر مربع" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="style">سبک طراحی *</label>
+                                <select id="style" name="style" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="modern">مدرن</option>
+                                    <option value="classic">کلاسیک</option>
+                                    <option value="minimalist">مینیمال</option>
+                                    <option value="luxury">لوکس</option>
+                                    <option value="rustic">روستیک</option>
+                                    <option value="industrial">صنعتی</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="colorScheme">رنگ‌بندی مورد نظر</label>
+                                <input type="text" id="colorScheme" name="colorScheme" placeholder="مثال: سفید و خاکستری">
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="specialRequirements">نیازهای خاص و توضیحات</label>
+                            <textarea id="specialRequirements" name="specialRequirements" rows="4" 
+                                placeholder="توضیحات اضافی، نیازهای خاص، ترجیحات شخصی و..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- بخش اطلاعات تماس -->
+                    <div class="form-section">
+                        <h3>📞 اطلاعات تماس</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">نام و نام خانوادگی *</label>
+                                <input type="text" id="customerName" name="customerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPhone">شماره تماس *</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="customerEmail">ایمیل</label>
+                            <input type="email" id="customerEmail" name="customerEmail" placeholder="example@email.com">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="customerAddress">آدرس (اختیاری)</label>
+                            <textarea id="customerAddress" name="customerAddress" rows="2" 
+                                placeholder="آدرس کامل برای ارسال فایل نهایی"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- بخش قیمت و پرداخت -->
+                    <div class="form-section pricing-section">
+                        <h3>💰 قیمت و پرداخت</h3>
+                        <div class="price-card">
+                            <div class="price-header">
+                                <h4>طراحی سه‌بعدی کابینت</h4>
+                                <div class="price-amount">۴۰۰,۰۰۰ تومان</div>
+                            </div>
+                            <div class="price-features">
+                                <ul>
+                                    <li>✅ طراحی سه‌بعدی حرفه‌ای</li>
+                                    <li>✅ ارائه در ۳ زاویه مختلف</li>
+                                    <li>✅ امکان تغییرات تا ۲ بار</li>
+                                    <li>✅ تحویل در ۳-۵ روز کاری</li>
+                                    <li>✅ پشتیبانی تلفنی</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="payment-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">
+                                    با <a href="#" class="terms-link">قوانین و شرایط</a> استفاده از خدمات موافقت می‌کنم
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- دکمه‌های عملیات -->
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="window.history.back()">
+                            بازگشت
+                        </button>
+                        <button type="submit" class="btn-primary" id="submitOrder">
+                            <span class="btn-icon">🛒</span>
+                            ثبت سفارش و افزودن به سبد خرید
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/cart.js" defer></script>
+    <script src="scripts/order-3d.js" defer></script>
+</body>
+</html> 
