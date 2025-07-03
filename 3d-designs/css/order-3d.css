@@ -184,13 +184,14 @@ body.dark-mode .order-form-container {
 
 .file-input {
     position: absolute;
+    inset: 0;
     opacity: 0;
-    width: 100%;
-    height: 100%;
     cursor: pointer;
+    z-index: 0;
 }
 
 .file-label {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
